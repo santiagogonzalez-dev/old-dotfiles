@@ -108,7 +108,7 @@ alias ls='ls -F --color=auto'
 alias ip='ip --color=auto'
 alias tree='tree -C'
 alias hs='history | grep'
-alias update='sudo pacman -Syu && paru -Sua'
+#alias update='sudo pacman -Syu && paru -Sua'
 alias checkaur= 'for x in `pacman -Qm`; do paru -Ss "$x" | grep 'aur/'; done'
 alias grep='grep --color'
 alias df='df -h'
@@ -116,6 +116,14 @@ alias du='du -h'
 alias e='exa -lah --icons --no-user'
 alias et='exa -lah --icons --no-user -T -L3'
 alias bat='bat --italic-text=always'
+
+function update() {
+        sudo pacman -Syu
+        echo $?
+        if [[ $? = 0 ]] then
+                paru
+        fi
+}
 
 # cd into a directory and ls
 cdl() { cd "$@" && ls -lAhX --group-directories-first --color=auto; }
