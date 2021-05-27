@@ -32,4 +32,4 @@ export KEYTIMEOUT=1
 
 # Start unclutter
 
-unclutter --timeout 3 &
+unclutter --timeout 3 &!
