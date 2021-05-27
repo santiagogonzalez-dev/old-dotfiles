@@ -117,6 +117,10 @@ alias e='exa -lah --icons --no-user'
 alias et='exa -lah --icons --no-user -T -L3'
 alias bat='bat --italic-text=always'
 
+function konSpawn () {
+	konsole --workdir $(z "$@" ; pwd) & disown
+}
+
 function update() {
         sudo pacman -Syu
         echo $?
