@@ -29,3 +29,7 @@ fi
 
 # Default timeout for vi-mode
 export KEYTIMEOUT=1
+
+# Start unclutter
+
+unclutter --timeout 3 &
