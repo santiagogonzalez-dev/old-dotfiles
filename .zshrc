@@ -3,9 +3,14 @@ zstyle :compinstall filename '/home/st/.zshrc'
 HISTFILE=/datos/mainSystem/.historyFile
 HISTSIZE=60000
 SAVEHIST=60000
+
+
+eval "$(starship init zsh)"
+
+
 # setup a hook that runs before every prompt.
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
+#precmd_vcs_info() { vcs_info }
+#precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
 setopt inc_append_history # Ensure that commands are added to the history immediately
 setopt extended_history # Record the timestamp of each command in HISTFILE
@@ -15,40 +20,40 @@ setopt HIST_SAVE_NO_DUPS # Do not write a duplicate event to the history file.
 unsetopt BEEP # No soud on error
 setopt interactive_comments # Enable comments in interactive shell
 setopt autocd # Automatically cd into typed directory.
-# Prompt ##############################################################################
-#######################################################################################
-autoload -Uz vcs_info
-autoload -U colors && colors
-# enable only git
-zstyle ':vcs_info:*' enable git
-
-# add a function to check for untracked files in the directory.
-# from https://github.com/zsh-users/zsh/blob/master/Misc/vcs_info-examples
-zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
-#
-+vi-git-untracked(){
-    if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
-        git status --porcelain | grep '??' &> /dev/null ; then
-        # This will show the marker if there are any untracked files in repo.
-        # If instead you want to show the marker only if there are untracked
-        # files in $PWD, use:
-        #[[ -n $(git ls-files --others --exclude-standard) ]] ; then
-        hook_com[staged]+='!' # signify new files with a bang
-    fi
-}
-
-zstyle ':vcs_info:*' check-for-changes true
-# zstyle ':vcs_info:git:*' formats " %r/%S %b %m%u%c "
-zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}(%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[blue]%})"
-
-# format our main prompt for hostname current folder, and permissions.
-PROMPT="%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[red]%}@%{$fg[white]%}%m%{$fg[blue]%}] %(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )%{$fg[cyan]%}%c%{$reset_color%}"
-# PROMPT="%{$fg[green]%}%n@%m %~ %{$reset_color%}%#> "
-PROMPT+="\$vcs_info_msg_0_ "
-# TODO look into this for more colors
-# https://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
-# also ascii escape codes
-# Prompt ####################################################################################
+#  # Prompt ##############################################################################
+#  #######################################################################################
+#  autoload -Uz vcs_info
+#  autoload -U colors && colors
+#  # enable only git
+#  zstyle ':vcs_info:*' enable git
+#  
+#  # add a function to check for untracked files in the directory.
+#  # from https://github.com/zsh-users/zsh/blob/master/Misc/vcs_info-examples
+#  zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
+#  #
+#  +vi-git-untracked(){
+#      if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
+#          git status --porcelain | grep '??' &> /dev/null ; then
+#          # This will show the marker if there are any untracked files in repo.
+#          # If instead you want to show the marker only if there are untracked
+#          # files in $PWD, use:
+#          #[[ -n $(git ls-files --others --exclude-standard) ]] ; then
+#          hook_com[staged]+='!' # signify new files with a bang
+#      fi
+#  }
+#  
+#  zstyle ':vcs_info:*' check-for-changes true
+#  # zstyle ':vcs_info:git:*' formats " %r/%S %b %m%u%c "
+#  zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}(%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[blue]%})"
+#  
+#  # format our main prompt for hostname current folder, and permissions.
+#  PROMPT="%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[red]%}@%{$fg[white]%}%m%{$fg[blue]%}] %(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )%{$fg[cyan]%}%c%{$reset_color%}"
+#  # PROMPT="%{$fg[green]%}%n@%m %~ %{$reset_color%}%#> "
+#  PROMPT+="\$vcs_info_msg_0_ "
+#  # TODO look into this for more colors
+#  # https://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
+#  # also ascii escape codes
+#  # Prompt ####################################################################################
 
 #PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M%{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b"
 #eval "$(starship init zsh)"
@@ -58,6 +63,8 @@ PROMPT+="\$vcs_info_msg_0_ "
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
+# Rehash
+zstyle ':completion:*' rehash true
 # Include hidden files.
 _comp_options+=(globdots)
 
@@ -121,28 +128,24 @@ function konSpawn () {
 	konsole --workdir $(z "$@" ; pwd) & disown
 }
 
-function update() {
-        sudo pacman -Syu
-        echo $?
-        if [[ $? = 0 ]] then
-                paru
-        fi
+function update() { 
+	sudo pacman -Syu
+	echo $?
+	if [[ $? = 0 ]] then
+		paru
+	fi
 }
 
-# cd into a directory and ls
 cdl() { cd "$@" && ls -lAhX --group-directories-first --color=auto; }
 
-# cd into a directory with tree and list using exa
 function cdet() {
   cd "$@" && exa -lah --icons --no-user -T -L3;
 }
 
-# cd into a directory and list using exa
 function cde() {
   cd "$@" && exa -lah --icons --no-user;
 }
 
-# Open file on neovide and detach from terminal
 function neo() {
   command neovide "$@" & disown && sleep 1 ; exit
 }
