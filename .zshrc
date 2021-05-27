@@ -58,6 +58,8 @@ PROMPT+="\$vcs_info_msg_0_ "
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
+# Rehash
+zstyle ':completion:*' rehash true 
 # Include hidden files.
 _comp_options+=(globdots)
 
