@@ -4,10 +4,6 @@ HISTFILE=/datos/mainSystem/.historyFile
 HISTSIZE=60000
 SAVEHIST=60000
 
-
-eval "$(starship init zsh)"
-
-
 # setup a hook that runs before every prompt.
 #precmd_vcs_info() { vcs_info }
 #precmd_functions+=( precmd_vcs_info )
