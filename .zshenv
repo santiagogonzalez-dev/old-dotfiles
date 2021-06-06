@@ -29,3 +29,6 @@ fi
 
 # Default timeout for vi-mode
 export KEYTIMEOUT=1
+
+# Python
+export PATH=$PATH:/home/$USER/.local/bin
