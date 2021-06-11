@@ -1,6 +1,6 @@
 autoload -U colors && colors
 zstyle :compinstall filename '/home/st/.zshrc'
-HISTFILE=/datos/mainSystem/.historyFile
+HISTFILE=~/.zshHistory
 HISTSIZE=60000
 SAVEHIST=60000
 
