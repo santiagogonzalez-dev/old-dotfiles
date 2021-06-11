@@ -3,10 +3,6 @@ zstyle :compinstall filename '/home/st/.zshrc'
 HISTFILE=~/.zshHistory
 HISTSIZE=60000
 SAVEHIST=60000
-
-# setup a hook that runs before every prompt.
-#precmd_vcs_info() { vcs_info }
-#precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
 setopt inc_append_history # Ensure that commands are added to the history immediately
 setopt extended_history # Record the timestamp of each command in HISTFILE
@@ -16,43 +12,6 @@ setopt HIST_SAVE_NO_DUPS # Do not write a duplicate event to the history file.
 unsetopt BEEP # No soud on error
 setopt interactive_comments # Enable comments in interactive shell
 setopt autocd # Automatically cd into typed directory.
-#  # Prompt ##############################################################################
-#  #######################################################################################
-#  autoload -Uz vcs_info
-#  autoload -U colors && colors
-#  # enable only git
-#  zstyle ':vcs_info:*' enable git
-#  
-#  # add a function to check for untracked files in the directory.
-#  # from https://github.com/zsh-users/zsh/blob/master/Misc/vcs_info-examples
-#  zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
-#  #
-#  +vi-git-untracked(){
-#      if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
-#          git status --porcelain | grep '??' &> /dev/null ; then
-#          # This will show the marker if there are any untracked files in repo.
-#          # If instead you want to show the marker only if there are untracked
-#          # files in $PWD, use:
-#          #[[ -n $(git ls-files --others --exclude-standard) ]] ; then
-#          hook_com[staged]+='!' # signify new files with a bang
-#      fi
-#  }
-#  
-#  zstyle ':vcs_info:*' check-for-changes true
-#  # zstyle ':vcs_info:git:*' formats " %r/%S %b %m%u%c "
-#  zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}(%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[blue]%})"
-#  
-#  # format our main prompt for hostname current folder, and permissions.
-#  PROMPT="%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[red]%}@%{$fg[white]%}%m%{$fg[blue]%}] %(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )%{$fg[cyan]%}%c%{$reset_color%}"
-#  # PROMPT="%{$fg[green]%}%n@%m %~ %{$reset_color%}%#> "
-#  PROMPT+="\$vcs_info_msg_0_ "
-#  # TODO look into this for more colors
-#  # https://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
-#  # also ascii escape codes
-#  # Prompt ####################################################################################
-
-#PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M%{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b"
-#eval "$(starship init zsh)"
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
 # Basic auto/tab complete:
@@ -63,7 +22,6 @@ zmodload zsh/complist
 zstyle ':completion:*' rehash true
 # Include hidden files.
 _comp_options+=(globdots)
-
 compinit
 
 # Binds and remaps
@@ -99,7 +57,7 @@ echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 # Aliases
-alias Snvim='sudo -E nvim'
+alias snvim='sudo -E nvim'
 alias zzz='systemctl suspend'
 alias cd..='cd ..'
 alias cp='cp -iv'
@@ -109,9 +67,6 @@ alias rd='rmdir'
 alias l='ls -lAhX --group-directories-first --color=auto'
 alias ls='ls -F --color=auto'
 alias ip='ip --color=auto'
-alias tree='tree -C'
-alias hs='history | grep'
-#alias update='sudo pacman -Syu && paru -Sua'
 alias checkaur= 'for x in `pacman -Qm`; do paru -Ss "$x" | grep 'aur/'; done'
 alias grep='grep --color'
 alias df='df -h'
@@ -119,32 +74,23 @@ alias du='du -h'
 alias e='exa -lah --icons --no-user'
 alias et='exa -lah --icons --no-user -T -L3'
 alias bat='bat --italic-text=always'
-
-function konSpawn () {
-	konsole --workdir $(z "$@" ; pwd) & disown
-}
-
 function update() { 
 	sudo pacman -Syu
 	echo $?
 	if [[ $? = 0 ]] then
-		paru
+		paru -Sua
 	fi
 }
-
 cdl() { cd "$@" && ls -lAhX --group-directories-first --color=auto; }
-
 function cdet() {
   cd "$@" && exa -lah --icons --no-user -T -L3;
 }
-
 function cde() {
   cd "$@" && exa -lah --icons --no-user;
 }
-
-function neo() {
-  command neovide "$@" & disown && sleep 1 ; exit
-}
+#function neo() {
+#  command neovide "$@" & disown && sleep 1 ; exit
+#}
 
 # ex - archive extractor
 # usage: ex <file>
