@@ -5,6 +5,9 @@ export GTK_USE_PORTAL=1
 # "nvim" as manpager
 export MANPAGER="nvim -c 'set ft=man' -"
 
+# "bat" as manpager
+export MANPAGER="sh -c 'col -b | bat -l man -p'"
+
 # Configure VA-API
 export LIBVA_DRIVER_NAME=iHD
 # Configure VDPAU
