@@ -78,6 +78,7 @@ MorningBeginFixed=0700
 [Plugins]
 desktopchangeosdEnabled=true
 diminactiveEnabled=true
+krohnkiteEnabled=true
 kwin4_effect_fadingpopupsEnabled=false
 kwin4_effect_fullscreenEnabled=false
 kwin4_effect_loginEnabled=false
@@ -85,12 +86,31 @@ kwin4_effect_logoutEnabled=false
 kwin4_effect_maximizeEnabled=false
 kwin4_effect_morphingpopupsEnabled=false
 kwin4_effect_squashEnabled=false
+minimizeallEnabled=false
 screenedgeEnabled=false
 slideEnabled=false
 slidingpopupsEnabled=false
+synchronizeskipswitcherEnabled=false
+videowallEnabled=false
 
 [Script-desktopchangeosd]
 PopupHideDelay=200
+
+[Script-krohnkite]
+directionalKeyDwm=false
+directionalKeyFocus=true
+enableFloatingLayout=true
+enableMonocleLayout=false
+enableSpiralLayout=false
+enableSpreadLayout=false
+enableThreeColumnLayout=false
+maximizeSoleTile=true
+monocleMaximize=false
+screenGapBottom=8
+screenGapLeft=8
+screenGapRight=8
+screenGapTop=8
+tileLayoutGap=8
 
 [TabBox]
 BorderActivate=9
@@ -98,7 +118,6 @@ BorderActivate=9
 [Windows]
 AutoRaise=true
 AutoRaiseInterval=150
-BorderlessMaximizedWindows=true
 DelayFocusInterval=150
 ElectricBorderCooldown=900
 ElectricBorderCornerRatio=0.08
@@ -110,4 +129,4 @@ Placement=Centered
 
 [org.kde.kdecoration2]
 ButtonsOnLeft=
-ButtonsOnRight=FX
+ButtonsOnRight=X
