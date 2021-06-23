@@ -33,4 +33,6 @@ fi
 # Default timeout for vi-mode
 export KEYTIMEOUT=1
 
+# Personal Scripts
+export PATH="$HOME/bin:$PATH"
 export PATH=$PATH:/home/$USER/.local/bin
