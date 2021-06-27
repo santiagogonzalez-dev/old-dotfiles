@@ -1,27 +1,22 @@
-# archive selector
-# with KDE-specific APIs
-export GTK_USE_PORTAL=1
+export GTK_USE_PORTAL=1 # Use KDE apps instead of GTK
 
-# "nvim" as manpager
-# export MANPAGER="nvim -c 'set ft=man' -"
-
-# "bat" as manpager
+# Manpagers
 export MANPAGER="sh -c 'col -b | bat -l man -p'"
-
-# Configure VA-API
-export LIBVA_DRIVER_NAME=iHD
-# Configure VDPAU
-export VDPAU_DRIVER=va_gl
-
-# Ruby
-#export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
-#export PATH="$PATH:$GEM_HOME/bin"
+# export MANPAGER="nvim -c 'set ft=man' -"
 
 export EDITOR="nvim"
 export VISUAL="nvim"
 export BROWSER="brave"
 export TERMINAL="konsole"
 export TERM="xterm-256color"
+
+# XDG Paths
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+
+# Zsh config
+export ZDOTDIR=$HOME/.config/zsh
 
 # Default text editor for ssh connection
 if [[ -n $SSH_CONNECTION ]]; then
