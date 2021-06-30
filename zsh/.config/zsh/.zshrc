@@ -56,7 +56,7 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 }
 
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}(%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[blue]%})"
+zstyle ':vcs_info:git:*' formats "%{$fg[blue]%}(%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[blue]%}) "
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select () {
@@ -79,15 +79,15 @@ function check_last_exit_code() {
 	local LAST_EXIT_CODE=$?
 	if [[ $LAST_EXIT_CODE -ne 0 ]]; then
 		local EXIT_CODE_PROMPT=' '
-		EXIT_CODE_PROMPT+="%{$fg[red]%}-%{$reset_color%}"
+		EXIT_CODE_PROMPT+="%{$fg[red]%}-<%{$reset_color%}"
 		EXIT_CODE_PROMPT+="%{$fg_bold[red]%}$LAST_EXIT_CODE%{$reset_color%}"
-		EXIT_CODE_PROMPT+="%{$fg[red]%}-%{$reset_color%}"
+		EXIT_CODE_PROMPT+="%{$fg[red]%}>-%{$reset_color%}"
 		echo "$EXIT_CODE_PROMPT"
 	fi
 }
 PROMPT="%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[red]%}@%{$fg[white]%}%m%{$fg[blue]%}] %(?:%{$fg_bold[green]%} :%{$fg_bold[red]%} )%{$fg[cyan]%}%c%{$reset_color%} "
 PROMPT+="\$vcs_info_msg_0_"
-RPROMPT='$(check_last_exit_code)'
+RPROMPT='$(check_last_exit_code) %F{blue}% | %F{cyan}% %F{cyan}%t'
 
 # Aliases
 alias snvim='sudo -E nvim'
