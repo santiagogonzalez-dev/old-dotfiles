@@ -75,9 +75,19 @@ echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 # Prompt
+function check_last_exit_code() {
+	local LAST_EXIT_CODE=$?
+	if [[ $LAST_EXIT_CODE -ne 0 ]]; then
+		local EXIT_CODE_PROMPT=' '
+		EXIT_CODE_PROMPT+="%{$fg[red]%}-%{$reset_color%}"
+		EXIT_CODE_PROMPT+="%{$fg_bold[red]%}$LAST_EXIT_CODE%{$reset_color%}"
+		EXIT_CODE_PROMPT+="%{$fg[red]%}-%{$reset_color%}"
+		echo "$EXIT_CODE_PROMPT"
+	fi
+}
 PROMPT="%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[red]%}@%{$fg[white]%}%m%{$fg[blue]%}] %(?:%{$fg_bold[green]%} :%{$fg_bold[red]%} )%{$fg[cyan]%}%c%{$reset_color%} "
 PROMPT+="\$vcs_info_msg_0_"
-RPROMPT="Everglow"
+RPROMPT='$(check_last_exit_code)'
 
 # Aliases
 alias snvim='sudo -E nvim'
