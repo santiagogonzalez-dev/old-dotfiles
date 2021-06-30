@@ -97,7 +97,7 @@ alias du='du -h'
 alias e='exa -lah --icons --no-user'
 alias et='exa -lah --icons --no-user -T -L3'
 alias bat='bat --italic-text=always'
-alias plasmarestart='kquitapp5 plasmashell && sleep 3 && kstart5 plasmashell
+alias plasma-restart='kquitapp5 plasmashell && sleep 3 && kstart5 plasmashell'
 
 # Functions
 function update() { 
