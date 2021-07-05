@@ -85,9 +85,10 @@ function check_last_exit_code() {
 		echo "$EXIT_CODE_PROMPT"
 	fi
 }
-PROMPT="%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[red]%}@%{$fg[white]%}%m%{$fg[blue]%}] %(?:%{$fg_bold[green]%} :%{$fg_bold[red]%} )%{$fg[cyan]%}%c%{$reset_color%} "
+
+PROMPT="%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[red]%}@%{$fg[white]%}%m%{$fg[blue]%} %(?:%{$fg_bold[green]%} :%{$fg_bold[red]%} )%{$fg[cyan]%}%c%{$reset_color%} "
 PROMPT+="\$vcs_info_msg_0_"
-RPROMPT='$(check_last_exit_code) %F{blue}% | %F{cyan}% %F{cyan}%t'
+RPROMPT='$(check_last_exit_code)%{$fg[blue]%}]%'
 
 # Aliases
 alias snvim='sudo -E nvim'
