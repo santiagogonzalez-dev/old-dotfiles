@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# bc is a script that if enabled it will limit the charge of your battery to 60%.
+set -e
+
+if [ "$1" = 'enable' ]; then
+	pkexec bash -c 'echo 1 > /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode'
+	notify-send --app-name='Battery Conservation Mode' 'Enabled'
+fi
+
+if [ "$1" = 'disable' ]; then
+	pkexec bash -c 'echo 0 > /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode'
+	notify-send --app-name='Battery Conservation Mode' 'Disabled'
+fi

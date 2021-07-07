@@ -3,15 +3,17 @@ update_info=kwin.upd:replace-scalein-with-scale,kwin.upd:port-minimizeanimation-
 
 [Compositing]
 GLCore=true
+LatencyPolicy=High
 OpenGLIsUnsafe=false
+XRenderSmoothScale=true
 
 [Desktops]
-Id_1=f140316d-aaae-4d35-9dfc-b7ff79228fb7
-Id_2=860153c3-11ea-41e2-bc0d-3c4dc08ca74d
-Id_3=1e56e7d7-5eae-4b1a-bd25-2360cdeb960e
-Id_4=c8185c9e-355b-4813-b5df-761007c7c56f
-Id_5=f4fb0c23-160d-4044-8d48-0fdd4da8247d
-Id_6=80d7db97-1518-4528-8f59-003a7b89e624
+Id_1=b87db296-8457-4a84-bb03-f0d7e00ba324
+Id_2=ce5b4c8a-7c55-47d3-a1c0-080f54855832
+Id_3=ca81e28c-1664-43a8-a1a0-d8835f73d359
+Id_4=58156684-5178-42bd-864e-9d425f14bf5b
+Id_5=5ee1c389-761a-4168-ac75-0b01ab23dcc7
+Id_6=945e1028-8bbd-464e-be00-a44acf4211ae
 Name_1=
 Name_2=
 Name_3=
@@ -36,15 +38,11 @@ Mode=1920x1080_60000
 Scale=1
 Transform=normal
 
-[Effect-Blur]
-BlurStrength=5
-NoiseStrength=6
-
-[Effect-DimInactive]
-DimDesktop=true
-
 [Effect-PresentWindows]
 BorderActivateAll=9
+
+[KDE]
+AnimationDurationFactor=0.5
 
 [ModifierOnlyShortcuts]
 Meta=org.kde.krunner,/App,,display
@@ -58,38 +56,27 @@ CommandTitlebarWheel=Maximize/Restore
 
 [NightColor]
 Active=true
-EveningBeginFixed=2300
+EveningBeginFixed=2200
 Mode=Times
 MorningBeginFixed=0800
-NightTemperature=4200
+NightTemperature=3900
 
 [Plugins]
-desktopchangeosdEnabled=true
 grid-tilingEnabled=true
-kwin4_effect_fullscreenEnabled=false
-kwin4_effect_loginEnabled=false
-kwin4_effect_logoutEnabled=false
-kwin4_effect_maximizeEnabled=false
-kwin4_effect_squashEnabled=false
 minimizeallEnabled=false
-slideEnabled=false
 synchronizeskipswitcherEnabled=false
 videowallEnabled=false
 
 [Script-desktopchangeosd]
-PopupHideDelay=300
+PopupHideDelay=200
 
 [Script-grid-tiling]
-border=true
-borderActive=true
-delay=1
 gapValue=8
 
 [TabBox]
 BorderActivate=9
 
 [Windows]
-BorderlessMaximizedWindows=true
 ElectricBorderCooldown=1000
 ElectricBorderCornerRatio=0.08
 ElectricBorderDelay=500
@@ -97,9 +84,5 @@ ElectricBorders=1
 Placement=Centered
 
 [org.kde.kdecoration2]
-BorderSize=None
-BorderSizeAuto=false
-ButtonsOnLeft=
-ButtonsOnRight=FIX
-library=org.kde.breeze
-theme=Breeze
+ButtonsOnLeft=LS
+ButtonsOnRight=IFX
