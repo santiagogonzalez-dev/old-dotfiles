@@ -3,23 +3,21 @@ update_info=kwin.upd:replace-scalein-with-scale,kwin.upd:port-minimizeanimation-
 
 [Compositing]
 GLCore=true
-LatencyPolicy=High
 OpenGLIsUnsafe=false
-XRenderSmoothScale=true
 
 [Desktops]
-Id_1=b87db296-8457-4a84-bb03-f0d7e00ba324
-Id_2=ce5b4c8a-7c55-47d3-a1c0-080f54855832
-Id_3=ca81e28c-1664-43a8-a1a0-d8835f73d359
-Id_4=58156684-5178-42bd-864e-9d425f14bf5b
-Id_5=5ee1c389-761a-4168-ac75-0b01ab23dcc7
-Id_6=945e1028-8bbd-464e-be00-a44acf4211ae
-Name_1=
-Name_2=
-Name_3=
-Name_4=
-Name_5=
-Name_6=
+Id_1=037a2757-acfe-4ac8-9289-c0d2335e6f52
+Id_2=f4606fbc-f014-4fb7-a2c8-41c9c8830ecf
+Id_3=6b998b93-7797-41f6-9a39-dfb8a541d730
+Id_4=98c8c786-50a3-48da-b6cf-a8334e1521f8
+Id_5=7ad7ae4d-2270-4916-adc5-024481bb4d5e
+Id_6=65cd33f9-9396-40e2-952b-ac03e7caa672
+Name_1=
+Name_2=
+Name_3=
+Name_4=
+Name_5=
+Name_6=
 Number=6
 Rows=2
 
@@ -38,11 +36,11 @@ Mode=1920x1080_60000
 Scale=1
 Transform=normal
 
+[Effect-DimInactive]
+DimDesktop=true
+
 [Effect-PresentWindows]
 BorderActivateAll=9
-
-[KDE]
-AnimationDurationFactor=0.5
 
 [ModifierOnlyShortcuts]
 Meta=org.kde.krunner,/App,,display
@@ -59,19 +57,18 @@ Active=true
 EveningBeginFixed=2200
 Mode=Times
 MorningBeginFixed=0800
-NightTemperature=3900
+NightTemperature=3800
 
 [Plugins]
-grid-tilingEnabled=true
-minimizeallEnabled=false
-synchronizeskipswitcherEnabled=false
-videowallEnabled=false
+desktopchangeosdEnabled=true
+diminactiveEnabled=true
+kwin4_effect_fadeEnabled=false
+kwin4_effect_loginEnabled=false
+kwin4_effect_logoutEnabled=false
+slideEnabled=false
 
 [Script-desktopchangeosd]
-PopupHideDelay=200
-
-[Script-grid-tiling]
-gapValue=8
+PopupHideDelay=250
 
 [TabBox]
 BorderActivate=9
@@ -79,10 +76,9 @@ BorderActivate=9
 [Windows]
 ElectricBorderCooldown=1000
 ElectricBorderCornerRatio=0.08
-ElectricBorderDelay=500
+ElectricBorderDelay=400
 ElectricBorders=1
-Placement=Centered
 
 [org.kde.kdecoration2]
-ButtonsOnLeft=LS
+ButtonsOnLeft=S
 ButtonsOnRight=IFX
