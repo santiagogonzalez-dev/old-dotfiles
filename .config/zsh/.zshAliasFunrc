@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# Use nvim instead of vim
+[ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
+
+
+# What should be the normal behaviour
+alias \
+	snvim='sudo -E nvim' \
+	zzz='systemctl suspend' \
+	cd..='cd ..' \
+	cp='cp -iv' \
+	mv='mv -iv' \
+	rm='rm -v' \
+	rd='rmdir' \
+	l='ls -lAhX --group-directories-first --color=auto' \
+	ls='ls -F --color=auto' \
+	ip='ip --color=auto' \
+	e='exa -lah --icons --no-user' \
+	et='exa -lah --icons --no-user -T -L3' \
+	bat='bat --italic-text=always' \
+	plasma-restart='kquitapp5 plasmashell && sleep 3 && kstart5 plasmashell'
+
+#checkaur= 'for x in `pacman -Qm`; do paru -Ss "$x" | grep 'aur/'; done' \
+
+
+# Color or human readable
+alias \
+	grep='grep --color' \
+	df='df -h' \
+	du='du -h'
+	
+
+# So that I don't forgot to ask for sudo privileges
+for command in mount umount ; do
+	alias $command="sudo $command"
+done; unset command

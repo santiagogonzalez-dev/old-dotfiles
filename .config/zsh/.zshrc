@@ -89,26 +89,26 @@ function check_last_exit_code() {
 PROMPT="%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[red]%}@%{$fg[white]%}%m%{$fg[blue]%} %(?:%{$fg_bold[green]%} :%{$fg_bold[red]%} )%{$fg[cyan]%}%c%{$reset_color%} "
 PROMPT+="\$vcs_info_msg_0_"
 RPROMPT='$(check_last_exit_code)%{$fg[blue]%}]%'
-
-# Aliases
-alias snvim='sudo -E nvim'
-alias zzz='systemctl suspend'
-alias cd..='cd ..'
-alias cp='cp -iv'
-alias mv='mv -iv'
-alias rm='rm -v'
-alias rd='rmdir'
-alias l='ls -lAhX --group-directories-first --color=auto'
-alias ls='ls -F --color=auto'
-alias ip='ip --color=auto'
-# alias checkaur= 'for x in `pacman -Qm`; do paru -Ss "$x" | grep 'aur/'; done'
-alias grep='grep --color'
-alias df='df -h'
-alias du='du -h'
-alias e='exa -lah --icons --no-user'
-alias et='exa -lah --icons --no-user -T -L3'
-alias bat='bat --italic-text=always'
-alias plasma-restart='kquitapp5 plasmashell && sleep 3 && kstart5 plasmashell'
+# 
+# # Aliases
+# alias snvim='sudo -E nvim'
+# alias zzz='systemctl suspend'
+# alias cd..='cd ..'
+# alias cp='cp -iv'
+# alias mv='mv -iv'
+# alias rm='rm -v'
+# alias rd='rmdir'
+# alias l='ls -lAhX --group-directories-first --color=auto'
+# alias ls='ls -F --color=auto'
+# alias ip='ip --color=auto'
+# # alias checkaur= 'for x in `pacman -Qm`; do paru -Ss "$x" | grep 'aur/'; done'
+# alias grep='grep --color'
+# alias df='df -h'
+# alias du='du -h'
+# alias e='exa -lah --icons --no-user'
+# alias et='exa -lah --icons --no-user -T -L3'
+# alias bat='bat --italic-text=always'
+# alias plasma-restart='kquitapp5 plasmashell && sleep 3 && kstart5 plasmashell'
 
 # Functions
 function update() { 
@@ -156,6 +156,8 @@ ex ()
     echo "'$1' is not a valid file"
   fi
 }
+# Load aliases and functions
+source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.zshAliasFunrc"
 
 # Plugins
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
