@@ -6,12 +6,6 @@ GLCore=true
 OpenGLIsUnsafe=false
 
 [Desktops]
-Id_1=037a2757-acfe-4ac8-9289-c0d2335e6f52
-Id_2=f4606fbc-f014-4fb7-a2c8-41c9c8830ecf
-Id_3=6b998b93-7797-41f6-9a39-dfb8a541d730
-Id_4=98c8c786-50a3-48da-b6cf-a8334e1521f8
-Id_5=7ad7ae4d-2270-4916-adc5-024481bb4d5e
-Id_6=65cd33f9-9396-40e2-952b-ac03e7caa672
 Name_1=
 Name_2=
 Name_3=
@@ -20,21 +14,6 @@ Name_5=
 Name_6=
 Number=6
 Rows=2
-
-[DrmOutputs][3c373409-48e0-57e9-a1a9-eb32e49f8772][3c373409-48e0-57e9-a1a9-eb32e49f8772]
-Mode=1920x1080_59997
-Scale=1
-Transform=normal
-
-[DrmOutputs][c26661848f][3c373409-48e0-57e9-a1a9-eb32e49f8772]
-Mode=1920x1080_59997
-Scale=1
-Transform=normal
-
-[DrmOutputs][c26661848f][8775597e-7406-5914-b126-4144423ed661]
-Mode=1920x1080_60000
-Scale=1
-Transform=normal
 
 [Effect-Blur]
 BlurStrength=9
