@@ -1,0 +1,9 @@
+[$Version]
+update_info=spectacle_newConfig.upd:spectacle-new-config
+
+[General]
+autoSaveImage=true
+
+[GuiConfig]
+quitAfterSaveCopyExport=true
+window-position=50,50

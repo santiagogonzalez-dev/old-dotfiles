@@ -36,6 +36,10 @@ Mode=1920x1080_60000
 Scale=1
 Transform=normal
 
+[Effect-Blur]
+BlurStrength=9
+NoiseStrength=8
+
 [Effect-DimInactive]
 DimDesktop=true
 
@@ -62,13 +66,21 @@ NightTemperature=3800
 [Plugins]
 desktopchangeosdEnabled=true
 diminactiveEnabled=true
+grid-tilingEnabled=true
 kwin4_effect_fadeEnabled=false
 kwin4_effect_loginEnabled=false
 kwin4_effect_logoutEnabled=false
+minimizeallEnabled=false
 slideEnabled=false
+synchronizeskipswitcherEnabled=false
+videowallEnabled=false
 
 [Script-desktopchangeosd]
 PopupHideDelay=250
+
+[Script-grid-tiling]
+gapValue=6
+ignoredName=kwin_wayland|ksmserver|krunner|latte-dock|[Pp]lasma|plugin-container|wine|yakuake|kdialog
 
 [TabBox]
 BorderActivate=9
@@ -80,5 +92,4 @@ ElectricBorderDelay=400
 ElectricBorders=1
 
 [org.kde.kdecoration2]
-ButtonsOnLeft=S
 ButtonsOnRight=IFX
