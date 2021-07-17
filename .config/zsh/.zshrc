@@ -41,13 +41,13 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower
 
 autoload -Uz vcs_info ## autoload vcs and colors
 
-zstyle ':vcs_info:*' enable git # enable only git 
+zstyle ':vcs_info:*' enable git # enable only git
 
-precmd_vcs_info() { vcs_info } # setup a hook that runs before every ptompt. 
+precmd_vcs_info() { vcs_info } # setup a hook that runs before every ptompt.
 precmd_functions+=( precmd_vcs_info )
 
 zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
-# 
+#
 +vi-git-untracked(){
     if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
         git status --porcelain | grep '??' &> /dev/null ; then
@@ -89,73 +89,7 @@ function check_last_exit_code() {
 PROMPT="%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[red]%}@%{$fg[white]%}%m%{$fg[blue]%} %(?:%{$fg_bold[green]%} :%{$fg_bold[red]%} )%{$fg[cyan]%}%c%{$reset_color%} "
 PROMPT+="\$vcs_info_msg_0_"
 RPROMPT='$(check_last_exit_code)%{$fg[blue]%}]%'
-# 
-# # Aliases
-# alias snvim='sudo -E nvim'
-# alias zzz='systemctl suspend'
-# alias cd..='cd ..'
-# alias cp='cp -iv'
-# alias mv='mv -iv'
-# alias rm='rm -v'
-# alias rd='rmdir'
-# alias l='ls -lAhX --group-directories-first --color=auto'
-# alias ls='ls -F --color=auto'
-# alias ip='ip --color=auto'
-# # alias checkaur= 'for x in `pacman -Qm`; do paru -Ss "$x" | grep 'aur/'; done'
-# alias grep='grep --color'
-# alias df='df -h'
-# alias du='du -h'
-# alias e='exa -lah --icons --no-user'
-# alias et='exa -lah --icons --no-user -T -L3'
-# alias bat='bat --italic-text=always'
-# alias plasma-restart='kquitapp5 plasmashell && sleep 3 && kstart5 plasmashell'
 
-# Functions
-function update() { 
-	sudo pacman -Syu
-	echo $?
-	if [[ $? = 0 ]] then
-		paru -Sua
-	fi
-}
-
-cdl() { cd "$@" && ls -lAhX --group-directories-first --color=auto; }
-
-# function cdet() {
-#   cd "$@" && exa -lah --icons --no-user -T -L3;
-# }
-# 
-# function cde() {
-#   cd "$@" && exa -lah --icons --no-user;
-# }
-
-# function neo() {
-#   command neovide "$@" & disown && sleep 1 ; exit
-# }
-
-# ex - archive extractor   #   usage: ex <file>
-ex ()
-{
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)   tar xjf $1   ;;
-      *.tar.gz)    tar xzf $1   ;;
-      *.tar.xz)    tar xJf $1   ;;
-      *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1     ;;
-      *.gz)        gunzip $1    ;;
-      *.tar)       tar xf $1    ;;
-      *.tbz2)      tar xjf $1   ;;
-      *.tgz)       tar xzf $1   ;;
-      *.zip)       unzip $1     ;;
-      *.Z)         uncompress $1;;
-      *.7z)        7z x $1      ;;
-      *)           echo "'$1' cannot be extracted via ex()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
-}
 # Load aliases and functions
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.zshAliasFunrc"
 

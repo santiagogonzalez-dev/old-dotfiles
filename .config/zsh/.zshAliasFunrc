@@ -16,22 +16,68 @@ alias \
 	l='ls -lAhX --group-directories-first --color=auto' \
 	ls='ls -F --color=auto' \
 	ip='ip --color=auto' \
-	e='exa -lah --icons --no-user' \
-	et='exa -lah --icons --no-user -T -L3' \
+	e='exa -lah --icons --colour-scale --group-directories-first --git' \
+	et='exa -lah --icons --colour-scale --group-directories-first --git -T -L4' \
 	bat='bat --italic-text=always' \
 	plasma-restart='kquitapp5 plasmashell && sleep 3 && kstart5 plasmashell'
 
 #checkaur= 'for x in `pacman -Qm`; do paru -Ss "$x" | grep 'aur/'; done' \
-
 
 # Color or human readable
 alias \
 	grep='grep --color' \
 	df='df -h' \
 	du='du -h'
-	
+
 
 # So that I don't forgot to ask for sudo privileges
 for command in mount umount ; do
 	alias $command="sudo $command"
 done; unset command
+
+# Functions
+function update() {
+	sudo pacman -Syu
+	echo $?
+	if [[ $? = 0 ]] then
+		paru -Sua
+	fi
+}
+
+cdl() { cd "$@" && ls -lAhX --group-directories-first --color=auto; }
+
+# function cdet() {
+#   cd "$@" && exa -lah --icons --no-user -T -L3;
+# }
+#
+# function cde() {
+#   cd "$@" && exa -lah --icons --no-user;
+# }
+
+# function neo() {
+#   command neovide "$@" & disown && sleep 1 ; exit
+# }
+
+# ex - archive extractor   #   usage: ex <file>
+ex ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.tar.xz)    tar xJf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1     ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}

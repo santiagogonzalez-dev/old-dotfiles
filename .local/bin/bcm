@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# bc is a script that if enabled it will limit the charge of your battery to 60% on laptops
+# bcm is a script that if enabled it will limit the charge of your battery to 60% on laptops
 # with the kernel module loaded, like in my laptop, a ThinkBook 15-iml.
 
 case "${1}" in
