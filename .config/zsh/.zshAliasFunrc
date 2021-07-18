@@ -3,7 +3,6 @@
 # Use nvim instead of vim
 [ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
 
-
 # What should be the normal behaviour
 alias \
 	snvim='sudo -E nvim' \
@@ -15,7 +14,6 @@ alias \
 	rd='rmdir' \
 	l='ls -lAhX --group-directories-first --color=auto' \
 	ls='ls -F --color=auto' \
-	ip='ip --color=auto' \
 	e='exa -lah --icons --colour-scale --group-directories-first --git' \
 	et='exa -lah --icons --colour-scale --group-directories-first --git -T -L4' \
 	bat='bat --italic-text=always' \
@@ -25,40 +23,20 @@ alias \
 
 # Color or human readable
 alias \
+	ip='ip --color=auto' \
 	grep='grep --color' \
 	df='df -h' \
 	du='du -h'
-
 
 # So that I don't forgot to ask for sudo privileges
 for command in mount umount ; do
 	alias $command="sudo $command"
 done; unset command
 
-# Functions
-function update() {
-	sudo pacman -Syu
-	echo $?
-	if [[ $? = 0 ]] then
-		paru -Sua
-	fi
-}
-
-cdl() { cd "$@" && ls -lAhX --group-directories-first --color=auto; }
-
-# function cdet() {
-#   cd "$@" && exa -lah --icons --no-user -T -L3;
-# }
-#
-# function cde() {
-#   cd "$@" && exa -lah --icons --no-user;
-# }
-
 # function neo() {
 #   command neovide "$@" & disown && sleep 1 ; exit
 # }
 
-# ex - archive extractor   #   usage: ex <file>
 ex ()
 {
   if [ -f $1 ] ; then
