@@ -7,7 +7,7 @@ Encoding=UTF-8
 # The path to the folder in which the executable is run
 Path=~/.local/bin/
 # The executable of the application, possibly with arguments.
-Exec=bc
+Exec=bcm
 # The name of the application
 Name=Battery Conservation Mode
 # A comment which can/will be used as a tooltip
