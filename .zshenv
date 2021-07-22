@@ -1,5 +1,6 @@
-# Use KDE apps instead of GTK
+# KDE
 export GTK_USE_PORTAL=1
+export KDEHOME="$XDG_CONFIG_HOME"/kde
 
 # Manpagers
 export MANPAGER="sh -c 'col -b | bat -l man -p'"
@@ -10,7 +11,10 @@ export VISUAL="nvim"
 export BROWSER="brave"
 export TERMINAL="konsole"
 export TERM="xterm-256color"
-export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
+export LESSHISTFILE="-"
+export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
+export CARGO_HOME=${XDG_DATA_HOME:-$HOME/.local/share}/cargo
+export GTK2_RC_FILES=${XDG_CONFIG_HOME}/gtk-2.0/gtkrc
 
 # XDG Paths
 export XDG_CONFIG_HOME=$HOME/.config
