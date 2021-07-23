@@ -14,7 +14,6 @@ export TERM="xterm-256color"
 export LESSHISTFILE="-"
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 export CARGO_HOME=${XDG_DATA_HOME:-$HOME/.local/share}/cargo
-export GTK2_RC_FILES=${XDG_CONFIG_HOME}/gtk-2.0/gtkrc
 
 # XDG Paths
 export XDG_CONFIG_HOME=$HOME/.config
@@ -36,3 +35,9 @@ export KEYTIMEOUT=1
 
 # Personal Scripts
 export PATH=$PATH:/home/$USER/.local/bin
+
+# Java
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+
+# Rust
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
