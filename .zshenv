@@ -12,7 +12,6 @@ export BROWSER="brave"
 export TERMINAL="konsole"
 export TERM="xterm-256color"
 export LESSHISTFILE="-"
-export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 export CARGO_HOME=${XDG_DATA_HOME:-$HOME/.local/share}/cargo
 
 # XDG Paths
