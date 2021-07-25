@@ -3,7 +3,7 @@ Type=Application
 Encoding=UTF-8
 Name=Apache NetBeans
 Comment=Apache NetBeans, The Smarter Way to Code
-Exec=netbeans %F --userdir "${XDG_CONFIG_HOME}"/netbeans -J-Dsun.java2d.opengl=true -J-Dawt.useSystemAAFontSettings=on -J-Dswing.aatext=true -J-swing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -J-swing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel
+Exec=netbeans %F -J-Dsun.java2d.opengl=true -J-Dawt.useSystemAAFontSettings=on -J-Dswing.aatext=true
 Categories=Development;IDE
 Icon=netbeans
 Terminal=false
