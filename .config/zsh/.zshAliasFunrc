@@ -1,5 +1,8 @@
 #!/bin/sh
 
+fpath_completion=/usr/share/zsh/site-functions/_*
+fpath+="$(dirname "${fpath_completion}")"
+
 # Use nvim instead of vim
 [ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
 
@@ -17,9 +20,7 @@ alias \
 	e='exa -lah --icons --colour-scale --group-directories-first --git' \
 	et='exa -lah --icons --colour-scale --group-directories-first --git -T -L4' \
 	bat='bat --italic-text=always' \
-	plasma-restart='kquitapp5 plasmashell && sleep 3 && kstart5 plasmashell'
-
-#checkaur= 'for x in `pacman -Qm`; do paru -Ss "$x" | grep 'aur/'; done' \
+	plasma-restart='kquitapp5 plasmashell && sleep 1 && kstart5 plasmashell && sleep 1 && kwin_wayland --replace &' \
 
 # Color or human readable
 alias \

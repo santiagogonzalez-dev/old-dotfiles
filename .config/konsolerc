@@ -1,0 +1,13 @@
+[Desktop Entry]
+DefaultProfile=Santigo.profile
+
+[KonsoleWindow]
+AllowMenuAccelerators=true
+FocusFollowsMouse=true
+
+[MainWindow]
+StatusBar=Disabled
+
+[SearchSettings]
+SearchCaseSensitive=true
+SearchRegExpression=true

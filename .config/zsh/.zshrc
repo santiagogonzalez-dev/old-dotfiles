@@ -1,8 +1,8 @@
 autoload -Uz colors && colors
 zstyle :compinstall filename '/home/st/.config/zsh/.zshrc'
 HISTFILE=~/.config/zsh/.zshHistory
-HISTSIZE=60000
-SAVEHIST=60000
+HISTSIZE=80000
+SAVEHIST=80000
 
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*:matches' group 'yes'
@@ -40,13 +40,14 @@ unsetopt bg_nice # Don't run all background jobs at a lower priority.
 unsetopt hup # Don't kill jobs on shell exit.
 setopt interactive_comments # Enable comments in interactive shell
 setopt autocd # Automatically cd into typed directory.
-stty stop undef # Disable ctrl-s to freeze terminal.
+#autoload predict-on
+#predict-on
 
 autoload -Uz compinit # Basic auto/tab complete:
 for dump in ~/.zcompdump(N.mh+12); do # Twice a day it's updated
     compinit
 done
-compinit -C
+compinit
 
 zstyle ':completion:*' menu select
 zmodload zsh/complist
@@ -106,11 +107,6 @@ zle-line-init() {
     echo -ne "\e[5 q"
 }
 
-# function zle-line-finish {
-#     vim_mode=$vim_ins_mode
-# }
-#
-# zle -N zle-line-finish
 zle -N zle-line-init # Initial state of the shell when you open it. It's in insert mode, with the Beam cursor
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
@@ -133,7 +129,7 @@ function check_last_exit_code() {
 
 # Random icon generator for the prompt
 declare -a CHANGING # Changing prompt
-CHANGING=(" " "∯ " " " " " " ")
+CHANGING=(" " "∯ " " " " " " " " " " ")
 declare -a FIRE # Changing prompt on error
 FIRE=(" " " " " " " " " ")
 
@@ -149,7 +145,6 @@ RPROMPT='$(check_last_exit_code) ${vim_mode}'
 
 # Load aliases and functions
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.zshAliasFunrc"
-
 
 # Plugins
 source /usr/share/z/z.sh 2>/dev/null

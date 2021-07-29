@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+case "${1}" in
+  performance)
+        gdbus call --system --dest net.hadess.PowerProfiles --object-path /net/hadess/PowerProfiles --method org.freedesktop.DBus.Properties.Set 'net.hadess.PowerProfiles' 'ActiveProfile' "<'performance'>"
+    ;;
+  saver)
+        gdbus call --system --dest net.hadess.PowerProfiles --object-path /net/hadess/PowerProfiles --method org.freedesktop.DBus.Properties.Set 'net.hadess.PowerProfiles' 'ActiveProfile' "<'power-saver'>"
+    ;;
+  balanced)
+        gdbus call --system --dest net.hadess.PowerProfiles --object-path /net/hadess/PowerProfiles --method org.freedesktop.DBus.Properties.Set 'net.hadess.PowerProfiles' 'ActiveProfile' "<'balanced'>"
+    ;;
+  *)
+        gdbus introspect --system --dest net.hadess.PowerProfiles --object-path /net/hadess/PowerProfiles | awk 'sub(/readwrite s */,X)'
+    ;;
+esac
