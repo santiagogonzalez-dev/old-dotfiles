@@ -1,15 +1,19 @@
 [Appearance]
 BoldIntense=false
-ColorScheme=ArcDark
+ColorScheme=JetJB
 Font=JetBrainsMono Nerd Font,14,-1,5,50,0,0,0,0,0
 LineSpacing=0
 UseFontLineChararacters=true
+
+[Cursor Options]
+CustomCursorColor=85,170,255
+UseCustomCursorColor=true
 
 [General]
 Command=/bin/zsh
 Name=Santigo
 Parent=FALLBACK/
-TerminalCenter=false
+TerminalCenter=true
 TerminalMargin=0
 
 [Interaction Options]
