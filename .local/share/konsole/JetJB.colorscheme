@@ -1,11 +1,11 @@
 [Background]
-Color=36,45,53
+Color=26,33,43
 
 [BackgroundFaint]
 Color=34,39,46
 
 [BackgroundIntense]
-Color=36,45,53
+Color=26,33,43
 
 [Color0]
 Color=34,39,46
@@ -68,7 +68,7 @@ Color=86,212,221
 Color=86,212,221
 
 [Color6Intense]
-Color=75,127,176
+Color=98,174,239
 
 [Color7]
 Color=99,110,123
@@ -89,7 +89,7 @@ Color=118,131,144
 Color=118,131,144
 
 [General]
-Blur=false
+Blur=true
 ColorRandomization=false
 Description=JetJB
 Opacity=1
