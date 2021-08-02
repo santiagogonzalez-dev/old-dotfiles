@@ -34,6 +34,15 @@ for command in mount umount ; do
 	alias $command="sudo $command"
 done; unset command
 
+function last-command {
+    zle up-history
+    zle accept-line
+}
+zle -N last-command
+
+bindkey -M viins '^R' last-command
+bindkey -M vicmd '^R' last-command
+
 # function neo() {
 #   command neovide "$@" & disown && sleep 1 ; exit
 # }
