@@ -43,6 +43,10 @@ zle -N last-command
 bindkey -M viins '^R' last-command
 bindkey -M vicmd '^R' last-command
 
+function gacp() {
+    command git add . && git commit -m "$@" && git push origin master
+}
+
 # function neo() {
 #   command neovide "$@" & disown && sleep 1 ; exit
 # }
