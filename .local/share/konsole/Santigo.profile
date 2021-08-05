@@ -1,7 +1,7 @@
 [Appearance]
-BoldIntense=false
+BoldIntense=true
 ColorScheme=JetJB
-Font=JetBrainsMono Nerd Font,14,-1,5,50,0,0,0,0,0
+Font=mononoki Nerd Font Mono,15,-1,5,50,0,0,0,0,0
 LineSpacing=0
 UseFontLineChararacters=true
 
@@ -13,6 +13,7 @@ UseCustomCursorColor=true
 Command=/bin/zsh
 Name=Santigo
 Parent=FALLBACK/
+ShowTerminalSizeHint=true
 TerminalCenter=true
 TerminalMargin=0
 
@@ -29,3 +30,4 @@ ScrollBarPosition=2
 
 [Terminal Features]
 BlinkingCursorEnabled=true
+VerticalLine=false
