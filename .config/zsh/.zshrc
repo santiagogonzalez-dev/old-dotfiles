@@ -1,8 +1,8 @@
 autoload -Uz colors && colors
 zstyle :compinstall filename '/home/st/.config/zsh/.zshrc'
 HISTFILE=~/.config/zsh/.zshHistory
-HISTSIZE=80000
-SAVEHIST=80000
+HISTSIZE=600000
+SAVEHIST=600000
 
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*:matches' group 'yes'
@@ -129,7 +129,7 @@ function check_last_exit_code() {
 
 # Random icon generator for the prompt
 declare -a CHANGING # Changing prompt
-CHANGING=(" " "∯ " " " " " " " " " " ")
+CHANGING=(" " " " " " " " " " " ")
 declare -a FIRE # Changing prompt on error
 FIRE=(" " " " " " " " " ")
 
@@ -137,9 +137,8 @@ RANDOM=$$$(date +%s) # Randomize based on date
 ignition=${CHANGING[$RANDOM % ${#RANDOM[*]}+1]} # Defined the normal variable
 fire=${FIRE[$RANDOM % ${#RANDOM[*]}+1]} # Defined the normal variable on error
 
-PROMPT="%{$fg[white]%}%n%{$fg[red]%}@%{$fg[white]%}%m%{$fg[blue]%} %(?:%{$fg_bold[blue]%}$ignition :%{$fg_bold[red]%}$fire )%{$fg[cyan]%}%c%{$reset_color%} "
+PROMPT="%{$fg[white]%}%n%{$fg[red]%}@%{$fg[white]%}%m%{$fg[blue]%} %(?:%{$fg_bold[blue]%}$ignition:%{$fg_bold[red]%}$fire)%{$reset_color%}"
 PROMPT+="\$vcs_info_msg_0_" # Git hook
-# PROMPT="%{$fg[white]%}%n%{$fg[red]%}@%{$fg[white]%}%m%{$fg[blue]%} %(?:%{$fg_bold[green]%} :%{$fg_bold[red]%} )%{$fg[cyan]%}%c%{$reset_color%} "
 
 RPROMPT='$(check_last_exit_code) ${vim_mode}'
 
