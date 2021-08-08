@@ -23,7 +23,7 @@ zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec))' # Ignore 
 
 setopt prompt_subst # Let the prompt substite variables, without this the prompt will not work
 setopt inc_append_history # Ensure that commands are added to the history immediately
-setopt extended_history # Record the timestamp of each command in HISTFILE
+#setopt extended_history # Record the timestamp of each command in HISTFILE
 setopt brace_ccl # Allow brace character class list expansion
 setopt complete_in_word # Complete from both ends of a word.
 setopt always_to_end # Move cursor to the end of a completed word.
@@ -137,7 +137,8 @@ RANDOM=$$$(date +%s) # Randomize based on date
 ignition=${CHANGING[$RANDOM % ${#RANDOM[*]}+1]} # Defined the normal variable
 fire=${FIRE[$RANDOM % ${#RANDOM[*]}+1]} # Defined the normal variable on error
 
-PROMPT="%{$fg[white]%}%n%{$fg[red]%}@%{$fg[white]%}%m%{$fg[blue]%} %(?:%{$fg_bold[blue]%}$ignition:%{$fg_bold[red]%}$fire)%{$reset_color%}"
+PROMPT="%{$fg[white]%}%n%{$fg[red]%}@%{$fg[white]%}%m%{$fg[blue]%} %(?:%~ %{$fg_bold[blue]%}$ignition:%{$fg_bold[red]%}$fire)%{$reset_color%}"
+#PROMPT="%{$fg[white]%}%n%{$fg[red]%}@%{$fg[white]%}%m%{$fg[blue]%} %(?:%{$fg_bold[blue]%}$ignition:%{$fg_bold[red]%}$fire)%{$reset_color%}"
 PROMPT+="\$vcs_info_msg_0_" # Git hook
 
 RPROMPT='$(check_last_exit_code) ${vim_mode}'
@@ -149,6 +150,6 @@ source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.zshAliasFunrc"
 source /usr/share/z/z.sh 2>/dev/null
 export _Z_DATA="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.z"
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
-source /usr/share/zsh/plugins/zsh-autopair/autopair.zsh 2>/dev/null
+## source /usr/share/zsh/plugins/zsh-autopair/autopair.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh 2>/dev/null
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh

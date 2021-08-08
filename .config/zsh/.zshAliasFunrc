@@ -35,6 +35,7 @@ for command in mount umount ; do
 done; unset command
 
 function last-command {
+    clear
     zle up-history
     zle accept-line
 }

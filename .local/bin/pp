@@ -11,8 +11,10 @@ case "${1}" in
     ;;
   balanced)
         gdbus call --system --dest net.hadess.PowerProfiles --object-path /net/hadess/PowerProfiles --method org.freedesktop.DBus.Properties.Set 'net.hadess.PowerProfiles' 'ActiveProfile' "<'balanced'>"
+        echo powersave | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
     ;;
   *)
         gdbus introspect --system --dest net.hadess.PowerProfiles --object-path /net/hadess/PowerProfiles | awk 'sub(/readwrite s */,X)'
+        cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
     ;;
 esac
