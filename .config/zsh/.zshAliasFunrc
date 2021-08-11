@@ -20,7 +20,9 @@ alias \
 	e='exa -lah --icons --colour-scale --group-directories-first --git' \
 	et='exa -lah --icons --colour-scale --group-directories-first --git -T -L4' \
 	bat='bat --italic-text=always' \
-	plasma-restart='kquitapp5 plasmashell && sleep 1 && kstart5 plasmashell && sleep 1 && kwin_wayland --replace &'
+	plasma-restart='kquitapp5 plasmashell && sleep 1 && kstart5 plasmashell && sleep 1 && kwin_wayland --replace &' \
+    editkitty='nvim .config/kitty/kitty.conf'
+
 
 # Color or human readable
 alias \

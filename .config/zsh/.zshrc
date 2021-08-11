@@ -1,10 +1,11 @@
+#zmodload zsh/zprof # Uncomment to enable stats for Zsh with zprof command
 autoload -Uz colors && colors
-zstyle :compinstall filename '/home/st/.config/zsh/.zshrc'
 HISTFILE=~/.config/zsh/.zshHistory
 HISTSIZE=600000
 SAVEHIST=600000
 
-zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':compinstall:filename' '/home/st/.config/zsh/.zshrc'
+zstyle ':completion:*:*:*:*:*' menu select=3 # If there's less than 6 items it will use normal tabs
 zstyle ':completion:*:matches' group 'yes'
 zstyle ':completion:*:options' description 'yes'
 zstyle ':completion:*:options' auto-description '%d'
@@ -20,10 +21,15 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec))' # Ignore patterns
+zstyle ':autocomplete:*' min-delay 0.0  # float
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|?=** r:|?=**'
+zstyle ':vcs_info:*' enable git # Enable only git
+zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:git:*' formats "%{$fg[blue]%}(%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[blue]%}) "
 
 setopt prompt_subst # Let the prompt substite variables, without this the prompt will not work
 setopt inc_append_history # Ensure that commands are added to the history immediately
-#setopt extended_history # Record the timestamp of each command in HISTFILE
 setopt brace_ccl # Allow brace character class list expansion
 setopt complete_in_word # Complete from both ends of a word.
 setopt always_to_end # Move cursor to the end of a completed word.
@@ -32,55 +38,52 @@ setopt notify # Report status of background jobs immediately.
 setopt hist_find_no_dups # Skip duplicates while searching
 setopt hist_save_no_dups # Do not write a duplicate event to the history file.
 setopt correct # Turn on corrections
-# unsetopt hist_save_no_dups # Write a duplicate event to the history file
-# zmodload zsh/zprof # Uncomment to enable stats for Zsh with zprof command
 setopt extendedglob nomatch menucomplete
-unsetopt BEEP # No soud on error
-unsetopt bg_nice # Don't run all background jobs at a lower priority.
-unsetopt hup # Don't kill jobs on shell exit.
 setopt interactive_comments # Enable comments in interactive shell
 setopt autocd # Automatically cd into typed directory.
-#autoload predict-on
-#predict-on
+unsetopt bg_nice # Don't run all background jobs at a lower priority.
+unsetopt hup # Don't kill jobs on shell exit.
+# setopt extended_history # Record the timestamp of each command in HISTFILE
+# unsetopt BEEP # No soud on error
+# unsetopt hist_save_no_dups # Write a duplicate event to the history file
+# autoload predict-on
+# predict-on
 
 autoload -Uz compinit # Basic auto/tab complete:
-for dump in ~/.zcompdump(N.mh+12); do # Twice a day it's updated
+for dump in ~/.zcompdump(N.mh+24); do # Twice a day it's updated
     compinit
 done
-compinit
+compinit -C
 
-zstyle ':completion:*' menu select
 zmodload zsh/complist
 _comp_options+=(globdots) # Include hidden files.
 
 # Binds and remaps
 bindkey -v
 bindkey '^ ' autosuggest-accept
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+autoload autosuggest-accept
+bindkey '^k' history-substring-search-up #bindkey '^[[A' history-substring-search-up
+autoload history-substring-search-up; zle -N history-substring-search-up
+bindkey '^j' history-substring-search-down #bindkey '^[[B' history-substring-search-down
+autoload history-substring-search-down; zle -N history-substring-search-down
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey '^e' edit-command-line # Edit line with ctrl-e
-autoload edit-command-line; zle -N edit-command-line # Autoload this function ^
+autoload edit-command-line
+zle -N edit-command-line # Autoload this function ^
 
 vim_ins_mode="%{$fg[cyan]%}[INS]%{$reset_color%}"
 vim_cmd_mode="%{$fg[green]%}[CMD]%{$reset_color%}"
 vim_mode=$vim_ins_mode
 
-# Case Insensitive completition
-zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' \
-  '+l:|?=** r:|?=**'
-
 autoload -Uz vcs_info # Vcs and colors
 
-zstyle ':vcs_info:*' enable git # Enable only git
 
 precmd_vcs_info() { vcs_info } # Setup a hook that runs before every ptompt.
 precmd_functions+=( precmd_vcs_info )
 
-zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 
 +vi-git-untracked(){
     if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
@@ -88,9 +91,6 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
         hook_com[staged]+='N!' # Signify new files with a upper case N and a bang
     fi
 }
-
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:git:*' formats "%{$fg[blue]%}(%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[blue]%}) "
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select () {
@@ -106,7 +106,6 @@ zle -N zle-keymap-select
 zle-line-init() {
     echo -ne "\e[5 q"
 }
-
 zle -N zle-line-init # Initial state of the shell when you open it. It's in insert mode, with the Beam cursor
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
@@ -114,7 +113,6 @@ function TRAPINT() {
     vim_mode=$vim_ins_mode
     return $(( 128 + $1 ))
 }
-
 # Exit code of the last command
 function check_last_exit_code() {
     local LAST_EXIT_CODE=$?
@@ -150,6 +148,6 @@ source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.zshAliasFunrc"
 source /usr/share/z/z.sh 2>/dev/null
 export _Z_DATA="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.z"
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
-## source /usr/share/zsh/plugins/zsh-autopair/autopair.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh 2>/dev/null
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+#zprof
