@@ -1,16 +1,29 @@
 #!/usr/bin/env bash
 
+check_gov() {
+    cat_gov=$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor)
+    actual_gov=$@
+    if [[ "$cat_gov" == "$actual_gov" ]]; then
+        should_change=no
+    else
+        should_change=yes
+    fi
+}
+
 case "${1}" in
   performance)
         gdbus call --system --dest net.hadess.PowerProfiles --object-path /net/hadess/PowerProfiles --method org.freedesktop.DBus.Properties.Set 'net.hadess.PowerProfiles' 'ActiveProfile' "<'performance'>"
         echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
     ;;
-  saver)
-        gdbus call --system --dest net.hadess.PowerProfiles --object-path /net/hadess/PowerProfiles --method org.freedesktop.DBus.Properties.Set 'net.hadess.PowerProfiles' 'ActiveProfile' "<'power-saver'>"
-        echo powersave | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
-    ;;
+
   balanced)
         gdbus call --system --dest net.hadess.PowerProfiles --object-path /net/hadess/PowerProfiles --method org.freedesktop.DBus.Properties.Set 'net.hadess.PowerProfiles' 'ActiveProfile' "<'balanced'>"
+        echo powersave | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+    ;;
+
+  saver)
+        gdbus call --system --dest net.hadess.PowerProfiles --object-path /net/hadess/PowerProfiles --method org.freedesktop.DBus.Properties.Set 'net.hadess.PowerProfiles' 'ActiveProfile' "<'power-saver'>"
+
         echo powersave | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
     ;;
   *)
