@@ -12,8 +12,8 @@ export KDEHOME="$XDG_CONFIG_HOME"/kde
 # export MANPAGER="sh -c 'col -b | bat -l man -p'"
 export MANPAGER="nvim -c 'set ft=man' -"
 
-export EDITOR="nvim"
 export VISUAL="nvim"
+export EDITOR="nvim"
 export BROWSER="brave"
 export TERMINAL="konsole"
 export TERM="xterm-256color"
@@ -23,12 +23,6 @@ export CARGO_HOME=${XDG_DATA_HOME:-$HOME/.local/share}/cargo
 # Zsh config
 export ZDOTDIR=$HOME/.config/zsh
 
-# Default text editor for ssh connection
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='nvim'
-else
-  export EDITOR='vim'
-fi
 
 # Default timeout for vi-mode
 export KEYTIMEOUT=1
@@ -41,3 +35,8 @@ export _JAVA_OPTIONS=-Djava.util.prefs.userRoot=${XDG_CONFIG_HOME}/java
 
 # Rust
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+
+# fzf
+#export FZF_DEFAULT_COMMAND="find . -path '*/\.*' -type d -prune -o -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
+# List everything
+export FZF_DEFAULT_COMMAND="find . -type f -print -o -type l -print 2> /dev/null | sed s/^..//"

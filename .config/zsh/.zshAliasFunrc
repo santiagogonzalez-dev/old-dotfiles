@@ -2,13 +2,16 @@
 
 fpath_completion=/usr/share/zsh/site-functions/_*
 fpath+="$(dirname "${fpath_completion}")"
+unset fpath_completion
 
 # Use nvim instead of vim
-[ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
+#[ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
 
 # What should be the normal behaviour
 alias \
 	snvim='sudo -E nvim' \
+	n='nvim' \
+    v='nvim' \
 	zzz='systemctl suspend' \
 	cd..='cd ..' \
 	cp='cp -iv' \
@@ -21,7 +24,7 @@ alias \
 	et='exa -lah --icons --colour-scale --group-directories-first --git -T -L4' \
 	bat='bat --italic-text=always' \
 	plasma-restart='kquitapp5 plasmashell && sleep 1 && kstart5 plasmashell && sleep 1 && kwin_wayland --replace &' \
-    editkitty='nvim .config/kitty/kitty.conf'
+    editkitty='nvim ~/.config/kitty/kitty.conf'
 
 
 # Color or human readable
@@ -54,6 +57,7 @@ function gacp() {
 #   command neovide "$@" & disown && sleep 1 ; exit
 # }
 
+# Extracting files
 ex ()
 {
   if [ -f $1 ] ; then
