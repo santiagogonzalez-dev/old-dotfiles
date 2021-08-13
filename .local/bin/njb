@@ -1,13 +1,33 @@
 #!/usr/bin/env bash
 
-note_directory="/data/notes/note-$(date +%Y-%m-%d).md"
+create_note() {
+    if [ ! -f $note_directory ]; then
+        echo "# Notes for $(date +%Y-%m-%d)" > $note_directory
+    fi
+    nvim -c "norm Go" \
+        -c "norm Go## $(date +%H:%M:%S)" \
+        -c "norm Go" \
+        -c "norm zz" \
+        -c "startinsert" $note_directory
+}
 
-if [ ! -f $note_directory ]; then
-  echo "# Notes for $(date +%Y-%m-%d)" > $note_directory
-fi
-
-nvim -c "norm Go" \
-  -c "norm Go## $(date +%H:%M:%S)" \
-  -c "norm Go" \
-  -c "norm zz" \
-  -c "startinsert" $note_directory
+case "${1}" in
+    -g)
+        note_directory="/data/notes/note-$(date +%Y-%m-%d).md"
+        create_note
+        ;;
+    -p)
+        note_directory="/data/notes/personal-diary/note-$(date +%Y-%m-%d).md"
+        create_note
+        ;;
+    -t)
+        note_directory="/data/notes/todo/note-$(date +%Y-%m-%d).md"
+        create_note
+        ;;
+    *)
+        echo "Flags:
+        -g for general
+        -p for personal diary
+        -t for todolist"
+        ;;
+esac
