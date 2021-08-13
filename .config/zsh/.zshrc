@@ -144,6 +144,9 @@ RPROMPT='$(check_last_exit_code) ${vim_mode}'
 # Load aliases and functions
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.zshAliasFunrc"
 
+# fzf
+source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
 # Plugins
 source /usr/share/z/z.sh 2>/dev/null
 export _Z_DATA="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.z"
