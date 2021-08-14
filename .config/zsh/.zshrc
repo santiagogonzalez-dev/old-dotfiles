@@ -127,9 +127,9 @@ function check_last_exit_code() {
 
 # Random icon generator for the prompt
 declare -a CHANGING # Changing prompt
-CHANGING=(" " " " " " " " " " " ")
+CHANGING=(" " " " " " " ")
 declare -a FIRE # Changing prompt on error
-FIRE=(" " " " " " " " " ")
+FIRE=(" " " " " " " ")
 
 RANDOM=$$$(date +%s) # Randomize based on date
 ignition=${CHANGING[$RANDOM % ${#RANDOM[*]}+1]} # Defined the normal variable
@@ -147,6 +147,7 @@ source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.zshAliasFunrc"
 # fzf
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
+
 # Plugins
 source /usr/share/z/z.sh 2>/dev/null
 export _Z_DATA="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.z"

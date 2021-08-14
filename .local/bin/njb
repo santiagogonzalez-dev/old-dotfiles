@@ -16,14 +16,6 @@ case "${1}" in
         note_directory="/data/notes/note-$(date +%Y-%m-%d).md"
         create_note
         ;;
-    -p)
-        note_directory="/data/notes/personal-diary/note-$(date +%Y-%m-%d).md"
-        create_note
-        ;;
-    -t)
-        note_directory="/data/notes/todo/note-$(date +%Y-%m-%d).md"
-        create_note
-        ;;
     *)
         echo "Flags:
         -g for general
