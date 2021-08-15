@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# Just a launcher for the script njb -t
+
+kitty --directory /data/notes --class njb -o allow_remote_control=yes -o enabled_layouts=tall  njb -t

@@ -74,8 +74,8 @@ bindkey '^e' edit-command-line # Edit line with ctrl-e
 autoload edit-command-line
 zle -N edit-command-line # Autoload this function ^
 
-vim_ins_mode="%{$fg[cyan]%}[INS]%{$reset_color%}"
-vim_cmd_mode="%{$fg[green]%}[CMD]%{$reset_color%}"
+vim_ins_mode="%{$fg[cyan]%}INS%{$reset_color%}"
+vim_cmd_mode="%{$fg[green]%}COM%{$reset_color%}"
 vim_mode=$vim_ins_mode
 
 autoload -Uz vcs_info # Vcs and colors

@@ -23,7 +23,6 @@ export CARGO_HOME=${XDG_DATA_HOME:-$HOME/.local/share}/cargo
 # Zsh config
 export ZDOTDIR=$HOME/.config/zsh
 
-
 # Default timeout for vi-mode
 export KEYTIMEOUT=1
 
@@ -37,6 +36,4 @@ export _JAVA_OPTIONS=-Djava.util.prefs.userRoot=${XDG_CONFIG_HOME}/java
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 
 # fzf
-#export FZF_DEFAULT_COMMAND="find . -path '*/\.*' -type d -prune -o -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
-# List everything
 export FZF_DEFAULT_COMMAND="find . -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
