@@ -121,6 +121,12 @@ RemoveExtension=false
 RunPrefix=
 SetEditor=false
 
+[MainWindow]
+eDP-1 HDMI-A-2 Height 1920x1080=1060
+eDP-1 HDMI-A-2 Width 1920x1080=928
+eDP-1 Height 1920x1080=1060
+eDP-1 Width 1920x1080=928
+
 [filetree]
 editShade=31,81,106
 listMode=false

@@ -3,15 +3,10 @@ update_info=kwin.upd:replace-scalein-with-scale,kwin.upd:port-minimizeanimation-
 
 [Compositing]
 GLCore=true
+LatencyPolicy=Low
 OpenGLIsUnsafe=false
 
 [Desktops]
-Id_1=60144690-7ad1-4b45-a5f8-7300703acab8
-Id_2=8ce4404d-c1fe-45ae-92a0-c88679d3e297
-Id_3=9a56f17d-0777-43a4-8978-fca69d68bf43
-Id_4=0642a8f9-b616-4435-8c5e-53aa1cf5794b
-Id_5=aad6590a-759d-4a14-be74-c2e142a4fe13
-Id_6=29d83888-005e-449c-8b9e-9e353bd34848
 Name_1=
 Name_2=
 Name_3=
@@ -21,34 +16,9 @@ Name_6=
 Number=6
 Rows=2
 
-[DrmOutputs][3c373409-48e0-57e9-a1a9-eb32e49f8772][3c373409-48e0-57e9-a1a9-eb32e49f8772]
-Mode=1920x1080_59997
-Scale=1
-Transform=normal
-
-[DrmOutputs][513d64050b][8775597e-7406-5914-b126-4144423ed661]
-Mode=1920x1080_60000
-Scale=1
-Transform=rotate-90
-
-[DrmOutputs][513d64050b][94e3a42a-1042-5908-a8c4-99badc28c0c2]
-Mode=1920x1080_59997
-Scale=1
-Transform=normal
-
-[DrmOutputs][c26661848f][3c373409-48e0-57e9-a1a9-eb32e49f8772]
-Mode=1920x1080_59997
-Scale=1
-Transform=normal
-
-[DrmOutputs][c26661848f][8775597e-7406-5914-b126-4144423ed661]
-Mode=1920x1080_60000
-Scale=1
-Transform=rotate-90
-
 [Effect-Blur]
-BlurStrength=8
-NoiseStrength=9
+BlurStrength=7
+NoiseStrength=11
 
 [Effect-DimInactive]
 DimDesktop=true
@@ -81,6 +51,12 @@ desktopchangeosdEnabled=true
 diminactiveEnabled=true
 kwin-script-tilingEnabled=true
 kwin4_effect_fadeEnabled=false
+kwin4_effect_fadingpopupsEnabled=false
+kwin4_effect_fullscreenEnabled=false
+kwin4_effect_loginEnabled=false
+kwin4_effect_logoutEnabled=false
+kwin4_effect_maximizeEnabled=false
+kwin4_effect_morphingpopupsEnabled=false
 kwin4_effect_squashEnabled=false
 kwin4_effect_windowapertureEnabled=false
 minimizeallEnabled=false
@@ -94,7 +70,7 @@ PopupHideDelay=200
 
 [Script-kwin-script-tiling]
 autorotatePortrait=true
-floaters=kdialog\\,Polkit\\,yakuake\\,org.kde
+floaters=kdialog\\,polkit\\,yakuake\\,org.kde\\,njb
 fullscreenGaps=true
 gridLayoutMasterCount=2
 placement=1
@@ -118,9 +94,9 @@ ElectricBorderCooldown=1000
 ElectricBorderCornerRatio=0.08
 ElectricBorderDelay=300
 ElectricBorders=1
+Placement=Centered
 WindowSnapZone=33
 
 [org.kde.kdecoration2]
-BorderSizeAuto=false
 ButtonsOnLeft=SF
 ButtonsOnRight=IX

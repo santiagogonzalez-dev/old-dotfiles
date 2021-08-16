@@ -1,2 +1,11 @@
 [Common]
 OutlineCloseButton=false
+ShadowSize=ShadowMedium
+
+[Windeco Exception 0]
+BorderSize=3
+Enabled=true
+ExceptionPattern=.*
+ExceptionType=0
+HideTitleBar=true
+Mask=16
