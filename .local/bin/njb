@@ -11,22 +11,11 @@ create_note() {
         -c "startinsert" $note_directory
 }
 
-create_todo() {
-    nvim -c "norm Go" \
-        -c "norm Go*  " \
-        -c "startinsert" $note_directory
-}
-
 case "${1}" in
     -g)
         # General mode
         note_directory="/data/notes/note-$(date +%Y-%m-%d).md"
         create_note
-        ;;
-    -t)
-        # ToDo list
-        note_directory="/data/notes/todo.md"
-        create_todo
         ;;
     *)
         echo "Flags:
