@@ -29,9 +29,6 @@ export KEYTIMEOUT=1
 # Personal Scripts
 export PATH=$PATH:/home/$USER/.local/bin
 
-# Java
-export _JAVA_OPTIONS=-Djava.util.prefs.userRoot=${XDG_CONFIG_HOME}/java
-
 # Rust
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 
