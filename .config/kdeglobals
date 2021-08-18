@@ -72,7 +72,7 @@ ForegroundVisited=148,207,149
 
 [Colors:View]
 BackgroundAlternate=33,43,54
-BackgroundNormal=40,44,57
+BackgroundNormal=36,38,54
 DecorationFocus=204,34,102
 DecorationHover=204,34,102
 ForegroundActive=211,218,227
@@ -86,7 +86,7 @@ ForegroundVisited=148,207,149
 
 [Colors:Window]
 BackgroundAlternate=47,52,63
-BackgroundNormal=26,33,43
+BackgroundNormal=27,33,44
 DecorationFocus=204,34,102
 DecorationHover=204,34,102
 ForegroundActive=211,218,227
@@ -100,7 +100,7 @@ ForegroundVisited=148,207,149
 
 [DirSelect Dialog]
 DirSelectDialog Size=864,600
-History Items[$e]=file:///data,file:///data/backup,file:///data/downloads
+History Items[$e]=file:///data/games/mindustry,file:///data/downloads,file:///data,file:///data/backup
 
 [General]
 BrowserApplication=brave-browser.desktop
@@ -119,7 +119,7 @@ toolBarFont=Inter,11,-1,5,50,0,0,0,0,0
 widgetStyle=Breeze
 
 [Icons]
-Theme=Tela-red-dark
+Theme=Tela-circle-purple-dark
 
 [KDE]
 AnimationDurationFactor=0.17677669529663687
@@ -127,11 +127,12 @@ ColorScheme=BreezeLight
 LookAndFeelPackage=org.kde.breezedark.desktop
 ScrollbarLeftClickNavigatesByPage=false
 contrast=4
+widgetStyle=Breeze
 
 [KFileDialog Settings]
 Allow Expansion=false
 Automatically select filename extension=true
-Breadcrumb Navigation=true
+Breadcrumb Navigation=false
 Decoration position=2
 LocationCombo Completionmode=5
 PathCombo Completionmode=5
@@ -140,7 +141,7 @@ Show Full Path=false
 Show Inline Previews=true
 Show Preview=false
 Show Speedbar=true
-Show hidden files=false
+Show hidden files=true
 Sort by=Name
 Sort directories first=true
 Sort reversed=false
@@ -149,7 +150,7 @@ View Style=DetailTree
 
 [WM]
 activeBackground=26,33,43
-activeBlend=26,33,43
+activeBlend=27,33,44
 activeFont=Overpass,10,-1,5,50,0,0,0,0,0
 activeForeground=211,218,227
 frame=26,33,43

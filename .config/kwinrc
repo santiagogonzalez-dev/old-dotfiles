@@ -7,6 +7,12 @@ LatencyPolicy=Low
 OpenGLIsUnsafe=false
 
 [Desktops]
+Id_1=f8a37147-36d4-4754-9022-a8d8838f3a8b
+Id_2=12d54f1d-ccd1-4fe2-900b-58e3e2d97854
+Id_3=3c2f835d-f9fc-4077-b499-cb0c9c50a630
+Id_4=793fd935-d9a1-44d4-a800-fe45c9a258e5
+Id_5=32173ea1-f4a1-4628-bf68-4214eb4f1637
+Id_6=89edef6a-27bf-47ac-8103-3b42df7615ff
 Name_1=
 Name_2=
 Name_3=
@@ -15,6 +21,21 @@ Name_5=
 Name_6=
 Number=6
 Rows=2
+
+[DrmOutputs][3c373409-48e0-57e9-a1a9-eb32e49f8772][3c373409-48e0-57e9-a1a9-eb32e49f8772]
+Mode=1920x1080_59997
+Scale=1
+Transform=normal
+
+[DrmOutputs][c26661848f][3c373409-48e0-57e9-a1a9-eb32e49f8772]
+Mode=1920x1080_59997
+Scale=1
+Transform=normal
+
+[DrmOutputs][c26661848f][8775597e-7406-5914-b126-4144423ed661]
+Mode=1920x1080_60000
+Scale=1
+Transform=normal
 
 [Effect-Blur]
 BlurStrength=7

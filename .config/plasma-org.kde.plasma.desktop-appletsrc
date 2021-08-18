@@ -26,26 +26,6 @@ run associated application=false
 [ActionPlugins][1]
 RightButton;NoModifier=org.kde.contextmenu
 
-[Containments][1]
-ItemGeometries-1080x1920=
-ItemGeometries-1920x1080=
-ItemGeometriesHorizontal=
-ItemGeometriesVertical=
-formfactor=0
-immutability=1
-lastScreen=0
-location=0
-plugin=org.kde.plasma.folder
-wallpaperplugin=org.kde.image
-
-[Containments][1][ConfigDialog]
-DialogHeight=1030
-DialogWidth=1890
-
-[Containments][1][General]
-ToolBoxButtonState=topcenter
-ToolBoxButtonX=523
-
 [Containments][2]
 activityId=
 formfactor=2
@@ -132,6 +112,23 @@ plugin=org.kde.latte.separator
 immutability=1
 plugin=org.kde.latte.separator
 
+[Containments][2][Applets][36]
+immutability=1
+plugin=org.kde.windowtitle
+
+[Containments][2][Applets][36][Configuration][ConfigDialog]
+DialogHeight=620
+DialogWidth=800
+
+[Containments][2][Applets][36][Configuration][General]
+boldFont=false
+containmentType=Plasma
+showIcon=false
+
+[Containments][2][Applets][37]
+immutability=1
+plugin=org.kde.latte.separator
+
 [Containments][2][Applets][5]
 immutability=1
 plugin=org.kde.plasma.icontasks
@@ -157,13 +154,37 @@ DialogHeight=86
 DialogWidth=1920
 
 [Containments][2][General]
-AppletOrder=3;26;5;7;32;29;31;23
+AppletOrder=3;36;37;26;5;7;32;29;31;23
 
-[Containments][25]
+[Containments][34]
+ItemGeometries-1920x1080=
+ItemGeometriesHorizontal=
+activityId=ca82849f-5546-48fa-a02b-5f166973d059
+formfactor=0
+immutability=1
+lastScreen=0
+location=0
+plugin=org.kde.plasma.folder
+wallpaperplugin=org.kde.image
+
+[Containments][34][ConfigDialog]
+DialogHeight=831
+DialogWidth=1048
+
+[Containments][34][General]
+ToolBoxButtonState=topcenter
+ToolBoxButtonX=521
+
+[Containments][34][Wallpaper][org.kde.image][General]
+Image=file:///data/wallpapers/wallhaven-lmwojl_1798x1013.png
+SlidePaths=/usr/share/wallpapers
+
+[Containments][35]
 ItemGeometries-1080x1920=
 ItemGeometries-1920x1080=
 ItemGeometriesHorizontal=
 ItemGeometriesVertical=
+activityId=ca82849f-5546-48fa-a02b-5f166973d059
 formfactor=0
 immutability=1
 lastScreen=1
@@ -171,13 +192,17 @@ location=0
 plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.image
 
-[Containments][25][ConfigDialog]
-DialogHeight=1266
-DialogWidth=889
+[Containments][35][ConfigDialog]
+DialogHeight=846
+DialogWidth=1060
 
-[Containments][25][General]
+[Containments][35][General]
 ToolBoxButtonState=topcenter
-ToolBoxButtonX=103
+ToolBoxButtonX=521
+
+[Containments][35][Wallpaper][org.kde.image][General]
+Image=file:///data/wallpapers/wallhaven-wyo126.png
+SlidePaths=/usr/share/wallpapers
 
 [Containments][8]
 activityId=
@@ -200,7 +225,7 @@ immutability=1
 plugin=org.kde.plasma.devicenotifier
 
 [Containments][8][Applets][11][Configuration]
-PreloadWeight=65
+PreloadWeight=85
 
 [Containments][8][Applets][12]
 immutability=1
@@ -247,7 +272,7 @@ immutability=1
 plugin=org.kde.plasma.battery
 
 [Containments][8][Applets][19][Configuration]
-PreloadWeight=75
+PreloadWeight=80
 
 [Containments][8][Applets][19][Configuration][General]
 showPercentage=true
@@ -257,14 +282,14 @@ immutability=1
 plugin=org.kde.plasma.networkmanagement
 
 [Containments][8][Applets][20][Configuration]
-PreloadWeight=55
+PreloadWeight=65
 
 [Containments][8][Applets][21]
 immutability=1
 plugin=org.kde.plasma.bluetooth
 
 [Containments][8][Applets][21][Configuration]
-PreloadWeight=55
+PreloadWeight=60
 
 [Containments][8][Applets][22]
 immutability=1
@@ -285,13 +310,16 @@ plugin=fokus
 immutability=1
 plugin=org.kde.kdeconnect
 
+[Containments][8][Applets][9][Configuration]
+PreloadWeight=55
+
 [Containments][8][ConfigDialog]
 DialogHeight=620
 DialogWidth=800
 
 [Containments][8][General]
-extraItems=org.kde.plasma.bluetooth,org.kde.kdeconnect,org.kde.plasma.battery,org.kde.plasma.devicenotifier,org.kde.plasma.mediacontroller,org.kde.plasma.notifications,org.kde.plasma.keyboardindicator,org.kde.plasma.nightcolorcontrol,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement,org.kde.plasma.volume,fokus,org.kde.plasma.clipboard
-hiddenItems=org.kde.plasma.bluetooth,org.kde.plasma.keyboardlayout,org.kde.plasma.clipboard,org.kde.plasma.nightcolorcontrol,org.kde.plasma.networkmanagement,org.kde.plasma.mediacontroller
+extraItems=org.kde.plasma.bluetooth,org.kde.kdeconnect,org.kde.plasma.battery,org.kde.plasma.devicenotifier,org.kde.plasma.mediacontroller,org.kde.plasma.notifications,org.kde.plasma.keyboardindicator,org.kde.plasma.nightcolorcontrol,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement,org.kde.plasma.volume,org.kde.plasma.clipboard
+hiddenItems=org.kde.plasma.bluetooth,org.kde.plasma.keyboardlayout,org.kde.plasma.clipboard,org.kde.plasma.nightcolorcontrol,org.kde.plasma.networkmanagement,org.kde.plasma.mediacontroller,org.kde.kdeconnect
 knownItems=org.kde.plasma.bluetooth,org.kde.kdeconnect,org.kde.plasma.battery,org.kde.plasma.clipboard,org.kde.plasma.devicenotifier,org.kde.plasma.mediacontroller,org.kde.plasma.notifications,org.kde.plasma.keyboardindicator,org.kde.plasma.nightcolorcontrol,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement,org.kde.plasma.volume
 shownItems=org.kde.plasma.battery
 
