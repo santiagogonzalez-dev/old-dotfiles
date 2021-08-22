@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # bcm is a script that if enabled it will limit the charge of your battery to 60% on laptops
 # with the kernel module loaded, like in my laptop, a ThinkBook 15-iml.

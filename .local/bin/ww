@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 # Usage: ww -f "window class filter" -c "run if not found"
 # Usage: ww -fa "window title filter" -c "run if not found"
 
