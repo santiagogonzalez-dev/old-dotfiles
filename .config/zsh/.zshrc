@@ -50,16 +50,20 @@ unsetopt bg_nice # Don't run all background jobs at a lower priority.
 # predict-on
 
 autoload -Uz compinit # Basic auto/tab complete:
-for dump in ~/.zcompdump(N.mh+24); do # Twice a day it's updated
+for dump in $ZDOTDIR/.zcompdump(N.mh+24); do # Twice a day it's updated
     compinit
 done
 compinit -C
 
 zmodload zsh/complist
+autoload complist
 _comp_options+=(globdots) # Include hidden files.
 
+zmodload zsh/mathfunc
+autoload mathfunc
+
 # Binds and remaps
-bindkey '^[a' autosuggest-accept
+bindkey '^ ' autosuggest-accept
 autoload autosuggest-accept
 bindkey '^k' history-substring-search-up #bindkey '^[[A' history-substring-search-up
 autoload history-substring-search-up; zle -N history-substring-search-up
@@ -150,11 +154,11 @@ source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.zshAliasFunrc"
 # fzf
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
+autoload keybindings.zsh
 
 # Plugins
 source /usr/share/z/z.sh 2>/dev/null
 export _Z_DATA="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.z"
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
-source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh 2>/dev/null
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 #zprof
