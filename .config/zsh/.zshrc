@@ -41,8 +41,8 @@ setopt correct # Turn on corrections
 setopt extendedglob nomatch menucomplete
 setopt interactive_comments # Enable comments in interactive shell
 setopt autocd # Automatically cd into typed directory.
+setopt no_hup # Don't kill jobs on shell exit.
 unsetopt bg_nice # Don't run all background jobs at a lower priority.
-unsetopt hup # Don't kill jobs on shell exit.
 # setopt extended_history # Record the timestamp of each command in HISTFILE
 # unsetopt BEEP # No soud on error
 # unsetopt hist_save_no_dups # Write a duplicate event to the history file
@@ -59,31 +59,17 @@ zmodload zsh/complist
 _comp_options+=(globdots) # Include hidden files.
 
 # Binds and remaps
-bindkey -v
-bindkey '^ ' autosuggest-accept
+bindkey '^[a' autosuggest-accept
 autoload autosuggest-accept
 bindkey '^k' history-substring-search-up #bindkey '^[[A' history-substring-search-up
 autoload history-substring-search-up; zle -N history-substring-search-up
 bindkey '^j' history-substring-search-down #bindkey '^[[B' history-substring-search-down
 autoload history-substring-search-down; zle -N history-substring-search-down
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey '^e' edit-command-line # Edit line with ctrl-e
-autoload edit-command-line
-zle -N edit-command-line # Autoload this function ^
-
-vim_ins_mode="%{$fg[cyan]%}INS%{$reset_color%}"
-vim_cmd_mode="%{$fg[green]%}COM%{$reset_color%}"
-vim_mode=$vim_ins_mode
 
 autoload -Uz vcs_info # Vcs and colors
 
-
 precmd_vcs_info() { vcs_info } # Setup a hook that runs before every ptompt.
 precmd_functions+=( precmd_vcs_info )
-
 
 +vi-git-untracked(){
     if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
@@ -92,54 +78,71 @@ precmd_functions+=( precmd_vcs_info )
     fi
 }
 
-# Change cursor shape for different vi modes.
+# Exit code of the last command
+function check_last_exit_code() {
+    local LAST_EXIT_CODE=$?
+    if [[ $LAST_EXIT_CODE -ne 0 ]]; then
+        local EXIT_CODE_PROMPT=' '
+        EXIT_CODE_PROMPT+="%{$fg[red]%}❰%{$reset_color%}"
+        EXIT_CODE_PROMPT+="%{$fg_bold[red]%}$LAST_EXIT_CODE%{$reset_color%}"
+        EXIT_CODE_PROMPT+="%{$fg[red]%}❱%{$reset_color%}"
+        echo "$EXIT_CODE_PROMPT"
+    fi
+}
+
+# Vi Mode Settings
+
+# Keybindings
+bindkey -v
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^e' edit-command-line # Edit line with ctrl-e
+autoload edit-command-line
+zle -N edit-command-line # Autoload this function ^
+
+# Change cursor shape and prompt for different vi modes.
 function zle-keymap-select () {
     case $KEYMAP in
         vicmd) echo -ne '\e[1 q';; # Block, because vicmd implies it's in command mode
         viins|main) echo -ne '\e[5 q';; # Beam, because viins implies it's in insert mode
     esac
-    vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
+    vi_mode="${${KEYMAP/vicmd/${vi_cmd_mode}}/(main|viins)/${vi_ins_mode}}"
     zle reset-prompt
 }
 zle -N zle-keymap-select
 
-zle-line-init() {
+function zle-line-init() {
     echo -ne "\e[5 q"
 }
 zle -N zle-line-init # Initial state of the shell when you open it. It's in insert mode, with the Beam cursor
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 function TRAPINT() {
-    vim_mode=$vim_ins_mode
+    vi_mode=$vi_ins_mode
     return $(( 128 + $1 ))
 }
-# Exit code of the last command
-function check_last_exit_code() {
-    local LAST_EXIT_CODE=$?
-    if [[ $LAST_EXIT_CODE -ne 0 ]]; then
-        local EXIT_CODE_PROMPT=' '
-        EXIT_CODE_PROMPT+="%{$fg[red]%}-<%{$reset_color%}"
-        EXIT_CODE_PROMPT+="%{$fg_bold[red]%}$LAST_EXIT_CODE%{$reset_color%}"
-        EXIT_CODE_PROMPT+="%{$fg[red]%}>-%{$reset_color%}"
-        echo "$EXIT_CODE_PROMPT"
-    fi
-}
+
+vi_ins_mode=" "
+vi_cmd_mode="%{$fg[green]%} %{$reset_color%}"
+vi_mode=$vi_ins_mode
+# End Change cursor shape
 
 # Random icon generator for the prompt
 declare -a CHANGING # Changing prompt
-CHANGING=(" " " " " " " ")
+CHANGING=(" " "視" " " " ")
 declare -a FIRE # Changing prompt on error
 FIRE=(" " " " " " " ")
-
 RANDOM=$$$(date +%s) # Randomize based on date
 ignition=${CHANGING[$RANDOM % ${#RANDOM[*]}+1]} # Defined the normal variable
 fire=${FIRE[$RANDOM % ${#RANDOM[*]}+1]} # Defined the normal variable on error
 
-PROMPT="%{$fg[white]%}%n%{$fg[red]%}@%{$fg[white]%}%m%{$fg[blue]%} %(?:%~ %{$fg_bold[blue]%}$ignition:%{$fg_bold[red]%}$fire)%{$reset_color%}"
-#PROMPT="%{$fg[white]%}%n%{$fg[red]%}@%{$fg[white]%}%m%{$fg[blue]%} %(?:%{$fg_bold[blue]%}$ignition:%{$fg_bold[red]%}$fire)%{$reset_color%}"
-PROMPT+="\$vcs_info_msg_0_" # Git hook
-
-RPROMPT='$(check_last_exit_code) ${vim_mode}'
+PROMPT="╭─%n@%m%F{white} %1~%f%{$reset_color%} \$vcs_info_msg_0_%f%{$reset_color%}
+╰─%(?:%{$fg_bold[white]%}$ignition:%{$fg_bold[red]%}$fire)%${vi_mode}%{$reset_color%}"
+RPROMPT='$(check_last_exit_code) ${vi_mode}'
 
 # Load aliases and functions
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.zshAliasFunrc"

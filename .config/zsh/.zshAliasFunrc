@@ -9,9 +9,9 @@ unset fpath_completion
 
 # What should be the normal behaviour
 alias \
-	snvim='sudo -E nvim' \
+	sn='sudo -E nvim' \
 	n='nvim' \
-    v='nvim' \
+    no='nvim $(fzf)' \
 	zzz='systemctl suspend' \
 	cd..='cd ..' \
 	cp='cp -iv' \
@@ -22,9 +22,9 @@ alias \
 	ls='ls -F --color=auto' \
 	e='exa -lah --icons --colour-scale --group-directories-first --git' \
 	et='exa -lah --icons --colour-scale --group-directories-first --git -T -L4' \
-	bat='bat --italic-text=always' \
+	bat='bat --theme TwoDark --italic-text=always' \
 	plasma-restart='kquitapp5 plasmashell && sleep 1 && kstart5 plasmashell && sleep 1 && kwin_wayland --replace &' \
-    editkitty='nvim ~/.config/kitty/kitty.conf'
+    editkitty='nvim ~/.config/kitty/kitty.conf' \
 
 
 # Color or human readable
@@ -46,8 +46,8 @@ function last-command {
 }
 zle -N last-command
 
-bindkey -M viins '^H' last-command
-bindkey -M vicmd '^H' last-command
+bindkey -M viins '^[h' last-command
+bindkey -M vicmd '^[h' last-command
 
 function gacp() {
     command git add . && git commit -m "$@" && git push origin master
