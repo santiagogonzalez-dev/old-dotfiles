@@ -13,8 +13,6 @@ topicNote() {
     fi
 
     nvim -c "norm Go" \
-        -c "norm Go## $(date +%Y-%m-%d\|%H:%M)" \
-        -c "norm Go" \
         -c "norm zz" \
         -c "startinsert" "$notePath"
 }
@@ -42,5 +40,6 @@ case ${1} in
     *)
     topicSelected=$(kdialog --inputbox "Enter the topic and name of the note")
     topicNote
+    ctags -R $notesDirectory
         ;;
 esac
