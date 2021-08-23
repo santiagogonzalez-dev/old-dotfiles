@@ -1,21 +1,46 @@
 #!/usr/bin/env bash
 
 notesDirectory=/data/notes # Default notes path
-
-# This ask for the directory and names, basically the relative path
 topicSelected=$(kdialog --inputbox "Enter the topic and name of the note")
-# Only the name of the note
-noteName=$(echo $topicSelected | tr "/" " " | awk '{print $NF}')
-# This creates the absolute path
-notePath=$notesDirectory/"$topicSelected.md"
-# Name of the note but with spaces converted
-safename=$(echo $var | sed 's/ /\\ /g')
 
-if [[ ! -f "$safename" ]];then
-    echo "# $noteName" >> $notePath
-    echo "## Note creation $(date +%Y-%m-%d\|%H:%M:%S)" >> $notePath
-    echo "" >> $notePath
-    echo "tags: " >> $notePath
+topicNote() {
+    noteName=${topicSelected##*/}
+    notePath=$notesDirectory/$topicSelected.md
+
+    if [[ ! -f $notePath ]]; then
+        echo -e "# $noteName" > "$notePath"
+        echo -e "### Note creation $(date +%Y-%m-%d\|%H:%M)" >> "$notePath"
+        echo -e "" >> "$notePath"
+        echo -e "tags" >> "$notePath"
+    fi
+
+    nvim -c "norm Go" \
+        -c "norm Go## $(date +%Y-%m-%d\|%H:%M)" \
+        -c "norm Go" \
+        -c "norm zz" \
+        -c "startinsert" "$notePath"
+}
+
+generalNote() {
+    notesGeneralPath="$notesDirectory/General/note-$(date +%Y-%m-%d).md"
+
+    if [[ ! -f $notesGeneralPath ]]; then
+        echo -e "# Notes for $(date +%Y-%m-%d)" > "$notesGeneralPath"
+        echo -e "" >> "$notesGeneralPath"
+    fi
+
+    nvim -c "norm Go" \
+        -c "norm Go## $(date +%H:%M:%S)" \
+        -c "norm Go" \
+        -c "norm zz" \
+        -c "startinsert" "$notesGeneralPath"
+}
+
+if [[ -z $topicSelected ]]; then
+    # Note for general topics, basically the notes that you take through the day,
+    # everything will be put in the General section if the $topicSelected is empty.
+    generalNote
+else
+    # Note with specificated topic
+    topicNote
 fi
-
-#fixedName="echo $notePath | awk '{gsub(/ /,"\\ ")}8'"
