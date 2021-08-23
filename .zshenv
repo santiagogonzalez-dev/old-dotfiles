@@ -26,7 +26,6 @@ export ZDOTDIR=$HOME/.config/zsh
 
 # Personal Scripts
 export PATH=$PATH:/home/$USER/.local/bin
-export PATH=$PATH:/data/notes/utils
 
 # Rust
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
