@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 notesDirectory=/data/notes # Default notes path
+lastOpenedNote=$(cat "$notesDirectory/utils/lastNoteUsed.txt")
 
 topicNote() {
     noteName=${topicSelected##*/}
@@ -36,12 +37,14 @@ case ${1} in
     -i)
         nvim $notesDirectory/index.md
         ;;
+    -o)
+        okular "$notesDirectory/$lastOpenedNote.md"
+        ;;
     -g)
         unset topicSelected
         generalNote
         ;;
     *)
-        lastOpenedNote=$(cat "$notesDirectory/utils/lastNoteUsed.txt")
         topicSelected=$(kdialog --inputbox "Enter the topic and name of the note" "$lastOpenedNote")
         echo "$topicSelected" > "$notesDirectory/utils/lastNoteUsed.txt"
         topicNote
