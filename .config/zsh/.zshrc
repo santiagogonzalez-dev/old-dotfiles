@@ -65,10 +65,6 @@ autoload mathfunc
 # Binds and remaps
 bindkey '^ ' autosuggest-accept
 autoload autosuggest-accept
-bindkey '^k' history-substring-search-up #bindkey '^[[A' history-substring-search-up
-autoload history-substring-search-up; zle -N history-substring-search-up
-bindkey '^j' history-substring-search-down #bindkey '^[[B' history-substring-search-down
-autoload history-substring-search-down; zle -N history-substring-search-down
 
 autoload -Uz vcs_info # Vcs and colors
 
