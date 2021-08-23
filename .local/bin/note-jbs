@@ -33,13 +33,18 @@ generalNote() {
 }
 
 case ${1} in
+    -i)
+        nvim $notesDirectory/index.md
+        ;;
     -g)
-    unset topicSelected
-    generalNote
+        unset topicSelected
+        generalNote
         ;;
     *)
-    topicSelected=$(kdialog --inputbox "Enter the topic and name of the note")
-    topicNote
-    ctags -R $notesDirectory
+        lastOpenedNote=$(cat "$notesDirectory/utils/lastNoteUsed.txt")
+        topicSelected=$(kdialog --inputbox "Enter the topic and name of the note" "$lastOpenedNote")
+        echo "$topicSelected" > "$notesDirectory/utils/lastNoteUsed.txt"
+        topicNote
+        ctags -R $notesDirectory
         ;;
 esac
