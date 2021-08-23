@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 notesDirectory=/data/notes # Default notes path
-topicSelected=$(kdialog --inputbox "Enter the topic and name of the note")
 
 topicNote() {
     noteName=${topicSelected##*/}
@@ -10,7 +9,6 @@ topicNote() {
     if [[ ! -f $notePath ]]; then
         echo -e "# $noteName" > "$notePath"
         echo -e "### Note creation $(date +%Y-%m-%d\|%H:%M)" >> "$notePath"
-        echo -e "" >> "$notePath"
         echo -e "tags" >> "$notePath"
     fi
 
@@ -22,7 +20,7 @@ topicNote() {
 }
 
 generalNote() {
-    notesGeneralPath="$notesDirectory/General/note-$(date +%Y-%m-%d).md"
+    notesGeneralPath=$notesDirectory/General/note-$(date +%Y-%m-%d).md
 
     if [[ ! -f $notesGeneralPath ]]; then
         echo -e "# Notes for $(date +%Y-%m-%d)" > "$notesGeneralPath"
@@ -36,11 +34,13 @@ generalNote() {
         -c "startinsert" "$notesGeneralPath"
 }
 
-if [[ -z $topicSelected ]]; then
-    # Note for general topics, basically the notes that you take through the day,
-    # everything will be put in the General section if the $topicSelected is empty.
+case ${1} in
+    -g)
+    unset topicSelected
     generalNote
-else
-    # Note with specificated topic
+        ;;
+    *)
+    topicSelected=$(kdialog --inputbox "Enter the topic and name of the note")
     topicNote
-fi
+        ;;
+esac
