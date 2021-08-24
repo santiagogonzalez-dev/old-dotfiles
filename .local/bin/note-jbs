@@ -46,6 +46,9 @@ case ${1} in
         ;;
     *)
         topicSelected=$(kdialog --inputbox "Enter the topic and name of the note" "$lastOpenedNote")
+        if [[ -z $topicSelected ]];then
+            exit
+        fi
         echo "$topicSelected" > "$notesDirectory/utils/lastNoteUsed.txt"
         topicNote
         ctags -R $notesDirectory
