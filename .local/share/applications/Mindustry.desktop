@@ -1,0 +1,10 @@
+[Desktop Entry]
+Exec=/data/games/mindustry/Mindustry
+GenericName=A sandbox tower defense game written in Java.\n\n
+Icon=factory
+Name=Mindustry
+Path=/data/games/mindustry
+StartupNotify=true
+Categories=Game
+Terminal=false
+Type=Application

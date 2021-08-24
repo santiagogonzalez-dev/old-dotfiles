@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Note-JBS Daily Note Taking
+Comment=Note-JBS Note taking general
+Exec=kitty --directory /data/notes --class note-jbs -o allow_remote_control=yes -o enabled_layouts=tall note-jbs -g
+Categories=Utility;TextEditor
+Terminal=false
+Icon=factory

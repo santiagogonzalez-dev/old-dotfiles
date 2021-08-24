@@ -45,7 +45,7 @@ case ${1} in
         generalNote
         ;;
     *)
-        topicSelected=$(kdialog --inputbox "Enter the topic and name of the note" "$lastOpenedNote")
+        topicSelected=$(kdialog --geometry 500x500 --inputbox "Enter the topic and name of the note" "$lastOpenedNote")
         if [[ -z $topicSelected ]];then
             exit
         fi
