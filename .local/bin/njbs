@@ -1,2 +1,7 @@
 #!/usr/bin/env bash
-kitty --directory /data/notes --class note-jbs -o allow_remote_control=yes -o enabled_layouts=tall note-jbs -k $1
+
+notesDirectory=/data/notes # Default notes path
+echo "$1 $2 $3 $4 $5 $6 $7 $8 $9" > "$notesDirectory/utils/krunnerNoteUsed.txt"
+needNote=$(awk '{$1=$1};NF' $notesDirectory/utils/krunnerNoteUsed.txt)
+kitty --directory /data/notes --class note-jbs -o allow_remote_control=yes -o \
+    enabled_layouts=tall note-jbs -k "$needNote"

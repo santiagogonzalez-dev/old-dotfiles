@@ -57,13 +57,13 @@ unsetopt BG_NICE # Don't run all background jobs at a lower priority.
 
 autoload -Uz compinit # Basic auto/tab complete:
 for dump in $ZDOTDIR/.zcompdump(N.mh+24); do # Twice a day it's updated
-    autoload compinit
+    compinit
 done
-autoload -Uz compinit -C
+compinit -C
 
+_comp_options+=(globdots) # Include hidden files.
 zmodload zsh/mathfunc
 zmodload zsh/complist
-_comp_options+=(globdots) # Include hidden files.
 
 # Load aliases, functions and vi-mode
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.zshAliasFunrc"
