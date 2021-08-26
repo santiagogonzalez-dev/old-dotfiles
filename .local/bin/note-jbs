@@ -35,14 +35,15 @@ generalNote() {
 
 case ${1} in
     -i)
-        nvim $notesDirectory/index.md
-        ;;
+        nvim $notesDirectory/index.md ;;
     -o)
-        okular "$notesDirectory/$lastOpenedNote.md"
-        ;;
+        okular "$notesDirectory/$lastOpenedNote.md" ;;
     -g)
         unset topicSelected
-        generalNote
+        generalNote ;;
+    -k)
+        topicSelected=$2
+        topicNote
         ;;
     *)
         topicSelected=$(kdialog --geometry 500x500 --inputbox "Enter the topic and name of the note" "$lastOpenedNote")
@@ -51,6 +52,5 @@ case ${1} in
         fi
         echo "$topicSelected" > "$notesDirectory/utils/lastNoteUsed.txt"
         topicNote
-        ctags -R $notesDirectory
-        ;;
+        ctags -R $notesDirectory ;;
 esac

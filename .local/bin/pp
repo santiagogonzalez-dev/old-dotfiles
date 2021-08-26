@@ -12,13 +12,13 @@ gov_check() {
 }
 
 case "${1}" in
-  performance)
+  per)
         gdbus call --system --dest net.hadess.PowerProfiles --object-path /net/hadess/PowerProfiles --method org.freedesktop.DBus.Properties.Set 'net.hadess.PowerProfiles' 'ActiveProfile' "<'performance'>"
         governor=performance
         gov_check
     ;;
 
-  balanced)
+  bal)
         gdbus call --system --dest net.hadess.PowerProfiles --object-path /net/hadess/PowerProfiles --method org.freedesktop.DBus.Properties.Set 'net.hadess.PowerProfiles' 'ActiveProfile' "<'balanced'>"
         gov_check
     ;;
