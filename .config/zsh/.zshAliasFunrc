@@ -4,40 +4,35 @@ fpath_completion=/usr/share/zsh/site-functions/_*
 fpath+="$(dirname "${fpath_completion}")"
 unset fpath_completion
 
-# Use nvim instead of vim
-#[ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
-
 # What should be the normal behaviour
 alias \
-	sn='sudo -E nvim' \
-	n='nvim' \
+    sn='sudo -E nvim' \
+    n='nvim' \
     no='nvim $(fzf)' \
-	zzz='systemctl suspend' \
-	cd..='cd ..' \
-	cp='cp -iv' \
-	mv='mv -iv' \
-	rm='rm -v' \
-	rd='rmdir' \
-	l='ls -lAhX --group-directories-first --color=auto' \
-	ls='ls -F --color=auto' \
-	e='exa -lah --icons --colour-scale --group-directories-first --git' \
-	et='exa -lah --icons --colour-scale --group-directories-first --git -T -L4' \
-	bat='bat --theme TwoDark --italic-text=always' \
-	plasma-restart='kquitapp5 plasmashell && sleep 1 && kstart5 plasmashell && sleep 1 && kwin_wayland --replace &' \
+    zzz='systemctl suspend' \
+    cd..='cd ..' \
+    cp='cp -iv' \
+    mv='mv -iv' \
+    rm='rm -v' \
+    rd='rmdir' \
+    l='ls -lAhX --group-directories-first --color=auto' \
+    ls='ls -F --color=auto' \
+    e='exa -lah --icons --colour-scale --group-directories-first --git' \
+    et='exa -lah --icons --colour-scale --group-directories-first --git -T -L4' \
+    bat='bat --theme TwoDark --italic-text=always' \
+    plasma-restart='kquitapp5 plasmashell && sleep 1 && kstart5 plasmashell && sleep 1 && kwin_wayland --replace &' \
     editkitty='nvim ~/.config/kitty/kitty.conf' \
+    d='dirs -v'
+    for index ({1..9}) alias "$index"="cd +${index}"; unset index
 
 
 # Color or human readable
 alias \
-	ip='ip --color=auto' \
-	grep='grep --color' \
-	df='df -h' \
-	du='du -h'
-
-# So that I don't forgot to ask for sudo privileges
-for command in mount umount ; do
-	alias $command="sudo $command"
-done; unset command
+    ip='ip --color=auto' \
+    grep='grep --color' \
+    df='df -h' \
+    du='du -h' \
+    free='free -mh'
 
 function last-command {
     clear
@@ -62,7 +57,7 @@ ex ()
       *.tar.gz)    tar xzf $1   ;;
       *.tar.xz)    tar xJf $1   ;;
       *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1     ;;
+      *.rar)       unrar x $1   ;;
       *.gz)        gunzip $1    ;;
       *.tar)       tar xf $1    ;;
       *.tbz2)      tar xjf $1   ;;

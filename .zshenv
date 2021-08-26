@@ -15,7 +15,7 @@ export MANPAGER="nvim -c 'set ft=man' -"
 export VISUAL="nvim"
 export EDITOR="nvim"
 export BROWSER="brave"
-export TERMINAL="konsole"
+export TERMINAL="kitty"
 export TERM="xterm-256color"
 export LESSHISTFILE="-"
 export CARGO_HOME=${XDG_DATA_HOME:-$HOME/.local/share}/cargo
@@ -31,5 +31,4 @@ export PATH=$PATH:/home/$USER/.local/bin
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 
 # fzf
-#export FZF_DEFAULT_COMMAND="find . -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
 export FZF_DEFAULT_COMMAND='rg --files --hidden' # Faster than find command
