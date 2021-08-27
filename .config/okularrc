@@ -1,0 +1,41 @@
+[Desktop Entry]
+FullScreen=false
+
+[MainWindow]
+HDMI-A-2 Height 1920x1080=516
+HDMI-A-2 Width 1920x1080=500
+HDMI-A-2 eDP-1 Height 1080x1920=1876
+HDMI-A-2 eDP-1 Height 1920x1080=1068
+HDMI-A-2 eDP-1 Width 1080x1920=1060
+HDMI-A-2 eDP-1 Width 1920x1080=951
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAAAAA68AAAPeAAAABAAAAAQAAAAIAAAACPwAAAACAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAAAAAAAgAAAAEAAAAiAGEAbgBuAG8AdABhAHQAaQBvAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAA
+ToolBarsMovable=Disabled
+eDP-1 HDMI-A-2 Height 1080x1920=943
+eDP-1 HDMI-A-2 Height 1920x1080=1036
+eDP-1 HDMI-A-2 Width 1080x1920=1060
+eDP-1 HDMI-A-2 Width 1920x1080=953
+eDP-1 Height 1920x1080=1036
+eDP-1 Width 1920x1080=943
+
+[Recent Files]
+File1[$e]=/data/notes/General/note-2021-08-19.md
+File10[$e]=/data/notes/Life/Literature/Books/1984.md
+File2[$e]=/data/backup/archivados/backups/leer/1984-bilingue.pdf
+File3[$e]=/data/backup/archivados/backups/leer/1984-George-Orwell.pdf
+File4[$e]=/data/notes/schedule.md
+File5[$e]=/data/notes/Computers/Snippets/shell-scripting-examples.md
+File6[$e]=/data/notes/General/allnotes.md
+File7[$e]=/data/notes/Life/People/George Orwell.md
+File8[$e]=/data/egg/pdf_java/Guía Colecciones.pdf
+File9[$e]=/data/notes/Workflow And Skills/Skills.md
+Name1[$e]=note-2021-08-19.md
+Name10[$e]=1984.md
+Name2[$e]=1984-bilingue.pdf
+Name3[$e]=1984-George-Orwell.pdf
+Name4[$e]=schedule.md
+Name5[$e]=shell-scripting-examples.md
+Name6[$e]=allnotes.md
+Name7[$e]=George Orwell.md
+Name8[$e]=Guía Colecciones.pdf
+Name9[$e]=Skills.md

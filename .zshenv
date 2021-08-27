@@ -11,6 +11,7 @@ export KDEHOME="$XDG_CONFIG_HOME"/kde
 # Manpagers
 # export MANPAGER="sh -c 'col -b | bat -l man -p'"
 export MANPAGER="nvim -c 'set ft=man' -"
+export MANWIDTH=999
 
 export VISUAL="nvim"
 export EDITOR="nvim"

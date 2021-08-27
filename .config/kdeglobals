@@ -72,7 +72,7 @@ ForegroundVisited=148,207,149
 
 [Colors:View]
 BackgroundAlternate=33,43,54
-BackgroundNormal=36,38,54
+BackgroundNormal=40,44,57
 DecorationFocus=204,34,102
 DecorationHover=204,34,102
 ForegroundActive=211,218,227
@@ -86,7 +86,7 @@ ForegroundVisited=148,207,149
 
 [Colors:Window]
 BackgroundAlternate=47,52,63
-BackgroundNormal=27,33,44
+BackgroundNormal=26,27,38
 DecorationFocus=204,34,102
 DecorationHover=204,34,102
 ForegroundActive=211,218,227
@@ -100,7 +100,7 @@ ForegroundVisited=148,207,149
 
 [DirSelect Dialog]
 DirSelectDialog Size=864,600
-History Items[$e]=file:///data/games/mindustry,file:///data/downloads,file:///data,file:///data/backup
+History Items[$e]=file:///data/downloads,file:///data/games/mindustry,file:///data,file:///data/backup
 
 [General]
 BrowserApplication=brave-browser.desktop
@@ -114,12 +114,12 @@ fixed=JetBrainsMono Nerd Font,10,-1,5,50,0,0,0,0,0
 font=Inter,11,-1,5,50,0,0,0,0,0
 menuFont=Inter,11,-1,5,50,0,0,0,0,0
 shadeSortColumn=true
-smallestReadableFont=Inter,10,-1,5,50,0,0,0,0,0
-toolBarFont=Inter,11,-1,5,50,0,0,0,0,0
+smallestReadableFont=Overpass,10,-1,5,25,0,0,0,0,0,Regular
+toolBarFont=Overpass,11,-1,5,50,0,0,0,0,0
 widgetStyle=Breeze
 
 [Icons]
-Theme=Tela-circle-purple-dark
+Theme=Tela-circle-red-dark
 
 [KDE]
 AnimationDurationFactor=0.17677669529663687
@@ -148,12 +148,15 @@ Sort reversed=false
 Speedbar Width=158
 View Style=DetailTree
 
+[KShortcutsDialog Settings]
+Dialog Size=600,480
+
 [WM]
-activeBackground=26,33,43
-activeBlend=27,33,44
-activeFont=Overpass,10,-1,5,50,0,0,0,0,0
+activeBackground=26,27,38
+activeBlend=26,27,38
+activeFont=Overpass,10,-1,5,25,0,0,0,0,0,Regular
 activeForeground=211,218,227
-frame=26,33,43
+frame=26, 27, 38
 inactiveBackground=40,44,57
 inactiveBlend=47,52,63
 inactiveForeground=102,106,115,216

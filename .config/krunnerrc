@@ -6,21 +6,21 @@ font=Inter, 13, -1,5,50,0,0,0,0,0
 migrated=true
 
 [Plugins]
-CharacterRunnerEnabled=true
+CharacterRunnerEnabled=false
 DictionaryEnabled=true
 Kill RunnerEnabled=true
-PIM Contacts Search RunnerEnabled=true
+PIM Contacts Search RunnerEnabled=false
 PowerDevilEnabled=true
 Spell CheckerEnabled=true
-appstreamEnabled=true
+appstreamEnabled=false
 baloosearchEnabled=true
 bookmarksEnabled=true
 browserhistoryEnabled=true
 browsertabsEnabled=true
 calculatorEnabled=true
 desktopsessionsEnabled=true
-katesessionsEnabled=true
-konsoleprofilesEnabled=true
+katesessionsEnabled=false
+konsoleprofilesEnabled=false
 kwinEnabled=true
 locationsEnabled=true
 org.kde.activities2Enabled=true
@@ -34,3 +34,11 @@ shellEnabled=true
 unitconverterEnabled=true
 webshortcutsEnabled=true
 windowsEnabled=true
+
+[Runners][CharacterRunner]
+aliases=Santiago Alejandro Gonzalez Bogado,testing
+codes=#123,#0023
+triggerWord=alchemy
+
+[Runners][PIM Contacts Search Runner]
+queryAutocompleter=false

@@ -35,7 +35,7 @@ Transform=normal
 [DrmOutputs][c26661848f][8775597e-7406-5914-b126-4144423ed661]
 Mode=1920x1080_60000
 Scale=1
-Transform=normal
+Transform=rotate-90
 
 [Effect-Blur]
 BlurStrength=7
@@ -63,9 +63,11 @@ CommandTitlebarWheel=Maximize/Restore
 
 [NightColor]
 Active=true
-EveningBeginFixed=2300
+EveningBeginFixed=1900
 Mode=Times
 MorningBeginFixed=0700
+NightTemperature=3700
+TransitionTime=123
 
 [Plugins]
 desktopchangeosdEnabled=true
@@ -91,7 +93,7 @@ PopupHideDelay=200
 
 [Script-kwin-script-tiling]
 autorotatePortrait=true
-floaters=kdialog\\,polkit\\,yakuake\\,org.kde\\,njb
+floaters=kdialog\\,polkit\\,yakuake\\,org.kde\\,note-jbs
 fullscreenGaps=true
 gridLayoutMasterCount=2
 placement=1

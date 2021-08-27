@@ -43,8 +43,9 @@ case ${1} in
         generalNote ;;
     -k)
         topicSelected="$2"
+        echo "$topicSelected" > "$notesDirectory/utils/lastNoteUsed.txt"
         topicNote
-        ;;
+        ctags -R $notesDirectory ;;
     *)
         topicSelected=$(kdialog --geometry 500x500 --inputbox "Enter the topic and name of the note" "$lastOpenedNote")
         if [[ -z $topicSelected ]];then

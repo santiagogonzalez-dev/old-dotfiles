@@ -23,8 +23,7 @@ alias \
     plasma-restart='kquitapp5 plasmashell && sleep 1 && kstart5 plasmashell && sleep 1 && kwin_wayland --replace &' \
     editkitty='nvim ~/.config/kitty/kitty.conf' \
     d='dirs -v'
-    for index ({1..9}) alias "$index"="cd +${index}"; unset index
-
+    for index ({1..33}) alias "$index"="cd +${index}"; unset index
 
 # Color or human readable
 alias \
