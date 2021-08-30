@@ -25,11 +25,11 @@ IntensityEffect=0
 
 [Colors:Button]
 BackgroundAlternate=43,57,72
-BackgroundNormal=40,44,57
-DecorationFocus=204,34,102
-DecorationHover=204,34,102
-ForegroundActive=211,218,227
-ForegroundInactive=174,181,196
+BackgroundNormal=26,27,38
+DecorationFocus=219,48,86
+DecorationHover=219,48,86
+ForegroundActive=166,185,203
+ForegroundInactive=166,185,203
 ForegroundLink=46,184,230
 ForegroundNegative=204,17,58
 ForegroundNeutral=225,34,65
@@ -44,57 +44,57 @@ DecorationHover=76,99,125
 
 [Colors:Selection]
 BackgroundAlternate=76,99,125
-BackgroundNormal=204,34,102
-DecorationFocus=204,34,102
-DecorationHover=204,34,102
-ForegroundActive=211,218,227
-ForegroundInactive=199,206,214
+BackgroundNormal=219,48,86
+DecorationFocus=219,48,86
+DecorationHover=219,48,86
+ForegroundActive=166,185,203
+ForegroundInactive=166,185,203
 ForegroundLink=46,184,230
 ForegroundNegative=204,17,58
 ForegroundNeutral=225,34,65
-ForegroundNormal=242,242,242
+ForegroundNormal=166,185,203
 ForegroundPositive=148,207,149
 ForegroundVisited=148,207,149
 
 [Colors:Tooltip]
 BackgroundAlternate=47,52,63
-BackgroundNormal=40,44,57
-DecorationFocus=204,34,102
-DecorationHover=204,34,102
-ForegroundActive=211,218,227
-ForegroundInactive=174,181,196
+BackgroundNormal=26,27,38
+DecorationFocus=219,48,86
+DecorationHover=219,48,86
+ForegroundActive=166,185,203
+ForegroundInactive=166,185,203
 ForegroundLink=46,184,230
 ForegroundNegative=204,17,58
 ForegroundNeutral=225,34,65
-ForegroundNormal=211,218,227
+ForegroundNormal=166,185,203
 ForegroundPositive=148,207,149
 ForegroundVisited=148,207,149
 
 [Colors:View]
 BackgroundAlternate=33,43,54
-BackgroundNormal=40,44,57
-DecorationFocus=204,34,102
-DecorationHover=204,34,102
-ForegroundActive=211,218,227
-ForegroundInactive=174,181,196
+BackgroundNormal=26,27,38
+DecorationFocus=219,48,86
+DecorationHover=219,48,86
+ForegroundActive=166,185,203
+ForegroundInactive=166,185,203
 ForegroundLink=46,184,230
 ForegroundNegative=204,17,58
 ForegroundNeutral=225,34,65
-ForegroundNormal=194,202,217
+ForegroundNormal=166,185,203
 ForegroundPositive=148,207,149
 ForegroundVisited=148,207,149
 
 [Colors:Window]
 BackgroundAlternate=47,52,63
 BackgroundNormal=26,27,38
-DecorationFocus=204,34,102
-DecorationHover=204,34,102
-ForegroundActive=211,218,227
-ForegroundInactive=174,181,196
+DecorationFocus=219,48,86
+DecorationHover=219,48,86
+ForegroundActive=166,185,203
+ForegroundInactive=166,185,203
 ForegroundLink=46,184,230
 ForegroundNegative=204,17,58
 ForegroundNeutral=225,34,65
-ForegroundNormal=229,229,255
+ForegroundNormal=166,185,203
 ForegroundPositive=148,207,149
 ForegroundVisited=148,207,149
 
@@ -110,7 +110,7 @@ TerminalApplication=kitty
 TerminalService=kitty.desktop
 XftHintStyle=hintmedium
 XftSubPixel=rgb
-fixed=JetBrainsMono Nerd Font,10,-1,5,50,0,0,0,0,0
+fixed=Hack,10,-1,5,50,0,0,0,0,0
 font=Inter,11,-1,5,50,0,0,0,0,0
 menuFont=Inter,11,-1,5,50,0,0,0,0,0
 shadeSortColumn=true
@@ -119,7 +119,7 @@ toolBarFont=Overpass,11,-1,5,50,0,0,0,0,0
 widgetStyle=Breeze
 
 [Icons]
-Theme=Tela-circle-red-dark
+Theme=Tela-red-dark
 
 [KDE]
 AnimationDurationFactor=0.17677669529663687
@@ -155,9 +155,9 @@ Dialog Size=600,480
 activeBackground=26,27,38
 activeBlend=26,27,38
 activeFont=Overpass,10,-1,5,25,0,0,0,0,0,Regular
-activeForeground=211,218,227
+activeForeground=166,185,203
 frame=26, 27, 38
-inactiveBackground=40,44,57
-inactiveBlend=47,52,63
+inactiveBackground=26,27,38
+inactiveBlend=26,27,38
 inactiveForeground=102,106,115,216
-inactiveFrame=26,33,43
+inactiveFrame=50, 61, 67

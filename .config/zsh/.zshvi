@@ -11,6 +11,14 @@ zle -N edit-command-line # Autoload this function ^
 bindkey '^n' edit-command-line # Edit line with ctrl-n in insert mode
 bindkey -M vicmd n edit-command-line # Edit line with n in normal mode
 
+# Better searching in command mode
+bindkey -M vicmd '?' history-incremental-search-backward
+bindkey -M vicmd '/' history-incremental-search-forward
+
+# Beginning search with arrow keys
+bindkey "^[OA" up-line-or-beginning-search
+bindkey "^[OB" down-line-or-beginning-search
+
 # Change cursor shape and prompt for different vi modes.
 cursor_shape () {
     function zle-keymap-select () {

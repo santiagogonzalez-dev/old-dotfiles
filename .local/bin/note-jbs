@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 
-notesDirectory=/data/notes # Default notes path
+notesDirectory=/data/notes
 lastOpenedNote=$(cat "$notesDirectory/utils/lastNoteUsed.txt")
 
 topicNote() {
     noteName=${topicSelected##*/}
+    directoryNote=$(echo "$topicSelected" | sed "s/$noteName//g")
     notePath=$notesDirectory/$topicSelected.md
+
+    mkdir -p -- "$directoryNote"
 
     if [[ ! -f $notePath ]]; then
         echo -e "# $noteName" > "$notePath"
@@ -18,34 +21,43 @@ topicNote() {
         -c "startinsert" "$notePath"
 }
 
-generalNote() {
-    notesGeneralPath=$notesDirectory/General/note-$(date +%Y-%m-%d).md
+fleetingNote() {
+    notesFleetingPath=$notesDirectory/Fleeting/note-$(date +%Y-%m-%d).md
 
-    if [[ ! -f $notesGeneralPath ]]; then
-        echo -e "# Notes for $(date +%Y-%m-%d)" > "$notesGeneralPath"
-        echo -e "" >> "$notesGeneralPath"
+    if [[ ! -f $notesFleetingPath ]]; then
+        echo -e "# Notes for $(date +%Y-%m-%d)" > "$notesFleetingPath"
+        echo -e "" >> "$notesFleetingPath"
     fi
 
     nvim -c "norm Go" \
         -c "norm Go## $(date +%H:%M:%S)" \
         -c "norm Go" \
         -c "norm zz" \
-        -c "startinsert" "$notesGeneralPath"
+        -c "startinsert" "$notesFleetingPath"
+}
+
+redo_notes() {
+    find $notesDirectory/ -empty -type f -delete
+    find $notesDirectory/ -empty -type d -delete
+    ctags -R $notesDirectory
+    ./utils/show-all-notes > index.md
 }
 
 case ${1} in
-    -i)
-        nvim $notesDirectory/index.md ;;
-    -o)
-        okular "$notesDirectory/$lastOpenedNote.md" ;;
-    -g)
+    -f)
         unset topicSelected
-        generalNote ;;
+        fleetingNote
+        redo_notes ;;
+    -i)
+        nvim $notesDirectory/index.md
+        redo_notes ;;
     -k)
         topicSelected="$2"
         echo "$topicSelected" > "$notesDirectory/utils/lastNoteUsed.txt"
         topicNote
-        ctags -R $notesDirectory ;;
+        redo_notes ;;
+    -o)
+        okular "$notesDirectory/$lastOpenedNote.md" ;;
     *)
         topicSelected=$(kdialog --geometry 500x500 --inputbox "Enter the topic and name of the note" "$lastOpenedNote")
         if [[ -z $topicSelected ]];then
@@ -53,5 +65,5 @@ case ${1} in
         fi
         echo "$topicSelected" > "$notesDirectory/utils/lastNoteUsed.txt"
         topicNote
-        ctags -R $notesDirectory ;;
+        redo_notes ;;
 esac

@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
+ID=$1
+
 while true
 do
     timeleft=$(timeleftinthisworld)
 
     DATA="| A | $timeleft | | |"
 
-    qdbus org.kde.plasma.doityourselfbar /id_3 \
+    qdbus org.kde.plasma.doityourselfbar /id_$ID \
           org.kde.plasma.doityourselfbar.pass "$DATA"
 
     sleep 1s

@@ -67,7 +67,7 @@ EveningBeginFixed=1900
 Mode=Times
 MorningBeginFixed=0700
 NightTemperature=3700
-TransitionTime=123
+TransitionTime=90
 
 [Plugins]
 desktopchangeosdEnabled=true
@@ -93,7 +93,7 @@ PopupHideDelay=200
 
 [Script-kwin-script-tiling]
 autorotatePortrait=true
-floaters=kdialog\\,polkit\\,yakuake\\,org.kde\\,note-jbs
+floaters=kdialog\\,polkit\\,yakuake\\,org.kde\\,note-jbs\\,org.kde.polkit-kde-authentication-agent-1
 fullscreenGaps=true
 gridLayoutMasterCount=2
 placement=1
@@ -103,8 +103,8 @@ screenGapSizeLeft=6
 screenGapSizeRight=6
 screenGapSizeTop=6
 showLayoutOsd=false
-windowsGapSizeHeight=3
-windowsGapSizeWidth=3
+windowsGapSizeHeight=6
+windowsGapSizeWidth=6
 
 [TabBox]
 BorderActivate=9

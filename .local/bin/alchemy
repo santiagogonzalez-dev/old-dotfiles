@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# The point of this script is that you can feed it some characters, for example
+# if I do: ./alchemy sg The script will check if there's a file in the
+# $snippets called sg. Then it will copy the content to your clipboard, in my
+# case it will copy my name, Santiago Gonzalez.
+# Note wl-copy it's just for Wayland
+
+looking_for=$1
+snippets=/data/alchemy # File where you put what you want
+
+cat $snippets/$1 | wl-copy

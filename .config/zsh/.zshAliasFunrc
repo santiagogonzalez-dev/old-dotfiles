@@ -47,6 +47,10 @@ function gacp() {
     command git add . && git commit -m "$@" && git push origin master
 }
 
+function okular-disown() {
+    okular "$@" &; disown
+}
+
 # Extracting files
 ex ()
 {
