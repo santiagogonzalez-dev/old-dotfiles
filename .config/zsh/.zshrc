@@ -106,9 +106,10 @@ autoload -Uz check_last_exit_code
 # "視"
 # " "
 # " "
+#{$fg[cyan]%}
 actualSymbol=" "
-PROMPT="╭─%n@%m%F{white} %1~%f%{$reset_color%} \$vcs_info_msg_0_%f%{$reset_color%}
-╰─%(?:%{$fg_bold[white]%}$actualSymbol:%{$fg_bold[red]%}ﮀ )%${vi_mode}%{$reset_color%}"
+PROMPT="╭─%n@%m%F{white} %1~%f%[$reset_color%] \$vcs_info_msg_0_%f%[$reset_color%]
+╰─%(?:%[$fg_bold[white]%]$actualSymbol:%[$fg_bold[red]%]ﮀ )%${vi_mode}%[$reset_color%]"
 
 RPROMPT='$(check_last_exit_code) ${vi_mode}'
 
