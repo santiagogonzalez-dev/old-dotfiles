@@ -1,23 +1,21 @@
 # Vi Mode Settings
 
-# Keybindings
-bindkey -v
+bindkey -v # Vi mode
+
+# Search with vim-like keybindings through autocompletion menu
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
+
 autoload -Uz edit-command-line
-zle -N edit-command-line # Autoload this function ^
+zle -N edit-command-line
 bindkey '^n' edit-command-line # Edit line with ctrl-n in insert mode
 bindkey -M vicmd n edit-command-line # Edit line with n in normal mode
 
 # Better searching in command mode
 bindkey -M vicmd '?' history-incremental-search-backward
 bindkey -M vicmd '/' history-incremental-search-forward
-
-# Beginning search with arrow keys
-bindkey "^[OA" up-line-or-beginning-search
-bindkey "^[OB" down-line-or-beginning-search
 
 # Change cursor shape and prompt for different vi modes.
 cursor_shape () {
@@ -46,3 +44,6 @@ cursor_shape () {
     vi_cmd_mode="%{$fg[green]%} %{$reset_color%}"
     vi_mode=$vi_ins_mode
 }
+zle -N cursor_shape
+
+zsh-defer autoload -Uz cursor_shape; cursor_shape

@@ -1,14 +1,7 @@
-#!/bin/sh
-
-fpath_completion=/usr/share/zsh/site-functions/_*
-fpath+="$(dirname "${fpath_completion}")"
-unset fpath_completion
-
 # What should be the normal behaviour
 alias \
     sn='sudo -E nvim' \
     n='nvim' \
-    no='nvim $(fzf)' \
     zzz='systemctl suspend' \
     cd..='cd ..' \
     cp='cp -iv' \
@@ -33,15 +26,21 @@ alias \
     du='du -h' \
     free='free -mh'
 
+function no {
+    nvim $(fzf --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (exa -1T -L 8 {} | less)) || echo {} 2> /dev/null | head -200')
+}
+zle -N no
+autoload -Uz no
+
 function last-command {
     clear
     zle up-history
     zle accept-line
 }
 zle -N last-command
-
 bindkey -M viins '^[h' last-command
 bindkey -M vicmd '^[h' last-command
+autoload -Uz last-command
 
 function gacp() {
     command git add . && git commit -m "$@" && git push origin master
@@ -74,3 +73,5 @@ ex ()
     echo "'$1' is not a valid file"
   fi
 }
+zle -N ex
+autoload -Uz ex

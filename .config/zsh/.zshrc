@@ -1,11 +1,19 @@
 #zmodload zsh/zprof # Uncomment to enable stats for Zsh with zprof command
+
+# zsh-defer
+source "${ZDOTDIR}/zsh-defer.plugin.zsh"
+
+fpath_completion=/usr/share/zsh/site-functions/_*
+fpath+="$(dirname "${fpath_completion}")"
+unset fpath_completion
+
 autoload -Uz colors && colors
 HISTFILE=~/.config/zsh/.zshHistory
 HISTSIZE=600000
 SAVEHIST=600000
 
 zstyle ':compinstall:filename' '/home/st/.config/zsh/.zshrc'
-zstyle ':completion:*:*:*:*:*' menu select=3 # If there's less than 6 items it will use normal tabs
+zstyle ':completion:*:*:*:*:*' menu select=3 # If there's less than 3 items it will use normal tabs
 zstyle ':completion:*:matches' group 'yes'
 zstyle ':completion:*:options' description 'yes'
 zstyle ':completion:*:options' auto-description '%d'
@@ -23,10 +31,6 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:
 zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec))' # Ignore patterns
 zstyle ':autocomplete:*' min-delay 0.0  # float
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|?=** r:|?=**'
-zstyle ':vcs_info:*' enable git # Enable only git
-zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:git:*' formats "%{$fg[blue]%}❰%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[blue]%}❱ "
 
 setopt PROMPT_SUBST # Let the prompt substite variables, without this the prompt will not work
 setopt BRACE_CCL # Allow brace character class list expansion
@@ -64,30 +68,15 @@ compinit -C
 _comp_options+=(globdots) # Include hidden files.
 zmodload zsh/mathfunc
 zmodload zsh/complist
+autoload zcalc
 
 # Load aliases, functions and vi-mode
-source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.zshAliasFunrc"
-autoload -Uz last-command
-autoload -Uz ex
+source "${ZDOTDIR}/.zshAliasFunrc"
 
 # Vi mode
-source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.zshvi"
-autoload -Uz cursor_shape; cursor_shape
+source "${ZDOTDIR}/.zshvi"
 
 autoload -Uz vcs_info # Vcs and colors
-
-autoload -Uz precmd_vcs_info
-autoload -Uz precmd_functions
-precmd_vcs_info() { vcs_info } # Setup a hook that runs before every ptompt.
-precmd_functions+=( precmd_vcs_info )
-
-+vi-git-untracked(){
-    if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
-        git status --porcelain | grep '??' &> /dev/null ; then
-        hook_com[staged]+='N!' # Signify new files with a upper case N and a bang
-    fi
-}
-autoload -Uz function +vi-git-untracked
 
 # Exit code of the last command
 function check_last_exit_code() {
@@ -100,6 +89,7 @@ function check_last_exit_code() {
         echo "$EXIT_CODE_PROMPT"
     fi
 }
+zle -N check_last_exit_code
 autoload -Uz check_last_exit_code
 
 # " "
@@ -107,19 +97,27 @@ autoload -Uz check_last_exit_code
 # " "
 # " "
 actualSymbol=" "
-PROMPT="╭─%n@%m%F{white} %1~%f%{$reset_color%} \$vcs_info_msg_0_%f%{$reset_color%}
+PROMPT="╭─%n@%m%F{white} %1~ %f%{$reset_color%}
 ╰─%(?:%{$fg_bold[white]%}$actualSymbol:%{$fg_bold[red]%}ﮀ )%${vi_mode}%{$reset_color%}"
 
 RPROMPT='$(check_last_exit_code) ${vi_mode}'
 
+# Plugins
+
 # fzf
-source /usr/share/fzf/completion.zsh 2>/dev/null
-source /usr/share/fzf/key-bindings.zsh 2>/dev/null
+zsh-defer source /usr/share/fzf/completion.zsh
+zsh-defer source /usr/share/fzf/key-bindings.zsh
 
 # zsh-autosuggestions
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
+zsh-defer source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# zsh-history-substring-search
+zsh-defer source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+# zsh-autopairs
+zsh-defer source /usr/share/zsh/plugins/zsh-autopair/autopair.zsh
 
 # Fast-syntax-highlighting
-source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
+zsh-defer source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
 #zprof # To time up the zsh load time
