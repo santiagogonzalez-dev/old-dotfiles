@@ -76,9 +76,7 @@ source "${ZDOTDIR}/.zshAliasFunrc"
 # Vi mode
 source "${ZDOTDIR}/.zshvi"
 
-autoload -Uz vcs_info # Vcs and colors
-
-# Exit code of the last command
+# Exit error code of the last command
 function check_last_exit_code() {
     local LAST_EXIT_CODE=$?
     if [[ $LAST_EXIT_CODE -ne 0 ]]; then
@@ -92,19 +90,50 @@ function check_last_exit_code() {
 zle -N check_last_exit_code
 autoload -Uz check_last_exit_code
 
+# Git
+## autoload vcs and colors
+autoload -Uz vcs_info
+
+# enable only git
+zstyle ':vcs_info:*' enable git
+
+# setup a hook that runs before every ptompt.
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+setopt prompt_subst
+
+# add a function to check for untracked files in the directory.
+# from https://github.com/zsh-users/zsh/blob/master/Misc/vcs_info-examples
+zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
+#
++vi-git-untracked(){
+    if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
+        git status --porcelain | grep '??' &> /dev/null ; then
+        # This will show the marker if there are any untracked files in repo.
+        # If instead you want to show the marker only if there are untracked
+        # files in $PWD, use:
+        #[[ -n $(git ls-files --others --exclude-standard) ]] ; then
+        hook_com[staged]+='!' # signify new files with a bang
+    fi
+}
+
+zstyle ':vcs_info:*' check-for-changes true
+# zstyle ':vcs_info:git:*' formats " %r/%S %b %m%u%c "
+zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}(%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[blue]%})"
+
 # " "
 # "視"
 # " "
 # " "
 actualSymbol=" "
-PROMPT="╭─%n@%m%F{white} %1~ %f%{$reset_color%}
+PROMPT="╭─%n@%m%F{white} %2~ %f%{$reset_color%}
 ╰─%(?:%{$fg_bold[white]%}$actualSymbol:%{$fg_bold[red]%}ﮀ )%${vi_mode}%{$reset_color%}"
 
-RPROMPT='$(check_last_exit_code) ${vi_mode}'
+RPROMPT+='$vcs_info_msg_0_ $(check_last_exit_code) ${vi_mode}'
 
 # Plugins
 
-# fzf
+# zsh-fzf
 zsh-defer source /usr/share/fzf/completion.zsh
 zsh-defer source /usr/share/fzf/key-bindings.zsh
 
@@ -117,7 +146,7 @@ zsh-defer source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history
 # zsh-autopairs
 zsh-defer source /usr/share/zsh/plugins/zsh-autopair/autopair.zsh
 
-# Fast-syntax-highlighting
+# fast-syntax-highlighting
 zsh-defer source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
 #zprof # To time up the zsh load time
