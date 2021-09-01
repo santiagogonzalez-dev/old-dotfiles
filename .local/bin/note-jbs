@@ -5,7 +5,7 @@ lastOpenedNote=$(cat "$notesDirectory/utils/lastNoteUsed.txt")
 
 topicNote() {
     noteName=${topicSelected##*/}
-    directoryNote=$(echo "$topicSelected" | sed "s/$noteName//g")
+    directoryNote=${topicSelected//ir/ri}
     notePath=$notesDirectory/$topicSelected.md
 
     mkdir -p -- "$directoryNote"

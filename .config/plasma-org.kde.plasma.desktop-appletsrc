@@ -31,7 +31,7 @@ activityId=
 formfactor=2
 immutability=1
 lastScreen=0
-location=3
+location=4
 plugin=org.kde.panel
 wallpaperplugin=org.kde.image
 
@@ -146,16 +146,6 @@ plugin=org.kde.plasma.panelspacer
 [Containments][2][Applets][45][Configuration][General]
 length=734
 
-[Containments][2][Applets][49]
-immutability=1
-plugin=org.kde.plasma.colorpicker
-
-[Containments][2][Applets][49][Configuration]
-PreloadWeight=100
-
-[Containments][2][Applets][49][Configuration][General]
-history=#1a1b26,#768390,#1a1b26,#1d2428,#161b1e,#2a3338,#323d43,#424b4e
-
 [Containments][2][Applets][5]
 immutability=1
 plugin=org.kde.plasma.icontasks
@@ -181,7 +171,7 @@ DialogHeight=86
 DialogWidth=1920
 
 [Containments][2][General]
-AppletOrder=3;36;32;26;5;45;23;44;49;7;31;43
+AppletOrder=3;36;32;26;5;45;23;44;7;31;43
 
 [Containments][47]
 ItemGeometries-1920x1080=
@@ -195,16 +185,15 @@ plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.image
 
 [Containments][47][ConfigDialog]
-DialogHeight=1050
+DialogHeight=1080
 DialogWidth=1920
 
 [Containments][47][General]
 ToolBoxButtonState=topcenter
 ToolBoxButtonX=523
-ToolBoxButtonY=24
 
 [Containments][47][Wallpaper][org.kde.image][General]
-Image=file:///data/wallpapers/raindrops-4_FHD.jpg
+Image=file:///data/wallpapers/wallhaven-rd73r1.png
 SlidePaths=/usr/share/wallpapers
 
 [Containments][48]
@@ -227,7 +216,7 @@ ToolBoxButtonState=topcenter
 ToolBoxButtonX=103
 
 [Containments][48][Wallpaper][org.kde.image][General]
-Image=/data/wallpapers/portrait/wallhaven-dp3mvj.png
+Image=file:///data/wallpapers/portrait/wallhaven-dp3mvj.png
 SlidePaths=/usr/share/wallpapers
 
 [Containments][8]
@@ -235,7 +224,7 @@ activityId=
 formfactor=2
 immutability=1
 lastScreen=0
-location=3
+location=4
 plugin=org.kde.plasma.private.systemtray
 wallpaperplugin=org.kde.image
 

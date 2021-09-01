@@ -35,7 +35,7 @@ Transform=normal
 [DrmOutputs][c26661848f][8775597e-7406-5914-b126-4144423ed661]
 Mode=1920x1080_60000
 Scale=1
-Transform=rotate-90
+Transform=rotate-270
 
 [Effect-Blur]
 BlurStrength=7
@@ -93,7 +93,7 @@ PopupHideDelay=200
 
 [Script-kwin-script-tiling]
 autorotatePortrait=true
-floaters=kdialog\\,polkit\\,yakuake\\,org.kde\\,note-jbs\\,org.kde.polkit-kde-authentication-agent-1
+floaters=kdialog\\,polkit\\,yakuake\\,note-jbs\\,org.kde.polkit-kde-authentication-agent-1
 fullscreenGaps=true
 gridLayoutMasterCount=2
 placement=1

@@ -2,7 +2,6 @@
 alias \
     sn='sudo -E nvim' \
     n='nvim' \
-    zzz='systemctl suspend' \
     cd..='cd ..' \
     cp='cp -iv' \
     mv='mv -iv' \

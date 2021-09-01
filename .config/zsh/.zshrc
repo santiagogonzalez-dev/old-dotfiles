@@ -91,7 +91,6 @@ zle -N check_last_exit_code
 autoload -Uz check_last_exit_code
 
 # Git
-## autoload vcs and colors
 autoload -Uz vcs_info
 
 # enable only git
@@ -100,12 +99,9 @@ zstyle ':vcs_info:*' enable git
 # setup a hook that runs before every ptompt.
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
-setopt prompt_subst
 
-# add a function to check for untracked files in the directory.
-# from https://github.com/zsh-users/zsh/blob/master/Misc/vcs_info-examples
 zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
-#
+
 +vi-git-untracked(){
     if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
         git status --porcelain | grep '??' &> /dev/null ; then
@@ -117,19 +113,20 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
     fi
 }
 
+
 zstyle ':vcs_info:*' check-for-changes true
-# zstyle ':vcs_info:git:*' formats " %r/%S %b %m%u%c "
-zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}(%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[blue]%})"
+zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}❰%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[blue]%}❱"
 
 # " "
 # "視"
 # " "
 # " "
 actualSymbol=" "
-PROMPT="╭─%n@%m%F{white} %2~ %f%{$reset_color%}
+PROMPT="╭─%n@%m%F{white} %2~%f%{$reset_color%}
 ╰─%(?:%{$fg_bold[white]%}$actualSymbol:%{$fg_bold[red]%}ﮀ )%${vi_mode}%{$reset_color%}"
 
-RPROMPT+='$vcs_info_msg_0_ $(check_last_exit_code) ${vi_mode}'
+RPROMPT='$(check_last_exit_code) ${vi_mode}'
+RPROMPT+='$vcs_info_msg_0_'
 
 # Plugins
 
