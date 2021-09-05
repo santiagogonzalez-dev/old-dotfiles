@@ -7,28 +7,37 @@ gov_check() {
     if [[ "$actual_governor" == "$governor" ]]; then
         echo "Governor has already been set"
     else
-        echo "$governor" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+        pkexec bash -c "echo $governor | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor"
     fi
+}
+
+notify_mode() {
+      statGovernor=$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor)
+      ppState=$(gdbus introspect --system --dest net.hadess.PowerProfiles --object-path /net/hadess/PowerProfiles | awk 'sub(/readwrite s */,X)')
+      notify-send "Governor: $statGovernor
+Mode: $ppState"
 }
 
 case "${1}" in
   per)
-        gdbus call --system --dest net.hadess.PowerProfiles --object-path /net/hadess/PowerProfiles --method org.freedesktop.DBus.Properties.Set 'net.hadess.PowerProfiles' 'ActiveProfile' "<'performance'>"
-        governor=performance
-        gov_check
+      gdbus call --system --dest net.hadess.PowerProfiles --object-path /net/hadess/PowerProfiles --method org.freedesktop.DBus.Properties.Set 'net.hadess.PowerProfiles' 'ActiveProfile' "<'performance'>"
+      governor=performance
+      gov_check
+      notify_mode
     ;;
 
   bal)
-        gdbus call --system --dest net.hadess.PowerProfiles --object-path /net/hadess/PowerProfiles --method org.freedesktop.DBus.Properties.Set 'net.hadess.PowerProfiles' 'ActiveProfile' "<'balanced'>"
-        gov_check
+      gdbus call --system --dest net.hadess.PowerProfiles --object-path /net/hadess/PowerProfiles --method org.freedesktop.DBus.Properties.Set 'net.hadess.PowerProfiles' 'ActiveProfile' "<'balanced'>"
+      gov_check
+      notify_mode
     ;;
 
   saver)
-        gdbus call --system --dest net.hadess.PowerProfiles --object-path /net/hadess/PowerProfiles --method org.freedesktop.DBus.Properties.Set 'net.hadess.PowerProfiles' 'ActiveProfile' "<'power-saver'>"
-        gov_check
+      gdbus call --system --dest net.hadess.PowerProfiles --object-path /net/hadess/PowerProfiles --method org.freedesktop.DBus.Properties.Set 'net.hadess.PowerProfiles' 'ActiveProfile' "<'power-saver'>"
+      gov_check
+      notify_mode
     ;;
   *)
-        gdbus introspect --system --dest net.hadess.PowerProfiles --object-path /net/hadess/PowerProfiles | awk 'sub(/readwrite s */,X)'
-        cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+      notify_mode
     ;;
 esac

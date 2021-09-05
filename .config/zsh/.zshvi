@@ -46,4 +46,4 @@ cursor_shape () {
 }
 zle -N cursor_shape
 
-zsh-defer autoload -Uz cursor_shape; cursor_shape
+autoload -Uz cursor_shape; cursor_shape

@@ -8,7 +8,7 @@ do
 
     DATA="| A | $timeleft | | |"
 
-    qdbus org.kde.plasma.doityourselfbar /id_$ID \
+    qdbus org.kde.plasma.doityourselfbar /id_"$ID" \
           org.kde.plasma.doityourselfbar.pass "$DATA"
 
     sleep 1s

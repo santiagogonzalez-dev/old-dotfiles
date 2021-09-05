@@ -26,11 +26,9 @@ _k_friendly_name=Custom Shortcuts Service
 {35a6b27d-0b56-42fd-9a16-c209f85ef65d}=Meta+Alt+N,none,note-jbs -i
 {726dca61-de40-44c3-99ec-1d55caefa258}=Meta+Shift+Return,none,last terminal
 {9151e79d-13bd-48f5-9dde-3fd2fae9814d}=Meta+Return,none,terminal
+{b11230aa-59ce-4454-90d2-87b23de007bd}=Meta+Shift+W,none,last webBrowser
 {bcd9fa3c-f117-4eff-ad70-bf389092f002}=Meta+W,none,webBrowser
-{ce85fd85-32b8-4e3b-b58d-a899678e3cd0}=Meta+Ctrl+N,none,note-jbs -o
-{d03619b6-9b3c-48cc-9d9c-a2aadb485550}=,none,Search
-{e8118e6d-2692-44a6-8521-a91e06e20a25}=Meta+Shift+N,none,note-jbs
-{ec52c9ee-92fa-4b1b-89d9-0490cd6ab6f6}=Ctrl+Alt+T,none,Launch Konsole
+{ce85fd85-32b8-4e3b-b58d-a899678e3cd0}=Meta+Ctrl+N,none,note-jbs -v
 
 [kmix]
 _k_friendly_name=Audio Volume

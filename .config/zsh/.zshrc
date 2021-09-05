@@ -1,8 +1,5 @@
 #zmodload zsh/zprof # Uncomment to enable stats for Zsh with zprof command
 
-# zsh-defer
-source "${ZDOTDIR}/zsh-defer.plugin.zsh"
-
 fpath_completion=/usr/share/zsh/site-functions/_*
 fpath+="$(dirname "${fpath_completion}")"
 unset fpath_completion
@@ -32,32 +29,32 @@ zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec))' # Ignore 
 zstyle ':autocomplete:*' min-delay 0.0  # float
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|?=** r:|?=**'
 
-setopt PROMPT_SUBST # Let the prompt substite variables, without this the prompt will not work
-setopt BRACE_CCL # Allow brace character class list expansion
-setopt COMPLETE_IN_WORD # Complete from both ends of a word.
-setopt ALWAYS_TO_END # Move cursor to the end of a completed word.
-setopt CORRECT # Turn on corrections
-setopt EXTENDEDGLOB NOMATCH MENUCOMPLETE
-setopt INTERACTIVE_COMMENTS # Enable comments in interactive shell
+setopt prompt_subst # Let the prompt substite variables, without this the prompt will not work
+setopt brace_ccl # Allow brace character class list expansion
+setopt complete_in_word # Complete from both ends of a word.
+setopt always_to_end # Move cursor to the end of a completed word.
+setopt correct # Turn on corrections
+setopt extendedglob nomatch menucomplete
+setopt interactive_comments # Enable comments in interactive shell
 
 # History
-setopt INC_APPEND_HISTORY # Ensure that commands are added to the history immediately
-setopt HIST_SAVE_NO_DUPS # Do not write a duplicate event to the history file.
+setopt inc_append_history # Ensure that commands are added to the history immediately
+setopt hist_save_no_dups # Do not write a duplicate event to the history file.
 
 # Directories
-setopt AUTO_CD # Automatically cd into typed directory.
-setopt AUTO_PUSHD # Push the current directory visited on the stack.
-setopt PUSHD_IGNORE_DUPS # Do not store duplicates in the stack.
-setopt PUSHD_SILENT # Do not print the directory stack after pushd or popd.
+setopt auto_cd # Automatically cd into typed directory.
+setopt auto_pushd # Push the current directory visited on the stack.
+setopt pushd_ignore_dups # Do not store duplicates in the stack.
+setopt pushd_silent # Do not print the directory stack after pushd or popd.
 
 # Unset the annoying bell
-unsetopt BEEP # No soud on error
+unsetopt beep # No soud on error
 
 # Jobs
-setopt AUTO_RESUME # Attempt to resume existing job before creating a new process.
-setopt NOTIFY # Report status of background jobs immediately.
-setopt NO_HUP # Don't kill jobs on shell exit.
-unsetopt BG_NICE # Don't run all background jobs at a lower priority.
+setopt auto_resume # Attempt to resume existing job before creating a new process.
+setopt notify # Report status of background jobs immediately.
+setopt no_hup # Don't kill jobs on shell exit.
+unsetopt bg_nice # Don't run all background jobs at a lower priority.
 
 autoload -Uz compinit # Basic auto/tab complete:
 for dump in $ZDOTDIR/.zcompdump(N.mh+24); do # Twice a day it's updated
@@ -66,8 +63,9 @@ done
 compinit -C
 
 _comp_options+=(globdots) # Include hidden files.
-zmodload zsh/mathfunc
 zmodload zsh/complist
+autoload zmv
+zmodload zsh/mathfunc
 autoload zcalc
 
 # Load aliases, functions and vi-mode
@@ -90,55 +88,59 @@ function check_last_exit_code() {
 zle -N check_last_exit_code
 autoload -Uz check_last_exit_code
 
-# Git
-autoload -Uz vcs_info
+# Git Status
+gitstatus () {
+    autoload -Uz vcs_info
+    # enable only git
+    zstyle ':vcs_info:*' enable git
 
-# enable only git
-zstyle ':vcs_info:*' enable git
+    # setup a hook that runs before every ptompt.
+    precmd_vcs_info() { vcs_info }
+    precmd_functions+=( precmd_vcs_info )
 
-# setup a hook that runs before every ptompt.
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
+    zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 
-zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
+    +vi-git-untracked(){
+        if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
+            git status --porcelain | grep '??' &> /dev/null ; then
+            hook_com[staged]+='!' # signify new files with a bang
+        fi
+    }
 
-+vi-git-untracked(){
-    if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
-        git status --porcelain | grep '??' &> /dev/null ; then
-        # This will show the marker if there are any untracked files in repo.
-        # If instead you want to show the marker only if there are untracked
-        # files in $PWD, use:
-        #[[ -n $(git ls-files --others --exclude-standard) ]] ; then
-        hook_com[staged]+='!' # signify new files with a bang
-    fi
+    zstyle ':vcs_info:*' check-for-changes true
+    zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}❰%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[blue]%}❱"
 }
-
-
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}❰%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[blue]%}❱"
 
 # " "
 # "視"
 # " "
 # " "
-actualSymbol=" "
-PROMPT="╭─%n@%m%F{white} %2~%f%{$reset_color%}
-╰─%(?:%{$fg_bold[white]%}$actualSymbol:%{$fg_bold[red]%}ﮀ )%${vi_mode}%{$reset_color%}"
 
-RPROMPT='$(check_last_exit_code) ${vi_mode}'
-RPROMPT+='$vcs_info_msg_0_'
+actualSymbol=" "
+PROMPT="╭─%n@%m%F{white} %2~%f%{$reset_color%} \$gitstatus
+╰─%(?:%{$fg_bold[white]%}$actualSymbol:%{$fg_bold[red]%}ﮀ )%${vi_mode}%{$reset_color%}"
+RPS1='$(check_last_exit_code) ${vi_mode}'
+RPS1+='$vcs_info_msg_0_'
 
 # Plugins
+
+# zsh-defer
+source "${ZDOTDIR}/zsh-defer.plugin.zsh"
+
+# Git status
+zsh-defer gitstatus
 
 # zsh-fzf
 zsh-defer source /usr/share/fzf/completion.zsh
 zsh-defer source /usr/share/fzf/key-bindings.zsh
 
 # zsh-autosuggestions
-zsh-defer source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# zsh-history-substring-search
-zsh-defer source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+zsh-autosuggestions-enable() {
+    source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+    bindkey -M vicmd '^ ' autosuggest-accept
+    bindkey -M viins '^ ' autosuggest-execute
+}
+zsh-defer zsh-autosuggestions-enable
 
 # zsh-autopairs
 zsh-defer source /usr/share/zsh/plugins/zsh-autopair/autopair.zsh

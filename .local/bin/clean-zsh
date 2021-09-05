@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+rm -f "$ZDOTDIR"/{.zcompdump,.zcompdump.zwc}
+sleep 3
+zsh -l
+zcompile "$ZDOTDIR"/.zcompdump

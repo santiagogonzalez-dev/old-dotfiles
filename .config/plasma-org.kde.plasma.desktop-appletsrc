@@ -111,6 +111,10 @@ DialogWidth=800
 [Containments][2][Applets][36][Configuration][General]
 boldFont=false
 containmentType=Plasma
+iconFillThickness=false
+iconSize=30
+lengthFirstMargin=6
+lengthLastMargin=6
 showIcon=false
 
 [Containments][2][Applets][43]
@@ -146,6 +150,13 @@ plugin=org.kde.plasma.panelspacer
 [Containments][2][Applets][45][Configuration][General]
 length=734
 
+[Containments][2][Applets][49]
+immutability=1
+plugin=org.kde.plasma.colorpicker
+
+[Containments][2][Applets][49][Configuration]
+PreloadWeight=75
+
 [Containments][2][Applets][5]
 immutability=1
 plugin=org.kde.plasma.icontasks
@@ -171,7 +182,7 @@ DialogHeight=86
 DialogWidth=1920
 
 [Containments][2][General]
-AppletOrder=3;36;32;26;5;45;23;44;7;31;43
+AppletOrder=3;36;32;26;5;45;23;44;49;7;31;43
 
 [Containments][47]
 ItemGeometries-1920x1080=
@@ -185,7 +196,7 @@ plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.image
 
 [Containments][47][ConfigDialog]
-DialogHeight=1080
+DialogHeight=1056
 DialogWidth=1920
 
 [Containments][47][General]
@@ -193,7 +204,7 @@ ToolBoxButtonState=topcenter
 ToolBoxButtonX=523
 
 [Containments][47][Wallpaper][org.kde.image][General]
-Image=file:///data/wallpapers/wallhaven-rd73r1.png
+Image=file:///data/wallpapers/022.png
 SlidePaths=/usr/share/wallpapers
 
 [Containments][48]
@@ -216,7 +227,7 @@ ToolBoxButtonState=topcenter
 ToolBoxButtonX=103
 
 [Containments][48][Wallpaper][org.kde.image][General]
-Image=file:///data/wallpapers/portrait/wallhaven-dp3mvj.png
+Image=file:///data/wallpapers/portrait/wallhaven-3z9x8y.png
 SlidePaths=/usr/share/wallpapers
 
 [Containments][8]
@@ -252,6 +263,9 @@ PreloadWeight=80
 [Containments][8][Applets][13]
 immutability=1
 plugin=org.kde.plasma.keyboardindicator
+
+[Containments][8][Applets][13][Configuration]
+PreloadWeight=55
 
 [Containments][8][Applets][13][Configuration][ConfigDialog]
 DialogHeight=620

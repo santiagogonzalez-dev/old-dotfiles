@@ -1,24 +1,30 @@
 #!/usr/bin/env bash
 
+if [[ $# -lt 1 || $1 = "-h" ]]; then
+        echo -e "Quick notes: note-jbs -f
+
+To view the last note: note-jbs -v
+
+See Index of notes: note-jbs -i
+
+For permanent notes: note-jbs <directory>/<name of note>
+    or by search tags note-jbs @1
+
+If you are executing this from krunner, or any other launcher
+use: njbs <directory>/<name of note>
+    or by search tag njbs @1" && exit
+fi
+
 notesDirectory=/data/notes
-lastOpenedNote=$(cat "$notesDirectory/utils/lastNoteUsed.txt")
 
-topicNote() {
-    noteName=${topicSelected##*/}
-    directoryNote=${topicSelected//ir/ri}
-    notePath=$notesDirectory/$topicSelected.md
+cd $notesDirectory || exit
 
-    mkdir -p -- "$directoryNote"
-
-    if [[ ! -f $notePath ]]; then
-        echo -e "# $noteName" > "$notePath"
-        echo -e "### Note creation $(date +%Y-%m-%d\|%H:%M)" >> "$notePath"
-        echo -e "tags" >> "$notePath"
-    fi
-
-    nvim -c "norm Go" \
-        -c "norm zz" \
-        -c "startinsert" "$notePath"
+redoNotes() {
+    find $notesDirectory/ -empty -type f -delete
+    find $notesDirectory/ -empty -type d -delete
+    ctags -R $notesDirectory
+    exa --group-directories-first -T -L 8 -I "utils|tags|index.md|Alchemy" \
+        $notesDirectory > $notesDirectory/index.md
 }
 
 fleetingNote() {
@@ -36,34 +42,71 @@ fleetingNote() {
         -c "startinsert" "$notesFleetingPath"
 }
 
-redo_notes() {
-    find $notesDirectory/ -empty -type f -delete
-    find $notesDirectory/ -empty -type d -delete
-    ctags -R $notesDirectory
-    ./utils/show-all-notes > index.md
+tagToNote () {
+    if [[ $topicSelected == @* ]]; then
+        rg -w -l "## $topicSelected" $notesDirectory
+        if [[ $? -eq 0 ]]; then
+            findTag=$(rg -w -l "## $topicSelected" $notesDirectory)
+            echo "$findTag" > "$notesDirectory/utils/lastNoteUsed"
+            nvim "$findTag"
+            exit
+        else
+            notify-send "There's no tag with that number"
+            exit
+        fi
+    fi
+}
+
+topicNote() {
+
+    tagToNote
+
+    noteName=${topicSelected##*/}
+    directoryNote=${topicSelected//ir/ri}
+    notePath=$notesDirectory/$topicSelected.md
+
+    echo "$topicSelected.md" > "$notesDirectory/utils/lastNoteUsed"
+
+    mkdir -p -- "$directoryNote"
+
+    if [[ ! -f $notePath ]]; then
+        {
+        echo "# $noteName"
+        echo "## @"
+        echo ""
+        echo "### Note creation $(date +%Y-%m-%d\|%H:%M)"
+        } > "$notePath"
+    fi
+
+    nvim -c "norm Go" \
+        -c "norm zz" \
+        -c "norm Go" \
+        -c "startinsert" "$notePath"
 }
 
 case ${1} in
-    -f)
-        unset topicSelected
-        fleetingNote
-        redo_notes ;;
+    # Index of notes
     -i)
-        nvim $notesDirectory/index.md
-        redo_notes ;;
-    -k)
-        topicSelected="$2"
-        echo "$topicSelected" > "$notesDirectory/utils/lastNoteUsed.txt"
-        topicNote
-        redo_notes ;;
-    -o)
-        okular "$notesDirectory/$lastOpenedNote.md" ;;
+        redoNotes
+        nvim $notesDirectory/index.md ;;
+
+    # Temporary (Fleeting) notes
+    -f)
+        fleetingNote
+        redoNotes ;;
+
+    # Show Luhmann-ID
+    -t)
+        awk '{print $1}' $notesDirectory/tags | rg "[0-9]" | awk '!x[$0]++' | bat ;;
+
+    # View notes
+    -v)
+        whichNote=$(cat $notesDirectory/utils/lastNoteUsed)
+        okular "$whichNote" ;;
+
+    # Zettelkasten
     *)
-        topicSelected=$(kdialog --geometry 500x500 --inputbox "Enter the topic and name of the note" "$lastOpenedNote")
-        if [[ -z $topicSelected ]];then
-            exit
-        fi
-        echo "$topicSelected" > "$notesDirectory/utils/lastNoteUsed.txt"
+        topicSelected="$*"
         topicNote
-        redo_notes ;;
+        redoNotes ;;
 esac

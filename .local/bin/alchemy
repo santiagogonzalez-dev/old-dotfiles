@@ -6,7 +6,18 @@
 # case it will copy my name, Santiago Gonzalez.
 # Note wl-copy it's just for Wayland
 
-looking_for=$1
 snippets=/data/alchemy # File where you put what you want
 
-cat $snippets/$1 | wl-copy
+case ${1} in
+    -c)
+        if [[ $# -lt 3 ]]; then
+            exit
+        else
+            nameOfSnippet=$2
+            alchemySnippet="$3 $4 $5 $6 $7 $8 $9"
+            echo "$alchemySnippet" > "$snippets"/"$nameOfSnippet"
+        fi
+        ;;
+    *)
+        wl-copy < $snippets/"$1" ;;
+esac

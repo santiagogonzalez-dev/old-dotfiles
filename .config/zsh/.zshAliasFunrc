@@ -11,7 +11,7 @@ alias \
     ls='ls -F --color=auto' \
     e='exa -lah --icons --colour-scale --group-directories-first --git' \
     et='exa -lah --icons --colour-scale --group-directories-first --git -T -L4' \
-    bat='bat --theme TwoDark --italic-text=always' \
+    bat='bat --italic-text=always' \
     plasma-restart='kquitapp5 plasmashell && sleep 1 && kstart5 plasmashell && sleep 1 && kwin_wayland --replace &' \
     editkitty='nvim ~/.config/kitty/kitty.conf' \
     d='dirs -v'
@@ -37,8 +37,13 @@ function last-command {
     zle accept-line
 }
 zle -N last-command
+
 bindkey -M viins '^[h' last-command
 bindkey -M vicmd '^[h' last-command
+
+bindkey '^k' history-beginning-search-backward # Ctrl + k to search in insert mode
+bindkey '^j' history-beginning-search-forward # Ctrl + j to search in insert mode
+
 autoload -Uz last-command
 
 function gacp() {
@@ -48,6 +53,15 @@ function gacp() {
 function okular-disown() {
     okular "$@" &; disown
 }
+
+# Note-JBS
+function note-jbs-f() {
+    note-jbs -f
+}
+zle -N note-jbs-f
+
+bindkey -M viins '^[n' note-jbs-f
+bindkey -M vicmd '^[n' note-jbs-f
 
 # Extracting files
 ex ()
