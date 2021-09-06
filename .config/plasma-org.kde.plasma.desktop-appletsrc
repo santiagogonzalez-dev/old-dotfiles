@@ -294,6 +294,7 @@ DialogHeight=620
 DialogWidth=800
 
 [Containments][8][Applets][16][Configuration][General]
+globalMute=true
 volumeStep=3
 
 [Containments][8][Applets][16][Shortcuts]

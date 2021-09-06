@@ -11,6 +11,7 @@ SAVEHIST=600000
 
 zstyle ':compinstall:filename' '/home/st/.config/zsh/.zshrc'
 zstyle ':completion:*:*:*:*:*' menu select=3 # If there's less than 3 items it will use normal tabs
+zstyle ':completion:*:history-words' menu yes # Activate menu
 zstyle ':completion:*:matches' group 'yes'
 zstyle ':completion:*:options' description 'yes'
 zstyle ':completion:*:options' auto-description '%d'
@@ -36,6 +37,7 @@ setopt always_to_end # Move cursor to the end of a completed word.
 setopt correct # Turn on corrections
 setopt extendedglob nomatch menucomplete
 setopt interactive_comments # Enable comments in interactive shell
+setopt hash_list_all # Whenever a command completion is attempted, make sure the entire command path is hashed first.
 
 # History
 setopt inc_append_history # Ensure that commands are added to the history immediately
@@ -56,6 +58,10 @@ setopt notify # Report status of background jobs immediately.
 setopt no_hup # Don't kill jobs on shell exit.
 unsetopt bg_nice # Don't run all background jobs at a lower priority.
 
+typeset -U path PATH cdpath CDPATH fpath FPATH manpath MANPATH # Automatically remove duplicates from these arrays
+
+watch=(notme root) # watch for everyone but me and root
+
 autoload -Uz compinit # Basic auto/tab complete:
 for dump in $ZDOTDIR/.zcompdump(N.mh+24); do # Twice a day it's updated
     compinit
@@ -64,9 +70,11 @@ compinit -C
 
 _comp_options+=(globdots) # Include hidden files.
 zmodload zsh/complist
-autoload zmv
+zmodload zsh/parameter
+zmodload zsh/deltochar
 zmodload zsh/mathfunc
 autoload zcalc
+autoload zmv
 
 # Load aliases, functions and vi-mode
 source "${ZDOTDIR}/.zshAliasFunrc"
