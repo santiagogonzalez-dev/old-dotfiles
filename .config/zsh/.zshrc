@@ -58,7 +58,8 @@ setopt notify # Report status of background jobs immediately.
 setopt no_hup # Don't kill jobs on shell exit.
 unsetopt bg_nice # Don't run all background jobs at a lower priority.
 
-typeset -U path PATH cdpath CDPATH fpath FPATH manpath MANPATH # Automatically remove duplicates from these arrays
+# Automatically remove duplicates from these arrays
+typeset -U path PATH cdpath CDPATH fpath FPATH manpath MANPATH
 
 watch=(notme root) # watch for everyone but me and root
 
@@ -100,7 +101,7 @@ autoload -Uz check_last_exit_code
 gitstatus () {
     autoload -Uz vcs_info
     # enable only git
-    zstyle ':vcs_info:*' enable git
+    zstyle ':vcs_info:*' enable git svn
 
     # setup a hook that runs before every ptompt.
     precmd_vcs_info() { vcs_info }
@@ -118,25 +119,12 @@ gitstatus () {
     zstyle ':vcs_info:*' check-for-changes true
     zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}❰%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[blue]%}❱"
 }
-
-# " "
-# "視"
-# " "
-# " "
-
-actualSymbol=" "
-PROMPT="╭─%n@%m%F{white} %2~%f%{$reset_color%} \$gitstatus
-╰─%(?:%{$fg_bold[white]%}$actualSymbol:%{$fg_bold[red]%}ﮀ )%${vi_mode}%{$reset_color%}"
-RPS1='$(check_last_exit_code) ${vi_mode}'
-RPS1+='$vcs_info_msg_0_'
+gitstatus
 
 # Plugins
 
 # zsh-defer
 source "${ZDOTDIR}/zsh-defer.plugin.zsh"
-
-# Git status
-zsh-defer gitstatus
 
 # zsh-fzf
 zsh-defer source /usr/share/fzf/completion.zsh
@@ -155,5 +143,16 @@ zsh-defer source /usr/share/zsh/plugins/zsh-autopair/autopair.zsh
 
 # fast-syntax-highlighting
 zsh-defer source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+
+# " "
+# "視"
+# " "
+# " "
+
+actualSymbol=" "
+PROMPT="╭─%n@%m%F{white} %2~%f%{$reset_color%}
+╰─%(?:%{$fg_bold[white]%}$actualSymbol:%{$fg_bold[red]%}ﮀ )%${vi_mode}%{$reset_color%}"
+RPS1='$(check_last_exit_code) ${vi_mode}'
+RPS1+='$vcs_info_msg_0_'
 
 #zprof # To time up the zsh load time

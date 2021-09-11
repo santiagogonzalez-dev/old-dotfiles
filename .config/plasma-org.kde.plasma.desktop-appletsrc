@@ -16,7 +16,7 @@ _sep2=false
 _sep3=false
 _wallpaper=false
 add widgets=false
-configure=false
+configure=true
 configure shortcuts=false
 edit mode=true
 manage activities=true
@@ -45,6 +45,7 @@ PreloadWeight=100
 [Containments][2][Applets][23][Configuration][Agenda]
 agendaShowEventDescription=false
 agendaShowEventHangoutLink=false
+agendaWeatherShowIcon=false
 
 [Containments][2][Applets][23][Configuration][Calendar]
 monthDayDoubleClick=DoNothing
@@ -53,10 +54,13 @@ monthDayDoubleClick=DoNothing
 DialogHeight=620
 DialogWidth=800
 
+[Containments][2][Applets][23][Configuration][Events]
+enabledCalendarPlugins=
+
 [Containments][2][Applets][23][Configuration][General]
 clockFontFamily=Inter
 clockLine2HeightRatio=0.43
-clockMaxHeight=15
+clockMaxHeight=16
 clockTimeFormat1=MMM d h:mm:s
 clockTimeFormat2=mm
 showOutlines=false
@@ -100,23 +104,6 @@ plugin=org.kde.latte.separator
 immutability=1
 plugin=org.kde.latte.separator
 
-[Containments][2][Applets][36]
-immutability=1
-plugin=org.kde.windowtitle
-
-[Containments][2][Applets][36][Configuration][ConfigDialog]
-DialogHeight=620
-DialogWidth=800
-
-[Containments][2][Applets][36][Configuration][General]
-boldFont=false
-containmentType=Plasma
-iconFillThickness=false
-iconSize=30
-lengthFirstMargin=6
-lengthLastMargin=6
-showIcon=false
-
 [Containments][2][Applets][43]
 immutability=1
 plugin=org.kde.plasma.doityourselfbar
@@ -131,7 +118,7 @@ BlockButtonsSpacing=0
 BlockIndicatorsCustomColorForStyleA=#a6b9cb
 BlockIndicatorsStyle=5
 BlockLabelsCustomFont=Inter
-BlockLabelsCustomFontSize=15
+BlockLabelsCustomFontSize=16
 DBusInstanceId=3
 DBusSuccess=true
 StartupScriptPath=/home/st/.local/bin/timeleftinthisworlddbus
@@ -155,7 +142,10 @@ immutability=1
 plugin=org.kde.plasma.colorpicker
 
 [Containments][2][Applets][49][Configuration]
-PreloadWeight=75
+PreloadWeight=85
+
+[Containments][2][Applets][49][Configuration][General]
+history=#1a1b26
 
 [Containments][2][Applets][5]
 immutability=1
@@ -168,6 +158,20 @@ DialogWidth=800
 [Containments][2][Applets][5][Configuration][General]
 launchers=
 showOnlyMinimized=1
+
+[Containments][2][Applets][53]
+immutability=1
+plugin=org.kde.windowtitle
+
+[Containments][2][Applets][53][Configuration][ConfigDialog]
+DialogHeight=620
+DialogWidth=800
+
+[Containments][2][Applets][53][Configuration][General]
+boldFont=false
+containmentType=Plasma
+iconFillThickness=false
+showIcon=false
 
 [Containments][2][Applets][7]
 immutability=1
@@ -182,12 +186,12 @@ DialogHeight=86
 DialogWidth=1920
 
 [Containments][2][General]
-AppletOrder=3;36;32;26;5;45;23;44;49;7;31;43
+AppletOrder=3;53;31;26;5;45;23;44;49;7;32;43
 
-[Containments][47]
+[Containments][51]
 ItemGeometries-1920x1080=
 ItemGeometriesHorizontal=
-activityId=1c46ada5-bd5d-47a9-ab7a-c29acf71a211
+activityId=8ec51254-80e9-4b6f-a700-b06384152a6a
 formfactor=0
 immutability=1
 lastScreen=0
@@ -195,22 +199,22 @@ location=0
 plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.image
 
-[Containments][47][ConfigDialog]
+[Containments][51][ConfigDialog]
 DialogHeight=1056
 DialogWidth=1920
 
-[Containments][47][General]
+[Containments][51][General]
 ToolBoxButtonState=topcenter
-ToolBoxButtonX=523
+ToolBoxButtonX=521
 
-[Containments][47][Wallpaper][org.kde.image][General]
-Image=file:///data/wallpapers/022.png
+[Containments][51][Wallpaper][org.kde.image][General]
+Image=file:///data/wallpapers/wallhaven-lq65wq.png
 SlidePaths=/usr/share/wallpapers
 
-[Containments][48]
+[Containments][54]
 ItemGeometries-1080x1920=
 ItemGeometriesVertical=
-activityId=1c46ada5-bd5d-47a9-ab7a-c29acf71a211
+activityId=8ec51254-80e9-4b6f-a700-b06384152a6a
 formfactor=0
 immutability=1
 lastScreen=1
@@ -218,16 +222,16 @@ location=0
 plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.image
 
-[Containments][48][ConfigDialog]
+[Containments][54][ConfigDialog]
 DialogHeight=1920
 DialogWidth=1080
 
-[Containments][48][General]
+[Containments][54][General]
 ToolBoxButtonState=topcenter
-ToolBoxButtonX=103
+ToolBoxButtonX=101
 
-[Containments][48][Wallpaper][org.kde.image][General]
-Image=file:///data/wallpapers/portrait/wallhaven-3z9x8y.png
+[Containments][54][Wallpaper][org.kde.image][General]
+Image=file:///data/wallpapers/portrait/wallhaven-wy9ze7.jpg
 SlidePaths=/usr/share/wallpapers
 
 [Containments][8]
@@ -258,7 +262,7 @@ immutability=1
 plugin=org.kde.plasma.notifications
 
 [Containments][8][Applets][12][Configuration]
-PreloadWeight=80
+PreloadWeight=95
 
 [Containments][8][Applets][13]
 immutability=1
@@ -294,7 +298,6 @@ DialogHeight=620
 DialogWidth=800
 
 [Containments][8][Applets][16][Configuration][General]
-globalMute=true
 volumeStep=3
 
 [Containments][8][Applets][16][Shortcuts]
@@ -322,7 +325,7 @@ immutability=1
 plugin=org.kde.plasma.bluetooth
 
 [Containments][8][Applets][21][Configuration]
-PreloadWeight=65
+PreloadWeight=70
 
 [Containments][8][Applets][22]
 immutability=1

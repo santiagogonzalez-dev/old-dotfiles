@@ -65,7 +65,7 @@ Active=true
 EveningBeginFixed=1900
 Mode=Times
 MorningBeginFixed=0700
-NightTemperature=3700
+NightTemperature=3200
 TransitionTime=90
 
 [Plugins]
@@ -92,7 +92,7 @@ PopupHideDelay=200
 
 [Script-kwin-script-tiling]
 autorotatePortrait=true
-floaters=kdialog\\,polkit\\,yakuake\\,note-jbs\\,org.kde.polkit-kde-authentication-agent-1
+floaters=kdialog\\,polkit\\,yakuake\\,note-jbs\\,org.kde.polkit-kde-authentication-agent-1\\,org.kde.spectacle
 fullscreenGaps=true
 gridLayoutMasterCount=2
 halfLayoutMasterRatio=53

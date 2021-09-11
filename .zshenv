@@ -25,6 +25,9 @@ export KEYTIMEOUT=1
 # Zsh config
 export ZDOTDIR=$HOME/.config/zsh
 
+# Hardware acceleration
+export LIBVA_DRIVER_NAME=i965
+
 # Personal Scripts
 export PATH=$PATH:/home/$USER/.local/bin
 

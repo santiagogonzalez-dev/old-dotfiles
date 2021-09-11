@@ -100,7 +100,7 @@ ForegroundVisited=148,207,149
 
 [DirSelect Dialog]
 DirSelectDialog Size=864,600
-History Items[$e]=file:///data/downloads,file:///data/games/mindustry,file:///data,file:///data/backup
+History Items[$e]=file:///data/backup,file:///data/downloads,file:///data/games/mindustry,file:///data
 
 [General]
 BrowserApplication=brave-browser.desktop
@@ -108,18 +108,18 @@ ColorScheme=JetJBS
 Name=Breeze Dark
 TerminalApplication=kitty
 TerminalService=kitty.desktop
-XftHintStyle=hintmedium
+XftHintStyle=hintslight
 XftSubPixel=rgb
-fixed=Hack,10,-1,5,50,0,0,0,0,0
-font=Inter,11,-1,5,50,0,0,0,0,0
-menuFont=Inter,11,-1,5,50,0,0,0,0,0
+fixed=Iosevka,12,-1,5,50,0,0,0,0,0
+font=Inter,12,-1,5,50,0,0,0,0,0
+menuFont=Inter,12,-1,5,50,0,0,0,0,0
 shadeSortColumn=true
-smallestReadableFont=Overpass,10,-1,5,25,0,0,0,0,0,Regular
-toolBarFont=Overpass,11,-1,5,50,0,0,0,0,0
+smallestReadableFont=Inter,11,-1,5,50,0,0,0,0,0
+toolBarFont=Inter,12,-1,5,50,0,0,0,0,0
 widgetStyle=Breeze
 
 [Icons]
-Theme=Tela-red-dark
+Theme=Tela-red
 
 [KDE]
 AnimationDurationFactor=0.17677669529663687
@@ -154,7 +154,7 @@ Dialog Size=600,480
 [WM]
 activeBackground=26,27,38
 activeBlend=26,27,38
-activeFont=Overpass,10,-1,5,25,0,0,0,0,0,Regular
+activeFont=Inter,12,-1,5,50,0,0,0,0,0
 activeForeground=166,185,203
 frame=26, 27, 38
 inactiveBackground=26,27,38

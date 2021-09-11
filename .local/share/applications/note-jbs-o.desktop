@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Encoding=UTF-8
-Name=Note-JBS View File
-Comment=Note-JBS Note taking general
-Exec=note-jbs -o
-Categories=Utility;TextEditor
-Terminal=false
-Icon=factory

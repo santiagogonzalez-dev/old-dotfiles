@@ -2,12 +2,23 @@
 _k_friendly_name=Activity Manager
 switch-to-activity-06ee96cd-ebce-4d5a-9653-12a8b39ec95e=none,none,Switch to activity "Default"
 switch-to-activity-1c46ada5-bd5d-47a9-ab7a-c29acf71a211=none,none,Switch to activity "Workspace"
+switch-to-activity-67e58f99-4f70-4678-9b52-a1ae60f2ee91=none,none,Switch to activity "Default"
+switch-to-activity-8ec51254-80e9-4b6f-a700-b06384152a6a=none,none,Switch to activity "Workspace"
 
 [KDE Keyboard Layout Switcher]
 Switch keyboard layout to English (Dvorak)=none,none,Switch keyboard layout to English (Dvorak)
 Switch keyboard layout to Spanish (Latin American, Dvorak)=none,none,Switch keyboard layout to Spanish (Latin American\\, Dvorak)
 Switch to Next Keyboard Layout=Ctrl+Alt+K,Ctrl+Alt+K,Switch to Next Keyboard Layout
 _k_friendly_name=KWin
+
+[kalarm]
+_k_friendly_name=KAlarm
+newAudio=none,none,New Audio Alarm
+newCommand=none,none,New Command Alarm
+newDisplay=none,none,New Display Alarm
+newEmail=none,none,New Email Alarm
+spread=none,none,Spread Windows
+stopAudio=none,none,Stop Play
 
 [kcm_touchpad]
 Disable Touchpad=Touchpad Off,Touchpad Off,
@@ -33,9 +44,9 @@ _k_friendly_name=Custom Shortcuts Service
 [kmix]
 _k_friendly_name=Audio Volume
 decrease_microphone_volume=Microphone Volume Down,Microphone Volume Down,Decrease Microphone Volume
-decrease_volume=Volume Down,Volume Down,Decrease Volume
+decrease_volume=Meta+E\tVolume Down,Volume Down,Decrease Volume
 increase_microphone_volume=Microphone Volume Up,Microphone Volume Up,Increase Microphone Volume
-increase_volume=Volume Up,Volume Up,Increase Volume
+increase_volume=Volume Up\tMeta+U,Volume Up,Increase Volume
 mic_mute=Microphone Mute\tMeta+Volume Mute,Microphone Mute\tMeta+Volume Mute,Mute Microphone
 mute=Volume Mute,Volume Mute,Mute
 
@@ -233,7 +244,7 @@ stopmedia=Media Stop,Media Stop,Stop media playback
 
 [org.kde.dolphin.desktop]
 _k_friendly_name=Dolphin
-_launch=Meta+E,Meta+E,Dolphin
+_launch=none,Meta+E,Dolphin
 
 [org.kde.krunner.desktop]
 RunClipboard=Alt+Shift+F2,Alt+Shift+F2,Run command on clipboard contents
@@ -255,10 +266,10 @@ _launch=Print,Print,Launch Spectacle
 
 [org_kde_powerdevil]
 Decrease Keyboard Brightness=Keyboard Brightness Down,Keyboard Brightness Down,Decrease Keyboard Brightness
-Decrease Screen Brightness=Monitor Brightness Down,Monitor Brightness Down,Decrease Screen Brightness
+Decrease Screen Brightness=Monitor Brightness Down\tMeta+A,Monitor Brightness Down,Decrease Screen Brightness
 Hibernate=Hibernate,Hibernate,Hibernate
 Increase Keyboard Brightness=Keyboard Brightness Up,Keyboard Brightness Up,Increase Keyboard Brightness
-Increase Screen Brightness=Monitor Brightness Up,Monitor Brightness Up,Increase Screen Brightness
+Increase Screen Brightness=Meta+O\tMonitor Brightness Up,Monitor Brightness Up,Increase Screen Brightness
 PowerDown=Power Down,Power Down,Power Down
 PowerOff=Power Off,Power Off,Power Off
 Sleep=Sleep,Sleep,Suspend

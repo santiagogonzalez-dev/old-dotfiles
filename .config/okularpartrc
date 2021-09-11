@@ -11,6 +11,9 @@ TextHinting=Enabled
 [Document]
 ChangeColors=true
 
+[Main View]
+ShowLeftPanel=false
+
 [PageView]
 MouseMode=TextSelect
 
