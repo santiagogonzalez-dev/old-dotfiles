@@ -148,7 +148,7 @@ Type=ACTION_DATA_GROUP
 
 [Data_10]
 Comment=Comment
-Enabled=true
+Enabled=false
 Name=note-jbs -i
 Type=SIMPLE_ACTION_DATA
 
@@ -156,7 +156,7 @@ Type=SIMPLE_ACTION_DATA
 ActionsCount=1
 
 [Data_10Actions0]
-CommandURL=kitty --directory /data/notes --class note-jbs -o allow_remote_control=yes -o enabled_layouts=tall note-jbs -i
+CommandURL=kitty --directory ~/.notes --class note-jbs -o allow_remote_control=yes -o enabled_layouts=tall note-jbs -i
 Type=COMMAND_URL
 
 [Data_10Conditions]
@@ -1159,7 +1159,7 @@ Type=SIMPLE_ACTION_DATA
 ActionsCount=1
 
 [Data_8Actions0]
-CommandURL=kitty --directory /data/notes --class note-jbs -o allow_remote_control=yes -o enabled_layouts=tall note-jbs -f
+CommandURL=kitty --directory ~/.notes --class note-jbs -o allow_remote_control=yes -o enabled_layouts=tall zettelpy
 Type=COMMAND_URL
 
 [Data_8Conditions]
@@ -1177,7 +1177,7 @@ Uuid={14d00d9a-8b91-41ca-9a22-c023747e4281}
 
 [Data_9]
 Comment=Comment
-Enabled=true
+Enabled=false
 Name=note-jbs -v
 Type=SIMPLE_ACTION_DATA
 

@@ -88,3 +88,10 @@ ex ()
 }
 zle -N ex
 autoload -Uz ex
+
+# function sysread {
+#     zmodload zsh/system; unset -F sysread; sysread "${(@)@}";
+# }
+# sysread -i 0 -o 1 -c ByteCount; ## Loads on demand.
+#
+# alias sysread=' zmodload zsh/system; unalias sysread; sysread'

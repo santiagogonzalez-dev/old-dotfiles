@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-kitty --directory /data/notes --class note-jbs -o allow_remote_control=yes -o \
+kitty --directory ~/.notes --class note-jbs -o allow_remote_control=yes -o \
     enabled_layouts=tall note-jbs "$@"

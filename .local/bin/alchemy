@@ -6,7 +6,11 @@
 # case it will copy my name, Santiago Gonzalez.
 # Note wl-copy it's just for Wayland
 
-snippets=/data/alchemy # File where you put what you want
+snippets=${XDG_DATA_HOME}/alchemy # File where you put what you want
+
+if [ ! -d "$snippets" ]; then
+    mkdir "${XDG_DATA_HOME}"/alchemy
+fi
 
 case ${1} in
     -c)
@@ -19,5 +23,5 @@ case ${1} in
         fi
         ;;
     *)
-        wl-copy < $snippets/"$1" ;;
+        wl-copy < "$snippets"/"$1" ;;
 esac

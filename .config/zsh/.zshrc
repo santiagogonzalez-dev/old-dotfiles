@@ -97,6 +97,11 @@ function check_last_exit_code() {
 zle -N check_last_exit_code
 autoload -Uz check_last_exit_code
 
+# Plugins
+
+# zsh-defer
+source "${ZDOTDIR}/zsh-defer.plugin.zsh"
+
 # Git Status
 gitstatus () {
     autoload -Uz vcs_info
@@ -119,12 +124,7 @@ gitstatus () {
     zstyle ':vcs_info:*' check-for-changes true
     zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}❰%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[blue]%}❱"
 }
-gitstatus
-
-# Plugins
-
-# zsh-defer
-source "${ZDOTDIR}/zsh-defer.plugin.zsh"
+zsh-defer gitstatus
 
 # zsh-fzf
 zsh-defer source /usr/share/fzf/completion.zsh
@@ -149,7 +149,7 @@ zsh-defer source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-hig
 # " "
 # " "
 
-actualSymbol=" "
+actualSymbol=" "
 PROMPT="╭─%n@%m%F{white} %2~%f%{$reset_color%}
 ╰─%(?:%{$fg_bold[white]%}$actualSymbol:%{$fg_bold[red]%}ﮀ )%${vi_mode}%{$reset_color%}"
 RPS1='$(check_last_exit_code) ${vi_mode}'

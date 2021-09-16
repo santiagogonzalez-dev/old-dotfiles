@@ -3,10 +3,6 @@
 # Categories
 # 0 - Learning
 # 1 - Politics, History And Philosophy
-# 2 - Computers
-# 3 - Linguistics
-# 4 - Medicine
-# 5 - Psychology
 
 if [[ $# -lt 1 || $1 = "-h" ]]; then
         echo -e "Quick notes: note-jbs -f
@@ -23,16 +19,16 @@ use: njbs <directory>/<name of note>
     or by search tag njbs @1" && exit
 fi
 
-notesDirectory=/data/notes
+notesDirectory=${HOME}/.notes
 
-cd $notesDirectory || exit
+cd "$notesDirectory" || exit
 
 redoNotes() {
-    find $notesDirectory/ -empty -type f -delete
-    find $notesDirectory/ -empty -type d -delete
-    ctags -R $notesDirectory
+    find "$notesDirectory"/ -empty -type f -delete
+    find "$notesDirectory"/ -empty -type d -delete
+    ctags -R "$notesDirectory"
     exa --group-directories-first -T -L 8 -I "utils|tags|Alchemy" \
-        $notesDirectory > $notesDirectory/index.md
+        "$notesDirectory" > "$notesDirectory"/index.md
 }
 
 fleetingNote() {
@@ -53,8 +49,8 @@ fleetingNote() {
 luhmannID() {
     if [[ $topicSelected == @* ]]; then
 
-        if rg -w -l "## $topicSelected" $notesDirectory; then
-            findTag=$(rg -w -l "## $topicSelected" $notesDirectory)
+        if rg -w -l "## $topicSelected" "$notesDirectory"; then
+            findTag=$(rg -w -l "## $topicSelected" "$notesDirectory")
             echo "$findTag" > "$notesDirectory/utils/lastNoteUsed"
             nvim "$findTag"
             exit
@@ -98,7 +94,7 @@ case ${1} in
     # Index of notes
     -i)
         redoNotes
-        nvim $notesDirectory/index.md ;;
+        nvim "$notesDirectory"/index.md ;;
 
     # Temporary (Fleeting) notes
     -f)
@@ -108,15 +104,15 @@ case ${1} in
     # Rebuild ctags, clean empty files, and show Luhmann-ID
     -t)
         redoNotes
-        awk '{print $1}' $notesDirectory/tags | rg "[0-9]" | awk '!x[$0]++' | bat
+        awk '{print $1}' "$notesDirectory"/tags | rg "[0-9]" | awk '!x[$0]++' | bat
 
-        totalNotes=$(awk '{print $1}' $notesDirectory/tags | rg "[0-9]" | awk '!x[$0]++' | wc -l)
+        totalNotes=$(awk '{print $1}' "$notesDirectory"/tags | rg "[0-9]" | awk '!x[$0]++' | wc -l)
 
         echo -e "Total of notes: \e[33m$totalNotes" ;;
 
     # View notes
     -v)
-        whichNote=$(cat $notesDirectory/utils/lastNoteUsed)
+        whichNote=$(cat "$notesDirectory"/utils/lastNoteUsed)
         okular "$whichNote" ;;
 
     # Zettelkasten
