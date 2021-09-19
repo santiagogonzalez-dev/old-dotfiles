@@ -9,7 +9,7 @@ alias \
     rd='rmdir' \
     l='ls -lAhX --group-directories-first --color=auto' \
     ls='ls -F --color=auto' \
-    e='exa -lah --icons --colour-scale --group-directories-first --git' \
+    e='exa -lah --time-style=long-iso --icons --colour-scale --group-directories-first --git' \
     et='exa -lah --icons --colour-scale --group-directories-first --git -T -L4' \
     bat='bat --italic-text=always' \
     plasma-restart='kquitapp5 plasmashell && sleep 1 && kstart5 plasmashell && sleep 1 && kwin_wayland --replace &' \
