@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Zoom (Firejail)
 Comment=Zoom Video Conference
-Exec=/usr/bin/zoom-firejail %U
+Exec=~/.local/bin/zoom-firejail %U
 Icon=Zoom
 Terminal=false
 Type=Application
