@@ -36,3 +36,6 @@ export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 
 # fzf
 export FZF_DEFAULT_COMMAND='rg --files --hidden' # Faster than find command
+
+# Zoom
+export SSB_HOME="$XDG_DATA_HOME"/zoom
