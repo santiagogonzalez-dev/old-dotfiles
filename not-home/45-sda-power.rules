@@ -1,1 +1,1 @@
-ACTION=="add", SUBSYSTEM=="block", KERNEL=="sda", ATTR{queue/rotational}=="1", RUN+="/path/to/hdparm -S 1 /dev/sda"
+ACTION=="add", SUBSYSTEM=="block", KERNEL=="sda", ATTR{queue/rotational}=="1", RUN+="/usr/bin/hdparm -S 1 /dev/sda"
