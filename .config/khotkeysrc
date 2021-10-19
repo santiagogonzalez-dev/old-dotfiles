@@ -136,41 +136,15 @@ ForegroundPositive[$d]
 ForegroundVisited[$d]
 
 [Data]
-DataCount=10
+DataCount=7
 
 [Data_1]
 Comment=KMenuEdit Global Shortcuts
 DataCount=2
-Enabled=false
+Enabled=true
 Name=KMenuEdit
 SystemGroup=1
 Type=ACTION_DATA_GROUP
-
-[Data_10]
-Comment=Comment
-Enabled=false
-Name=note-jbs -i
-Type=SIMPLE_ACTION_DATA
-
-[Data_10Actions]
-ActionsCount=1
-
-[Data_10Actions0]
-CommandURL=kitty --directory ~/.notes --class note-jbs -o allow_remote_control=yes -o enabled_layouts=tall note-jbs -i
-Type=COMMAND_URL
-
-[Data_10Conditions]
-Comment=
-ConditionsCount=0
-
-[Data_10Triggers]
-Comment=Simple_action
-TriggersCount=1
-
-[Data_10Triggers0]
-Key=Meta+Alt+N
-Type=SHORTCUT
-Uuid={35a6b27d-0b56-42fd-9a16-c209f85ef65d}
 
 [Data_1Conditions]
 Comment=
@@ -226,7 +200,7 @@ TriggersCount=1
 [Data_1_2Triggers0]
 Key=Ctrl+Alt+T
 Type=SHORTCUT
-Uuid={ec52c9ee-92fa-4b1b-89d9-0490cd6ab6f6}
+Uuid={e2de3a7d-f9cc-44eb-982b-9d9751f1ee97}
 
 [Data_2]
 Comment=This group contains various examples demonstrating most of the features of KHotkeys. (Note that this group and all its actions are disabled by default.)
@@ -279,7 +253,7 @@ TriggersCount=1
 [Data_2_1Triggers0]
 Key=Ctrl+Alt+I
 Type=SHORTCUT
-Uuid={c2b6e81b-1f41-49c5-8d49-5d2c20eb422b}
+Uuid={39c55db7-c459-420a-8a8a-cc0aad5a58f9}
 
 [Data_2_2]
 Comment=After pressing Alt+Ctrl+H the input of 'Hello' will be simulated, as if you typed it.  This is especially useful if you have call to frequently type a word (for instance, 'unsigned').  Every keypress in the input is separated by a colon ':'. Note that the keypresses literally mean keypresses, so you have to write what you would press on the keyboard. In the table below, the left column shows the input and the right column shows what to type.\n\n"enter" (i.e. new line)                Enter or Return\na (i.e. small a)                          A\nA (i.e. capital a)                       Shift+A\n: (colon)                                  Shift+;\n' '  (space)                              Space
@@ -306,7 +280,7 @@ TriggersCount=1
 [Data_2_2Triggers0]
 Key=Ctrl+Alt+H
 Type=SHORTCUT
-Uuid={674d1f93-b34d-4f6f-ae9d-0afa43f5401d}
+Uuid={5007a7b2-af1c-49fc-a0e2-40bd65a19d85}
 
 [Data_2_3]
 Comment=This action runs Konsole, after pressing Ctrl+Alt+T.
@@ -332,7 +306,7 @@ TriggersCount=1
 [Data_2_3Triggers0]
 Key=Ctrl+Alt+T
 Type=SHORTCUT
-Uuid={24a06da0-a329-4bdf-8c22-b0ddc42f8633}
+Uuid={194af1a0-4a70-428b-9c01-cdc8d2f11094}
 
 [Data_2_4]
 Comment=Read the comment on the "Type 'Hello'" action first.\n\nQt Designer uses Ctrl+F4 for closing windows.  In KDE, however, Ctrl+F4 is the shortcut for going to virtual desktop 4, so this shortcut does not work in Qt Designer.  Further, Qt Designer does not use KDE's standard Ctrl+W for closing the window.\n\nThis problem can be solved by remapping Ctrl+W to Ctrl+F4 when the active window is Qt Designer. When Qt Designer is active, every time Ctrl+W is pressed, Ctrl+F4 will be sent to Qt Designer instead. In other applications, the effect of Ctrl+W is unchanged.\n\nWe now need to specify three things: A new shortcut trigger on 'Ctrl+W', a new keyboard input action sending Ctrl+F4, and a new condition that the active window is Qt Designer.\nQt Designer seems to always have title 'Qt Designer by Trolltech', so the condition will check for the active window having that title.
@@ -377,7 +351,7 @@ TriggersCount=1
 [Data_2_4Triggers0]
 Key=Ctrl+W
 Type=SHORTCUT
-Uuid={6f4b0302-9ba9-4117-baf0-e09589c32128}
+Uuid={3d41b6b6-1b9a-4430-ab0b-fa504ad14b02}
 
 [Data_2_5]
 Comment=By pressing Alt+Ctrl+W a D-Bus call will be performed that will show the minicli. You can use any kind of D-Bus call, just like using the command line 'qdbus' tool.
@@ -406,7 +380,7 @@ TriggersCount=1
 [Data_2_5Triggers0]
 Key=Ctrl+Alt+W
 Type=SHORTCUT
-Uuid={100db35b-cb9c-4f9f-ae4b-087bd58e9e7a}
+Uuid={7359c62c-b195-4d50-8b61-3e4b79112f40}
 
 [Data_2_6]
 Comment=Read the comment on the "Type 'Hello'" action first.\n\nJust like the "Type 'Hello'" action, this one simulates keyboard input, specifically, after pressing Ctrl+Alt+B, it sends B to XMMS (B in XMMS jumps to the next song). The 'Send to specific window' checkbox is checked and a window with its class containing 'XMMS_Player' is specified; this will make the input always be sent to this window. This way, you can control XMMS even if, for instance, it is on a different virtual desktop.\n\n(Run 'xprop' and click on the XMMS window and search for WM_CLASS to see 'XMMS_Player').
@@ -448,7 +422,7 @@ TriggersCount=1
 [Data_2_6Triggers0]
 Key=Ctrl+Alt+B
 Type=SHORTCUT
-Uuid={f17550a6-94b1-4479-ad77-7b08ba9c708d}
+Uuid={269d9237-b0dd-430b-a96b-cf891e420211}
 
 [Data_2_7]
 Comment=Konqueror in KDE3.1 has tabs, and now you can also have gestures.\n\nJust press the middle mouse button and start drawing one of the gestures, and after you are finished, release the mouse button. If you only need to paste the selection, it still works, just click the middle mouse button. (You can change the mouse button to use in the global settings).\n\nRight now, there are the following gestures available:\nmove right and back left - Forward (Alt+Right)\nmove left and back right - Back (Alt+Left)\nmove up and back down  - Up (Alt+Up)\ncircle counterclockwise - Reload (F5)\n\nThe gesture shapes can be entered by performing them in the configuration dialog. You can also look at your numeric pad to help you: gestures are recognized like a 3x3 grid of fields, numbered 1 to 9.\n\nNote that you must perform exactly the gesture to trigger the action. Because of this, it is possible to enter more gestures for the action. You should try to avoid complicated gestures where you change the direction of mouse movement more than once.  For instance, 45654 or 74123 are simple to perform, but 1236987 may be already quite difficult.\n\nThe conditions for all gestures are defined in this group. All these gestures are active only if the active window is Konqueror (class contains 'konqueror').
@@ -640,12 +614,12 @@ TriggersCount=1
 [Data_2_8Triggers0]
 Key=Meta+E
 Type=SHORTCUT
-Uuid={95f19880-2a58-4dbe-9ada-18eeeeab08a9}
+Uuid={995cf141-acd6-4af4-884a-f0bfeecd043d}
 
 [Data_3]
 Comment=Basic Konqueror gestures.
 DataCount=14
-Enabled=false
+Enabled=true
 ImportId=konqueror_gestures_kde321
 Name=Konqueror Gestures
 SystemGroup=0
@@ -1048,14 +1022,14 @@ Type=GESTURE
 [Data_4]
 Comment=Comment
 Enabled=true
-Name=webBrowser
+Name=Terminal
 Type=SIMPLE_ACTION_DATA
 
 [Data_4Actions]
 ActionsCount=1
 
 [Data_4Actions0]
-CommandURL=brave
+CommandURL=kitty
 Type=COMMAND_URL
 
 [Data_4Conditions]
@@ -1067,21 +1041,21 @@ Comment=Simple_action
 TriggersCount=1
 
 [Data_4Triggers0]
-Key=Meta+W
+Key=Meta+Return
 Type=SHORTCUT
-Uuid={bcd9fa3c-f117-4eff-ad70-bf389092f002}
+Uuid={968ad264-f847-42bd-a99a-f7edac7effce}
 
 [Data_5]
 Comment=Comment
 Enabled=true
-Name=last webBrowser
+Name=Terminal ww
 Type=SIMPLE_ACTION_DATA
 
 [Data_5Actions]
 ActionsCount=1
 
 [Data_5Actions0]
-CommandURL=ww -f "brave-browser" -c brave
+CommandURL=ww -f kitty -c kitty
 Type=COMMAND_URL
 
 [Data_5Conditions]
@@ -1093,21 +1067,21 @@ Comment=Simple_action
 TriggersCount=1
 
 [Data_5Triggers0]
-Key=Meta+Shift+W
+Key=Meta+Shift+Return
 Type=SHORTCUT
-Uuid={b11230aa-59ce-4454-90d2-87b23de007bd}
+Uuid={411eae6f-dd4a-462e-9308-2a1689aa8a21}
 
 [Data_6]
 Comment=Comment
 Enabled=true
-Name=terminal
+Name=Web Browser
 Type=SIMPLE_ACTION_DATA
 
 [Data_6Actions]
 ActionsCount=1
 
 [Data_6Actions0]
-CommandURL=kitty
+CommandURL=brave --enable-features=VaapiVideoDecoder\n
 Type=COMMAND_URL
 
 [Data_6Conditions]
@@ -1119,21 +1093,21 @@ Comment=Simple_action
 TriggersCount=1
 
 [Data_6Triggers0]
-Key=Meta+Return
+Key=Meta+W
 Type=SHORTCUT
-Uuid={9151e79d-13bd-48f5-9dde-3fd2fae9814d}
+Uuid={86d2aa47-1a7d-40f8-bac3-aa42d7d9df33}
 
 [Data_7]
 Comment=Comment
 Enabled=true
-Name=last terminal
+Name=Web Browser ww
 Type=SIMPLE_ACTION_DATA
 
 [Data_7Actions]
 ActionsCount=1
 
 [Data_7Actions0]
-CommandURL=ww -f kitty -c kitty
+CommandURL=ww -f brave-browser -c brave --enable-features=VaapiVideoDecoder\n
 Type=COMMAND_URL
 
 [Data_7Conditions]
@@ -1145,72 +1119,19 @@ Comment=Simple_action
 TriggersCount=1
 
 [Data_7Triggers0]
-Key=Meta+Shift+Return
+Key=Meta+Shift+W
 Type=SHORTCUT
-Uuid={726dca61-de40-44c3-99ec-1d55caefa258}
-
-[Data_8]
-Comment=Comment
-Enabled=true
-Name=note-jbs -f
-Type=SIMPLE_ACTION_DATA
-
-[Data_8Actions]
-ActionsCount=1
-
-[Data_8Actions0]
-CommandURL=kitty --directory ~/.notes --class note-jbs -o allow_remote_control=yes -o enabled_layouts=tall zettelpy
-Type=COMMAND_URL
-
-[Data_8Conditions]
-Comment=
-ConditionsCount=0
-
-[Data_8Triggers]
-Comment=Simple_action
-TriggersCount=1
-
-[Data_8Triggers0]
-Key=Meta+N
-Type=SHORTCUT
-Uuid={14d00d9a-8b91-41ca-9a22-c023747e4281}
-
-[Data_9]
-Comment=Comment
-Enabled=false
-Name=note-jbs -v
-Type=SIMPLE_ACTION_DATA
-
-[Data_9Actions]
-ActionsCount=1
-
-[Data_9Actions0]
-CommandURL=note-jbs -v
-Type=COMMAND_URL
-
-[Data_9Conditions]
-Comment=
-ConditionsCount=0
-
-[Data_9Triggers]
-Comment=Simple_action
-TriggersCount=1
-
-[Data_9Triggers0]
-Key=Meta+Ctrl+N
-Type=SHORTCUT
-Uuid={ce85fd85-32b8-4e3b-b58d-a899678e3cd0}
+Uuid={271d3768-3221-4993-b194-f808a5d20fd4}
 
 [DirSelect Dialog]
 DirSelectDialog Size[$d]
 History Items[$d]
 
 [General]
+AccentColor[$d]
 BrowserApplication[$d]
 ColorScheme[$d]
 Name[$d]
-TerminalApplication[$d]
-TerminalService[$d]
 XftHintStyle[$d]
 XftSubPixel[$d]
 fixed[$d]
@@ -1236,7 +1157,6 @@ Theme[$d]
 [KDE]
 AnimationDurationFactor[$d]
 ColorScheme[$d]
-LookAndFeelPackage[$d]
 ScrollbarLeftClickNavigatesByPage[$d]
 contrast[$d]
 widgetStyle[$d]
@@ -1260,9 +1180,6 @@ Sort reversed[$d]
 Speedbar Width[$d]
 View Style[$d]
 
-[KShortcutsDialog Settings]
-Dialog Size[$d]
-
 [Main]
 AlreadyImported=defaults,kde32b1,konqueror_gestures_kde321,konsole
 Disabled=false
@@ -1276,8 +1193,6 @@ activeBackground[$d]
 activeBlend[$d]
 activeFont[$d]
 activeForeground[$d]
-frame[$d]
 inactiveBackground[$d]
 inactiveBlend[$d]
 inactiveForeground[$d]
-inactiveFrame[$d]

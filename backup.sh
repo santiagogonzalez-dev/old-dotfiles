@@ -5,6 +5,7 @@
 # This script would keep track of the files, based on their $HOME relative path
 
 # Zsh
+mkdir -p .config/zsh/
 cp $ZDOTDIR/{.zshrc,.zlogin,.zshvi,.zshAliasFunrc,zsh-defer,zsh-defer.plugin.zsh} .config/zsh/
 cp $HOME/.zshenv .
 
@@ -27,6 +28,7 @@ cp $XDG_CONFIG_HOME/{okularpartrc,okularrc,powerdevilrc,powermanagementprofilesr
 # powermanagementprofilesrc
 # startkderc
 
+mkdir -p .local/share/
 cp -r $HOME/.local/share/color-schemes .local/share
 
 # Kitty

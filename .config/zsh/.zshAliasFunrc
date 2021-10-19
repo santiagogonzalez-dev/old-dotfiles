@@ -1,36 +1,33 @@
 # What should be the normal behaviour
-alias \
-    sn='sudo -E nvim' \
-    n='nvim' \
-    cd..='cd ..' \
-    cp='cp -iv' \
-    mv='mv -iv' \
-    rm='rm -v' \
-    rd='rmdir' \
-    l='ls -lAhX --group-directories-first --color=auto' \
-    ls='ls -F --color=auto' \
-    e='exa -lah --time-style=long-iso --icons --colour-scale --group-directories-first --git' \
-    et='exa -lah --icons --colour-scale --group-directories-first --git -T -L4' \
-    bat='bat --italic-text=always' \
-    plasma-restart='kquitapp5 plasmashell && sleep 1 && kstart5 plasmashell && sleep 1 && kwin_wayland --replace &' \
-    editkitty='nvim ~/.config/kitty/kitty.conf' \
-    d='dirs -v'
-    for index ({1..33}) alias "$index"="cd +${index}"; unset index
 
-# Color or human readable
-alias \
-    ip='ip --color=auto' \
-    grep='grep --color' \
-    df='df -h' \
-    du='du -h' \
-    free='free -mh'
+alias cd..='cd ..'
+alias :wq='exit'
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias rm='rm -v'
+alias l='ls -lAhX --group-directories-first --color=auto'
+alias ls='ls -F --color=auto'
+alias e='exa -lah --time-style=long-iso --icons --colour-scale --group-directories-first --git'
+alias et='exa -lah --icons --colour-scale --group-directories-first --git -T -L4'
+alias bat='bat --italic-text=always'
+alias plasma-restart='kquitapp5 plasmashell && sleep 1 && kstart5 plasmashell && sleep 1 && kwin_wayland --replace &'
+alias ip='ip --color=auto'
+alias grep='grep --color'
+alias df="df -h -P --total --exclude-type=devtmpfs 2>/dev/null"
+alias du='du -h'
+alias free='free -m'
 
+# Neovim
+alias sn='sudo -E nvim'
+alias n='nvim'
+alias :e='nvim'
 function no {
     nvim $(fzf --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (exa -1T -L 8 {} | less)) || echo {} 2> /dev/null | head -200')
 }
 zle -N no
 autoload -Uz no
 
+# Clear the screen and rerun the last command on your history
 function last-command {
     clear
     zle up-history
@@ -46,6 +43,7 @@ bindkey '^j' history-beginning-search-forward # Ctrl + j to search in insert mod
 
 autoload -Uz last-command
 
+# TODO add better aliases for git
 function gacp() {
     command git add . && git commit -m "$@" && git push origin master
 }
@@ -54,44 +52,32 @@ function okular-disown() {
     okular "$@" &; disown
 }
 
-# Note-JBS
-function note-jbs-f() {
-    note-jbs -f
+function run {
+    "$@" < /dev/null &> /dev/null &; disown
 }
-zle -N note-jbs-f
-
-bindkey -M viins '^[n' note-jbs-f
-bindkey -M vicmd '^[n' note-jbs-f
 
 # Extracting files
 ex ()
 {
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)   tar xjf $1   ;;
-      *.tar.gz)    tar xzf $1   ;;
-      *.tar.xz)    tar xJf $1   ;;
-      *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1   ;;
-      *.gz)        gunzip $1    ;;
-      *.tar)       tar xf $1    ;;
-      *.tbz2)      tar xjf $1   ;;
-      *.tgz)       tar xzf $1   ;;
-      *.zip)       unzip $1     ;;
-      *.Z)         uncompress $1;;
-      *.7z)        7z x $1      ;;
-      *)           echo "'$1' cannot be extracted via ex()" ;;
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)   tar xjf $1   ;;
+    *.tar.gz)    tar xzf $1   ;;
+    *.tar.xz)    tar xJf $1   ;;
+    *.bz2)       bunzip2 $1   ;;
+    *.rar)       unrar x $1   ;;
+    *.gz)        gunzip $1    ;;
+    *.tar)       tar xf $1    ;;
+    *.tbz2)      tar xjf $1   ;;
+    *.tgz)       tar xzf $1   ;;
+    *.zip)       unzip $1     ;;
+    *.Z)         uncompress $1;;
+    *.7z)        7z x $1      ;;
+    *)           echo "'$1' cannot be extracted via ex()" ;;
     esac
-  else
-    echo "'$1' is not a valid file"
-  fi
+    else
+        echo "'$1' is not a valid file"
+            fi
 }
 zle -N ex
 autoload -Uz ex
-
-# function sysread {
-#     zmodload zsh/system; unset -F sysread; sysread "${(@)@}";
-# }
-# sysread -i 0 -o 1 -c ByteCount; ## Loads on demand.
-#
-# alias sysread=' zmodload zsh/system; unalias sysread; sysread'

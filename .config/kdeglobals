@@ -1,5 +1,5 @@
 [$Version]
-update_info=filepicker.upd:filepicker-remove-old-previews-entry,fonts_global.upd:Fonts_Global,fonts_global_toolbar.upd:Fonts_Global_Toolbar,icons_remove_effects.upd:IconsRemoveEffects,style_widgetstyle_default_breeze.upd:StyleWidgetStyleDefaultBreeze,kwin.upd:animation-speed
+update_info=filepicker.upd:filepicker-remove-old-previews-entry,fonts_global.upd:Fonts_Global,fonts_global_toolbar.upd:Fonts_Global_Toolbar,icons_remove_effects.upd:IconsRemoveEffects,kwin.upd:animation-speed,style_widgetstyle_default_breeze.upd:StyleWidgetStyleDefaultBreeze
 
 [ColorEffects:Disabled]
 ChangeSelectionColor=
@@ -25,12 +25,12 @@ IntensityEffect=0
 
 [Colors:Button]
 BackgroundAlternate=43,57,72
-BackgroundNormal=26,27,38
-DecorationFocus=219,48,86
-DecorationHover=219,48,86
-ForegroundActive=166,185,203
+BackgroundNormal=43,45,58
+DecorationFocus=233,61,88
+DecorationHover=233,61,88
+ForegroundActive=233,61,88
 ForegroundInactive=166,185,203
-ForegroundLink=46,184,230
+ForegroundLink=233,61,88
 ForegroundNegative=204,17,58
 ForegroundNeutral=225,34,65
 ForegroundNormal=203,203,203
@@ -39,17 +39,19 @@ ForegroundVisited=148,207,149
 
 [Colors:Complementary]
 BackgroundNormal=27,29,40
-DecorationFocus=76,99,125
-DecorationHover=76,99,125
+DecorationFocus=233,61,88
+DecorationHover=233,61,88
+ForegroundActive=233,61,88
+ForegroundLink=233,61,88
 
 [Colors:Selection]
-BackgroundAlternate=76,99,125
-BackgroundNormal=219,48,86
-DecorationFocus=219,48,86
-DecorationHover=219,48,86
-ForegroundActive=166,185,203
+BackgroundAlternate=119,51,70
+BackgroundNormal=119,51,70
+DecorationFocus=233,61,88
+DecorationHover=233,61,88
+ForegroundActive=233,61,88
 ForegroundInactive=166,185,203
-ForegroundLink=46,184,230
+ForegroundLink=233,61,88
 ForegroundNegative=204,17,58
 ForegroundNeutral=225,34,65
 ForegroundNormal=166,185,203
@@ -58,12 +60,12 @@ ForegroundVisited=148,207,149
 
 [Colors:Tooltip]
 BackgroundAlternate=47,52,63
-BackgroundNormal=26,27,38
-DecorationFocus=219,48,86
-DecorationHover=219,48,86
-ForegroundActive=166,185,203
+BackgroundNormal=43,45,58
+DecorationFocus=233,61,88
+DecorationHover=233,61,88
+ForegroundActive=233,61,88
 ForegroundInactive=166,185,203
-ForegroundLink=46,184,230
+ForegroundLink=233,61,88
 ForegroundNegative=204,17,58
 ForegroundNeutral=225,34,65
 ForegroundNormal=166,185,203
@@ -72,12 +74,12 @@ ForegroundVisited=148,207,149
 
 [Colors:View]
 BackgroundAlternate=33,43,54
-BackgroundNormal=26,27,38
-DecorationFocus=219,48,86
-DecorationHover=219,48,86
-ForegroundActive=166,185,203
+BackgroundNormal=43,45,58
+DecorationFocus=233,61,88
+DecorationHover=233,61,88
+ForegroundActive=233,61,88
 ForegroundInactive=166,185,203
-ForegroundLink=46,184,230
+ForegroundLink=233,61,88
 ForegroundNegative=204,17,58
 ForegroundNeutral=225,34,65
 ForegroundNormal=166,185,203
@@ -87,11 +89,11 @@ ForegroundVisited=148,207,149
 [Colors:Window]
 BackgroundAlternate=47,52,63
 BackgroundNormal=26,27,38
-DecorationFocus=219,48,86
-DecorationHover=219,48,86
-ForegroundActive=166,185,203
+DecorationFocus=233,61,88
+DecorationHover=233,61,88
+ForegroundActive=233,61,88
 ForegroundInactive=166,185,203
-ForegroundLink=46,184,230
+ForegroundLink=233,61,88
 ForegroundNegative=204,17,58
 ForegroundNeutral=225,34,65
 ForegroundNormal=166,185,203
@@ -100,22 +102,21 @@ ForegroundVisited=148,207,149
 
 [DirSelect Dialog]
 DirSelectDialog Size=864,600
-History Items[$e]=file:///data/backup,file:///data/downloads,file:///data/games/mindustry,file:///data
+History Items[$e]=file:$HOME/.local/Pictures
 
 [General]
+AccentColor=233,61,88
 BrowserApplication=brave-browser.desktop
 ColorScheme=JetJBS
-Name=Breeze Dark
-TerminalApplication=kitty
-TerminalService=kitty.desktop
-XftHintStyle=hintslight
+Name=Breeze Light
+XftHintStyle=hintmedium
 XftSubPixel=rgb
-fixed=Iosevka,12,-1,5,50,0,0,0,0,0
-font=Inter,12,-1,5,50,0,0,0,0,0
-menuFont=Inter,12,-1,5,50,0,0,0,0,0
+fixed=JetBrains Mono,10,-1,5,50,0,0,0,0,0
+font=Inter,11,-1,5,50,0,0,0,0,0
+menuFont=Inter,11,-1,5,50,0,0,0,0,0
 shadeSortColumn=true
-smallestReadableFont=Inter,11,-1,5,50,0,0,0,0,0
-toolBarFont=Inter,12,-1,5,50,0,0,0,0,0
+smallestReadableFont=Inter,10,-1,5,50,0,0,0,0,0
+toolBarFont=Inter,11,-1,5,50,0,0,0,0,0
 widgetStyle=Breeze
 
 [Icons]
@@ -124,7 +125,6 @@ Theme=breeze-dark
 [KDE]
 AnimationDurationFactor=0.17677669529663687
 ColorScheme=BreezeLight
-LookAndFeelPackage=org.kde.breezedark.desktop
 ScrollbarLeftClickNavigatesByPage=false
 contrast=4
 widgetStyle=Breeze
@@ -132,7 +132,7 @@ widgetStyle=Breeze
 [KFileDialog Settings]
 Allow Expansion=false
 Automatically select filename extension=true
-Breadcrumb Navigation=true
+Breadcrumb Navigation=false
 Decoration position=2
 LocationCombo Completionmode=5
 PathCombo Completionmode=5
@@ -141,23 +141,18 @@ Show Full Path=false
 Show Inline Previews=true
 Show Preview=false
 Show Speedbar=true
-Show hidden files=true
+Show hidden files=false
 Sort by=Name
 Sort directories first=true
 Sort reversed=false
 Speedbar Width=158
 View Style=DetailTree
 
-[KShortcutsDialog Settings]
-Dialog Size=600,480
-
 [WM]
-activeBackground=26,27,38
-activeBlend=26,27,38
-activeFont=Inter,12,-1,5,50,0,0,0,0,0
+activeBackground=43,45,58
+activeBlend=43,45,58
+activeFont=Overpass,10,-1,5,50,0,0,0,0,0
 activeForeground=166,185,203
-frame=26, 27, 38
-inactiveBackground=26,27,38
-inactiveBlend=26,27,38
+inactiveBackground=43,45,58
+inactiveBlend=43,45,58
 inactiveForeground=102,106,115,216
-inactiveFrame=50, 61, 67

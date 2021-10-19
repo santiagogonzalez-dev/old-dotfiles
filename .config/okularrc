@@ -1,42 +1,14 @@
 [Desktop Entry]
 FullScreen=false
 
-[KFileDialog Settings]
-Recent Files[$e]=file:///data/notes/Life/Literature/Books/Read/1984bilingual.txt,file:///data/notes/Life/Literature/Books/Read/1984bilingual.txt
-Recent URLs[$e]=file:///data/notes/Life/Literature/Books/Read/,file:///data/backup/archivados/backups/leer/
-detailViewIconSize=16
-
 [MainWindow]
-HDMI-A-2 Height 1920x1080=516
-HDMI-A-2 Width 1920x1080=500
-HDMI-A-2 eDP-1 Height 1080x1920=1876
-HDMI-A-2 eDP-1 Height 1920x1080=1068
-HDMI-A-2 eDP-1 Width 1080x1920=1060
-HDMI-A-2 eDP-1 Width 1920x1080=951
+HDMI-A-2 eDP-1 Height 1920x1080=1054
+HDMI-A-2 eDP-1 Width 1920x1080=956
+HDMI-A-2 eDP-1 Window-Maximized 1920x1080=true
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAAA+QAAAPaAAAABAAAAAQAAAAIAAAACPwAAAACAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAAAAAAAgAAAAEAAAAiAGEAbgBuAG8AdABhAHQAaQBvAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAAB4AAAAPwAAAABAAAAAQAAAAIAAAACPwAAAACAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAAAAAAAgAAAAEAAAAiAGEAbgBuAG8AdABhAHQAaQBvAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
-eDP-1 HDMI-A-2 Height 1080x1920=1900
-eDP-1 HDMI-A-2 Height 1920x1080=1036
-eDP-1 HDMI-A-2 Width 1080x1920=1060
-eDP-1 HDMI-A-2 Width 1920x1080=991
-eDP-1 Height 1920x1080=1032
-eDP-1 Width 1920x1080=996
 
 [Recent Files]
-File1[$e]=$HOME/workspace/krunner-alias/README.md
-File2[$e]=$HOME/.notes/Books/1984.md
-File3[$e]=$HOME/.zettelpy/Computers/Test.md
-File4[$e]=$HOME/.zettelpy/Computers/MoreTestting/Test.md
-File5[$e]=$HOME/.zettelpy/Computers/AnotherTest.md
-File6[$e]=$HOME/.zettelpy/Computers/testing More Testing.md
-File7[$e]=$HOME/.zettelpy/Fleeting/note-2021-09-15.md
-File8[$e]=$HOME/.zettelpy/Books/1984.md
-Name1[$e]=README.md
-Name2[$e]=1984.md
-Name3[$e]=Test.md
-Name4[$e]=Test.md
-Name5[$e]=AnotherTest.md
-Name6[$e]=testing More Testing.md
-Name7[$e]=note-2021-09-15.md
-Name8[$e]=1984.md
+File1[$e]=/data/backup/egg/HTML&CSS/pdf_html&css/Html & Css.pdf
+Name1[$e]=Html & Css.pdf
