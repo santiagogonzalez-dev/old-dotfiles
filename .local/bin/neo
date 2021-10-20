@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# This script is just a launcher for any GUI that you use for Neovim, I launch it
+# from krunner, but I guess it'll work with any launcher or terminal
+
+GUI=neovide
+
+$GUI "$1"
