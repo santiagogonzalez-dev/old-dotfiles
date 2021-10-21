@@ -26,7 +26,7 @@ zstyle ':completion:*' verbose yes
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec))' # Ignore patterns
+# zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec))' # Ignore patterns
 zstyle ':autocomplete:*' min-delay 0.0  # float
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|?=** r:|?=**'
 
@@ -144,15 +144,8 @@ zsh-defer source /usr/share/zsh/plugins/zsh-autopair/autopair.zsh
 # fast-syntax-highlighting
 zsh-defer source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
-# " "
-# "視"
-# " "
-# " "
+PS1="%n%F{white}@%f%{$reset_color%}%m%F{white} %3~%f%{$reset_color%} \$ %{$reset_color%}"
 
-# TODO, rebuild all the prompt part, including .zshvi
-actualSymbol=""
-PROMPT="╭─%n@%m%F{white} %2~%f%{$reset_color%}
-╰─%(?:%{$fg_bold[white]%}$actualSymbol:%{$fg_bold[red]%}ﮀ)%${vi_mode}%{$reset_color%}"
 RPS1='$(check_last_exit_code) ${vi_mode}'
 RPS1+='$vcs_info_msg_0_'
 
