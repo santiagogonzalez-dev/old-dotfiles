@@ -136,7 +136,7 @@ ForegroundPositive[$d]
 ForegroundVisited[$d]
 
 [Data]
-DataCount=7
+DataCount=8
 
 [Data_1]
 Comment=KMenuEdit Global Shortcuts
@@ -1122,6 +1122,32 @@ TriggersCount=1
 Key=Meta+Shift+W
 Type=SHORTCUT
 Uuid={271d3768-3221-4993-b194-f808a5d20fd4}
+
+[Data_8]
+Comment=Comment
+Enabled=true
+Name=Nvim GUI
+Type=SIMPLE_ACTION_DATA
+
+[Data_8Actions]
+ActionsCount=1
+
+[Data_8Actions0]
+CommandURL=neovide
+Type=COMMAND_URL
+
+[Data_8Conditions]
+Comment=
+ConditionsCount=0
+
+[Data_8Triggers]
+Comment=Simple_action
+TriggersCount=1
+
+[Data_8Triggers0]
+Key=Meta+N
+Type=SHORTCUT
+Uuid={03a4880c-b005-4ecd-bcca-10d957be6eab}
 
 [DirSelect Dialog]
 DirSelectDialog Size[$d]

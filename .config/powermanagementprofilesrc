@@ -12,6 +12,10 @@ idleTime=300000
 lidAction=1
 powerButtonAction=16
 powerDownAction=16
+triggerLidActionWhenExternalMonitorPresent=false
+
+[AC][PowerProfile]
+profile=balanced
 
 [Battery]
 icon=battery-060
@@ -27,9 +31,14 @@ idleTime=120000
 lidAction=1
 powerButtonAction=16
 powerDownAction=16
+triggerLidActionWhenExternalMonitorPresent=false
+
+[Battery][PowerProfile]
+profile=power-saver
 
 [Battery][SuspendSession]
 idleTime=600000
+suspendThenHibernate=false
 suspendType=1
 
 [LowBattery]
@@ -49,7 +58,9 @@ idleTime=60000
 lidAction=1
 powerButtonAction=16
 powerDownAction=16
+triggerLidActionWhenExternalMonitorPresent=false
 
 [LowBattery][SuspendSession]
 idleTime=300000
+suspendThenHibernate=false
 suspendType=1

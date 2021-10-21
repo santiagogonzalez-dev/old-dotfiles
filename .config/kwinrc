@@ -1,6 +1,10 @@
 [$Version]
 update_info=kwin.upd:replace-scalein-with-scale,kwin.upd:port-minimizeanimation-effect-to-js,kwin.upd:port-scale-effect-to-js,kwin.upd:port-dimscreen-effect-to-js,kwin.upd:auto-bordersize,kwin.upd:animation-speed,kwin.upd:desktop-grid-click-behavior,kwin.upd:no-swap-encourage,kwin.upd:make-translucency-effect-disabled-by-default,kwin.upd:remove-flip-switch-effect,kwin.upd:remove-cover-switch-effect,kwin.upd:remove-cubeslide-effect,kwin.upd:remove-xrender-backend
 
+[Compositing]
+GLCore=true
+OpenGLIsUnsafe=false
+
 [Desktops]
 Id_1=82dcda2a-e13a-4f51-b960-258b944b5ba2
 Id_2=18c4479d-c837-4d0c-9d09-39e4e66a66a4
@@ -20,6 +24,9 @@ Rows=2
 [Effect-PresentWindows]
 BorderActivateAll=9
 
+[KDE]
+AnimationDurationFactor=0.125
+
 [ModifierOnlyShortcuts]
 Meta=org.kde.krunner,/App,,toggleDisplay
 
@@ -31,6 +38,7 @@ CommandTitlebarWheel=Shade/Unshade
 
 [Plugins]
 desktopchangeosdEnabled=true
+diminactiveEnabled=true
 kwin4_effect_fullscreenEnabled=false
 kwin4_effect_maximizeEnabled=false
 kwin4_effect_squashEnabled=false

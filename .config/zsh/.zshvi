@@ -10,10 +10,10 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 
 autoload -Uz edit-command-line
 zle -N edit-command-line
-bindkey '^n' edit-command-line # Edit line with ctrl-n in insert mode
-bindkey -M vicmd n edit-command-line # Edit line with n in normal mode
+bindkey '^[v' edit-command-line # Edit line with Alt+v in insert mode
+bindkey -M vicmd v edit-command-line # Edit line with v in command mode
 
-# Better searching in command mode
+# Search like in vi
 bindkey -M vicmd '?' history-incremental-search-backward
 bindkey -M vicmd '/' history-incremental-search-forward
 
@@ -40,8 +40,8 @@ cursor_shape () {
         return $(( 128 + $1 ))
     }
 
-    vi_ins_mode=" "
-    vi_cmd_mode="%{$fg[green]%} %{$reset_color%}"
+    vi_ins_mode=" "
+    vi_cmd_mode="%{$fg[green]%} %{$reset_color%}"
     vi_mode=$vi_ins_mode
 }
 zle -N cursor_shape

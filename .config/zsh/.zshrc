@@ -77,10 +77,10 @@ zmodload zsh/mathfunc
 autoload zcalc
 autoload zmv
 
-# Load aliases, functions and vi-mode
+# Load aliases and functions
 source "${ZDOTDIR}/.zshAliasFunrc"
 
-# Vi mode
+# Vi-mode
 source "${ZDOTDIR}/.zshvi"
 
 # Exit error code of the last command
@@ -133,8 +133,8 @@ zsh-defer source /usr/share/fzf/key-bindings.zsh
 # zsh-autosuggestions
 zsh-autosuggestions-enable() {
     source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-    bindkey -M vicmd '^ ' autosuggest-accept
-    bindkey -M viins '^ ' autosuggest-execute
+    bindkey -M vicmd '^[a' autosuggest-accept
+    bindkey -M viins '^[a' autosuggest-execute
 }
 zsh-defer zsh-autosuggestions-enable
 
@@ -149,9 +149,10 @@ zsh-defer source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-hig
 # " "
 # " "
 
-actualSymbol=" "
+# TODO, rebuild all the prompt part, including .zshvi
+actualSymbol=""
 PROMPT="╭─%n@%m%F{white} %2~%f%{$reset_color%}
-╰─%(?:%{$fg_bold[white]%}$actualSymbol:%{$fg_bold[red]%}ﮀ )%${vi_mode}%{$reset_color%}"
+╰─%(?:%{$fg_bold[white]%}$actualSymbol:%{$fg_bold[red]%}ﮀ)%${vi_mode}%{$reset_color%}"
 RPS1='$(check_last_exit_code) ${vi_mode}'
 RPS1+='$vcs_info_msg_0_'
 

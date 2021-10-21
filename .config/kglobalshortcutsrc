@@ -21,6 +21,7 @@ display=Display\tMeta+P,Display\tMeta+P,Switch Display
 
 [khotkeys]
 _k_friendly_name=Custom Shortcuts Service
+{03a4880c-b005-4ecd-bcca-10d957be6eab}=Meta+N,none,Nvim GUI
 {271d3768-3221-4993-b194-f808a5d20fd4}=Meta+Shift+W,none,Web Browser ww
 {411eae6f-dd4a-462e-9308-2a1689aa8a21}=Meta+Shift+Return,none,Terminal ww
 {86d2aa47-1a7d-40f8-bac3-aa42d7d9df33}=Meta+W,none,Web Browser

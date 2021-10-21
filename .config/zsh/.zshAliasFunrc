@@ -27,7 +27,7 @@ function no {
 zle -N no
 autoload -Uz no
 
-# Clear the screen and rerun the last command on your history
+# Clear the screen and re-run the last command on your history
 function last-command {
     clear
     zle up-history
@@ -35,15 +35,11 @@ function last-command {
 }
 zle -N last-command
 
-bindkey -M viins '^[h' last-command
-bindkey -M vicmd '^[h' last-command
-
-bindkey '^k' history-beginning-search-backward # Ctrl + k to search in insert mode
-bindkey '^j' history-beginning-search-forward # Ctrl + j to search in insert mode
+bindkey -M viins '^[r' last-command
+bindkey -M vicmd '^[r' last-command
 
 autoload -Uz last-command
 
-# TODO add better aliases for git
 function gacp() {
     command git add . && git commit -m "$@" && git push origin master
 }
@@ -52,32 +48,31 @@ function okular-disown() {
     okular "$@" &; disown
 }
 
-function run {
+function run() {
     "$@" < /dev/null &> /dev/null &; disown
 }
 
 # Extracting files
-ex ()
-{
+ex() {
     if [ -f $1 ] ; then
         case $1 in
             *.tar.bz2)   tar xjf $1   ;;
-    *.tar.gz)    tar xzf $1   ;;
-    *.tar.xz)    tar xJf $1   ;;
-    *.bz2)       bunzip2 $1   ;;
-    *.rar)       unrar x $1   ;;
-    *.gz)        gunzip $1    ;;
-    *.tar)       tar xf $1    ;;
-    *.tbz2)      tar xjf $1   ;;
-    *.tgz)       tar xzf $1   ;;
-    *.zip)       unzip $1     ;;
-    *.Z)         uncompress $1;;
-    *.7z)        7z x $1      ;;
-    *)           echo "'$1' cannot be extracted via ex()" ;;
-    esac
+            *.tar.gz)    tar xzf $1   ;;
+            *.tar.xz)    tar xJf $1   ;;
+            *.bz2)       bunzip2 $1   ;;
+            *.rar)       unrar x $1   ;;
+            *.gz)        gunzip $1    ;;
+            *.tar)       tar xf $1    ;;
+            *.tbz2)      tar xjf $1   ;;
+            *.tgz)       tar xzf $1   ;;
+            *.zip)       unzip $1     ;;
+            *.Z)         uncompress $1;;
+            *.7z)        7z x $1      ;;
+            *)           echo "'$1' cannot be extracted via ex()" ;;
+        esac
     else
         echo "'$1' is not a valid file"
-            fi
+    fi
 }
 zle -N ex
 autoload -Uz ex
