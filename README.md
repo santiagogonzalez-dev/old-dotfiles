@@ -8,7 +8,7 @@ git clone https://github.com/santigo-zero/Dotfiles.git
 ```
 Using rsync everything will be moved to their respective directories
 ``` bash
-rsync --recursive --verbose --exclude '.git' --exclude 'README.md' Dotfiles/ $HOME
+rsync --recursive --verbose --exclude '.git' --exclude 'backup.sh' --exclude 'README.md' --exclude 'not-home.sh' Dotfiles/ $HOME
 ```
 And now delete it so it doesn't clutter home more than what already is
 ``` bash

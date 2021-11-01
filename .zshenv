@@ -9,10 +9,10 @@ export XDG_CONFIG_DIRS=/etc/xdg
 
 # KDE
 export GTK_USE_PORTAL=1
-export KDEHOME="$XDG_CONFIG_HOME"/kde
+export KDEHOME=${XDG_CONFIG_HOME}/kde
 
 # Manpagers
-export MANPAGER="sh -c 'col -b | bat -l man -p'"
+# export MANPAGER="sh -c 'col -b | bat -l man -p'"
 # export MANPAGER="nvim -c 'set ft=man' -"
 export MANWIDTH=999
 
@@ -35,10 +35,13 @@ export LIBVA_DRIVER_NAME=iHD
 export PATH=$PATH:/home/$USER/.local/bin
 
 # Rust
-export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export RUSTUP_HOME=${XDG_DATA_HOME}/rustup
 
 # fzf
 export FZF_DEFAULT_COMMAND='rg --files --hidden' # Faster than find command
 
-# Test
-export TESTING_VAR='testing123'
+# NVM
+export NVM_DIR=${XDG_DATA_HOME}/nvm
+
+# NPM
+export NPM_CONFIG_USERCONFIG=${XDG_CONFIG_HOME}/npm/npmrc

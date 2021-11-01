@@ -21,6 +21,14 @@ Name_6=
 Number=6
 Rows=2
 
+[Effect-DesktopGrid]
+BorderWidth=0
+LayoutMode=1
+ZoomDuration=333
+
+[Effect-DimInactive]
+DimDesktop=true
+
 [Effect-PresentWindows]
 BorderActivateAll=9
 
@@ -33,16 +41,18 @@ Meta=org.kde.krunner,/App,,toggleDisplay
 [MouseBindings]
 CommandActiveTitlebar2=Minimize
 CommandAll2=Minimize
+CommandAllWheel=Change Opacity
 CommandInactiveTitlebar2=Minimize
 CommandTitlebarWheel=Shade/Unshade
 
 [Plugins]
 desktopchangeosdEnabled=true
 diminactiveEnabled=true
+kwin4_effect_fadeEnabled=false
 kwin4_effect_fullscreenEnabled=false
 kwin4_effect_maximizeEnabled=false
 kwin4_effect_squashEnabled=false
-magiclampEnabled=true
+kwin4_effect_translucencyEnabled=true
 screenedgeEnabled=false
 slideEnabled=false
 

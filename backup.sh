@@ -6,7 +6,7 @@
 
 # Zsh
 mkdir -p .config/zsh/
-cp $ZDOTDIR/{.zshrc,.zlogin,.zshvi,.zshAliasFunrc,zsh-defer,zsh-defer.plugin.zsh} .config/zsh/
+cp $ZDOTDIR/{.zshrc,.zlogin,.zshvi,.zshAliasFunrc} .config/zsh/
 cp $HOME/.zshenv .
 
 # KDE Plasma

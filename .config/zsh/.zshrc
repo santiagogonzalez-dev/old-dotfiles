@@ -63,19 +63,19 @@ typeset -U path PATH cdpath CDPATH fpath FPATH manpath MANPATH
 
 watch=(notme root) # watch for everyone but me and root
 
-autoload -Uz compinit # Basic auto/tab complete:
-for dump in $ZDOTDIR/.zcompdump(N.mh+24); do # Twice a day it's updated
-    compinit
-done
-compinit -C
+	autoload -Uz compinit # Basic auto/tab complete:
+	for dump in $ZDOTDIR/.zcompdump(N.mh+24); do # Twice a day it's updated
+		compinit
+	done
+	compinit -C
 
-_comp_options+=(globdots) # Include hidden files.
-zmodload zsh/complist
-zmodload zsh/parameter
-zmodload zsh/deltochar
-zmodload zsh/mathfunc
-autoload zcalc
-autoload zmv
+	_comp_options+=(globdots) # Include hidden files.
+	zmodload zsh/complist
+	zmodload zsh/parameter
+	zmodload zsh/deltochar
+	zmodload zsh/mathfunc
+	autoload zcalc
+	autoload zmv
 
 # Load aliases and functions
 source "${ZDOTDIR}/.zshAliasFunrc"
@@ -85,14 +85,14 @@ source "${ZDOTDIR}/.zshvi"
 
 # Exit error code of the last command
 function check_last_exit_code() {
-    local LAST_EXIT_CODE=$?
-    if [[ $LAST_EXIT_CODE -ne 0 ]]; then
-        local EXIT_CODE_PROMPT=' '
-        EXIT_CODE_PROMPT+="%{$fg[red]%}❰%{$reset_color%}"
-        EXIT_CODE_PROMPT+="%{$fg_bold[red]%}$LAST_EXIT_CODE%{$reset_color%}"
-        EXIT_CODE_PROMPT+="%{$fg[red]%}❱%{$reset_color%}"
-        echo "$EXIT_CODE_PROMPT"
-    fi
+	local LAST_EXIT_CODE=$?
+	if [[ $LAST_EXIT_CODE -ne 0 ]]; then
+		local EXIT_CODE_PROMPT=' '
+		EXIT_CODE_PROMPT+="%{$fg[red]%}❰%{$reset_color%}"
+		EXIT_CODE_PROMPT+="%{$fg_bold[red]%}$LAST_EXIT_CODE%{$reset_color%}"
+		EXIT_CODE_PROMPT+="%{$fg[red]%}❱%{$reset_color%}"
+		echo "$EXIT_CODE_PROMPT"
+	fi
 }
 zle -N check_last_exit_code
 autoload -Uz check_last_exit_code
@@ -100,29 +100,33 @@ autoload -Uz check_last_exit_code
 # Plugins
 
 # zsh-defer
-source "${ZDOTDIR}/zsh-defer.plugin.zsh"
+# git clone --depth=1 https://github.com/romkatv/zsh-defer
+source "${ZDOTDIR}/zsh-defer/zsh-defer.plugin.zsh"
+
+# Load nvm
+zsh-defer source /usr/share/nvm/init-nvm.sh
 
 # Git Status
 gitstatus () {
-    autoload -Uz vcs_info
-    # enable only git
-    zstyle ':vcs_info:*' enable git svn
+	autoload -Uz vcs_info
+	# enable only git
+	zstyle ':vcs_info:*' enable git svn
 
-    # setup a hook that runs before every ptompt.
-    precmd_vcs_info() { vcs_info }
-    precmd_functions+=( precmd_vcs_info )
+	 # setup a hook that runs before every ptompt.
+	 precmd_vcs_info(){vcs_info}
+	 precmd_functions+=(precmd_vcs_info)
 
-    zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
+	 zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 
-    +vi-git-untracked(){
-        if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
-            git status --porcelain | grep '??' &> /dev/null ; then
-            hook_com[staged]+='!' # signify new files with a bang
-        fi
-    }
+	 +vi-git-untracked(){
+	 if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
+		 git status --porcelain | grep '??' &> /dev/null ; then
+			  hook_com[staged]+='!' # signify new files with a bang
+	 fi
+ }
 
-    zstyle ':vcs_info:*' check-for-changes true
-    zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}❰%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[blue]%}❱"
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}❰%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[blue]%}❱"
 }
 zsh-defer gitstatus
 
@@ -132,17 +136,19 @@ zsh-defer source /usr/share/fzf/key-bindings.zsh
 
 # zsh-autosuggestions
 zsh-autosuggestions-enable() {
-    source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-    bindkey -M vicmd '^[a' autosuggest-accept
-    bindkey -M viins '^[a' autosuggest-execute
+	source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+	bindkey -M vicmd '^[a' autosuggest-accept
+	bindkey -M viins '^[a' autosuggest-execute
 }
 zsh-defer zsh-autosuggestions-enable
 
 # zsh-autopairs
-zsh-defer source /usr/share/zsh/plugins/zsh-autopair/autopair.zsh
+# git clone --depth=1 https://github.com/hlissner/zsh-autopair
+zsh-defer source "${ZDOTDIR}/zsh-autopair/autopair.zsh"
 
 # fast-syntax-highlighting
-zsh-defer source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+# git clone --depth=1 https://github.com/zdharma/fast-syntax-highlighting
+zsh-defer source "${ZDOTDIR}/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
 
 PS1="%n%F{white}@%f%{$reset_color%}%m%F{white} %3~%f%{$reset_color%} \$ %{$reset_color%}"
 

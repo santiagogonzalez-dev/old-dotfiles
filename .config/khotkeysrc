@@ -136,7 +136,7 @@ ForegroundPositive[$d]
 ForegroundVisited[$d]
 
 [Data]
-DataCount=8
+DataCount=7
 
 [Data_1]
 Comment=KMenuEdit Global Shortcuts
@@ -1123,32 +1123,6 @@ Key=Meta+Shift+W
 Type=SHORTCUT
 Uuid={271d3768-3221-4993-b194-f808a5d20fd4}
 
-[Data_8]
-Comment=Comment
-Enabled=true
-Name=Nvim GUI
-Type=SIMPLE_ACTION_DATA
-
-[Data_8Actions]
-ActionsCount=1
-
-[Data_8Actions0]
-CommandURL=neovide
-Type=COMMAND_URL
-
-[Data_8Conditions]
-Comment=
-ConditionsCount=0
-
-[Data_8Triggers]
-Comment=Simple_action
-TriggersCount=1
-
-[Data_8Triggers0]
-Key=Meta+N
-Type=SHORTCUT
-Uuid={03a4880c-b005-4ecd-bcca-10d957be6eab}
-
 [DirSelect Dialog]
 DirSelectDialog Size[$d]
 History Items[$d]
@@ -1158,6 +1132,8 @@ AccentColor[$d]
 BrowserApplication[$d]
 ColorScheme[$d]
 Name[$d]
+TerminalApplication[$d]
+TerminalService[$d]
 XftHintStyle[$d]
 XftSubPixel[$d]
 fixed[$d]
@@ -1183,7 +1159,9 @@ Theme[$d]
 [KDE]
 AnimationDurationFactor[$d]
 ColorScheme[$d]
+LookAndFeelPackage[$d]
 ScrollbarLeftClickNavigatesByPage[$d]
+ShowDeleteCommand[$d]
 contrast[$d]
 widgetStyle[$d]
 
@@ -1206,10 +1184,16 @@ Sort reversed[$d]
 Speedbar Width[$d]
 View Style[$d]
 
+[KShortcutsDialog Settings]
+Dialog Size[$d]
+
 [Main]
 AlreadyImported=defaults,kde32b1,konqueror_gestures_kde321,konsole
 Disabled=false
 Version=2
+
+[PreviewSettings]
+MaximumRemoteSize[$d]
 
 [Voice]
 Shortcut=

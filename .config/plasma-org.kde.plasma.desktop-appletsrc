@@ -6,29 +6,6 @@ wheel:Vertical;NoModifier=org.kde.switchdesktop
 [ActionPlugins][1]
 RightButton;NoModifier=org.kde.contextmenu
 
-[Containments][1]
-ItemGeometries-1920x1080=
-ItemGeometriesHorizontal=
-activityId=1caca382-3126-4c88-bc9a-0510dbe74baf
-formfactor=0
-immutability=1
-lastScreen=0
-location=0
-plugin=org.kde.plasma.folder
-wallpaperplugin=org.kde.image
-
-[Containments][1][ConfigDialog]
-DialogHeight=1025
-DialogWidth=1920
-
-[Containments][1][General]
-ToolBoxButtonState=topcenter
-ToolBoxButtonX=523
-
-[Containments][1][Wallpaper][org.kde.image][General]
-Image=file:///usr/share/wallpapers/wallhaven-rd73r1.png
-SlidePaths=/usr/share/wallpapers
-
 [Containments][2]
 activityId=
 formfactor=2
@@ -130,10 +107,33 @@ DialogWidth=1920
 [Containments][2][General]
 AppletOrder=3;4;24;5;6;7;28
 
-[Containments][27]
+[Containments][31]
 ItemGeometries-1920x1080=
 ItemGeometriesHorizontal=
-activityId=1caca382-3126-4c88-bc9a-0510dbe74baf
+activityId=770c2625-6607-4c26-a418-690c1d19269c
+formfactor=0
+immutability=1
+lastScreen=0
+location=0
+plugin=org.kde.plasma.folder
+wallpaperplugin=org.kde.image
+
+[Containments][31][ConfigDialog]
+DialogHeight=620
+DialogWidth=800
+
+[Containments][31][General]
+ToolBoxButtonState=topcenter
+ToolBoxButtonX=522
+
+[Containments][31][Wallpaper][org.kde.image][General]
+Image=file:///usr/share/wallpapers/anime-girl-in-rain-with-umbrella-4k-t0-3840x2400.jpg
+SlidePaths=/usr/share/wallpapers
+
+[Containments][32]
+ItemGeometries-1920x1080=
+ItemGeometriesHorizontal=
+activityId=770c2625-6607-4c26-a418-690c1d19269c
 formfactor=0
 immutability=1
 lastScreen=1
@@ -141,22 +141,13 @@ location=0
 plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.image
 
-[Containments][27][ConfigDialog]
+[Containments][32][ConfigDialog]
 DialogHeight=620
 DialogWidth=800
 
-[Containments][27][Wallpaper][org.kde.image][General]
-Image=file:///usr/share/wallpapers/raindrops-4_FHD.jpg
+[Containments][32][Wallpaper][org.kde.image][General]
+Image=file:///usr/share/wallpapers/anime-girl-in-rain-with-umbrella-4k-t0-3840x2400.jpg
 SlidePaths=/usr/share/wallpapers
-
-[Containments][29]
-activityId=1caca382-3126-4c88-bc9a-0510dbe74baf
-formfactor=0
-immutability=1
-lastScreen=2
-location=0
-plugin=org.kde.plasma.folder
-wallpaperplugin=org.kde.image
 
 [Containments][8]
 activityId=
@@ -172,11 +163,14 @@ immutability=1
 plugin=org.kde.plasma.clipboard
 
 [Containments][8][Applets][10][Configuration]
-PreloadWeight=65
+PreloadWeight=80
 
 [Containments][8][Applets][11]
 immutability=1
 plugin=org.kde.plasma.devicenotifier
+
+[Containments][8][Applets][11][Configuration]
+PreloadWeight=70
 
 [Containments][8][Applets][12]
 immutability=1
@@ -203,7 +197,7 @@ immutability=1
 plugin=org.kde.plasma.volume
 
 [Containments][8][Applets][17][Configuration]
-PreloadWeight=60
+PreloadWeight=70
 
 [Containments][8][Applets][17][Configuration][ConfigDialog]
 DialogHeight=620
@@ -227,14 +221,14 @@ immutability=1
 plugin=org.kde.plasma.networkmanagement
 
 [Containments][8][Applets][21][Configuration]
-PreloadWeight=42
+PreloadWeight=47
 
 [Containments][8][Applets][22]
 immutability=1
 plugin=org.kde.plasma.bluetooth
 
 [Containments][8][Applets][22][Configuration]
-PreloadWeight=36
+PreloadWeight=27
 
 [Containments][8][Applets][23]
 immutability=1
@@ -253,7 +247,7 @@ DialogWidth=1144
 
 [Containments][8][General]
 extraItems=org.kde.plasma.bluetooth,org.kde.kdeconnect,org.kde.plasma.battery,org.kde.plasma.clipboard,org.kde.plasma.devicenotifier,org.kde.plasma.manage-inputmethod,org.kde.plasma.mediacontroller,org.kde.plasma.notifications,org.kde.plasma.keyboardindicator,org.kde.plasma.nightcolorcontrol,org.kde.plasma.keyboardlayout,org.kde.plasma.volume,org.kde.plasma.networkmanagement
-hiddenItems=org.kde.plasma.bluetooth,org.kde.plasma.networkmanagement,org.kde.plasma.keyboardlayout,org.kde.plasma.keyboardindicator,org.kde.plasma.clipboard
+hiddenItems=org.kde.plasma.bluetooth,org.kde.plasma.keyboardlayout,org.kde.plasma.keyboardindicator,org.kde.plasma.clipboard
 knownItems=org.kde.plasma.bluetooth,org.kde.kdeconnect,org.kde.plasma.battery,org.kde.plasma.clipboard,org.kde.plasma.devicenotifier,org.kde.plasma.manage-inputmethod,org.kde.plasma.mediacontroller,org.kde.plasma.notifications,org.kde.plasma.keyboardindicator,org.kde.plasma.nightcolorcontrol,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement,org.kde.plasma.volume
 
 [ScreenMapping]
