@@ -147,7 +147,7 @@ zsh-defer zsh-autosuggestions-enable
 zsh-defer source "${ZDOTDIR}/zsh-autopair/autopair.zsh"
 
 # fast-syntax-highlighting
-# git clone --depth=1 https://github.com/zdharma/fast-syntax-highlighting
+# git clone --depth=1 https://github.com/zdharma-continuum/fast-syntax-highlighting
 zsh-defer source "${ZDOTDIR}/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
 
 PS1="%n%F{white}@%f%{$reset_color%}%m%F{white} %3~%f%{$reset_color%} \$ %{$reset_color%}"

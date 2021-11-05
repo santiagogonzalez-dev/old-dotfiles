@@ -108,7 +108,7 @@ History Items[$e]=file:$HOME/.local/Pictures
 AccentColor=233,61,88
 BrowserApplication=brave-browser.desktop
 ColorScheme=JetJBS
-Name=JetJBS
+Name=Breeze Dark
 TerminalApplication=kitty
 TerminalService=kitty.desktop
 XftHintStyle=hintmedium
@@ -127,7 +127,7 @@ ColorScheme=BreezeLight
 LookAndFeelPackage=org.kde.breezedark.desktop
 ScrollbarLeftClickNavigatesByPage=false
 ShowDeleteCommand=false
-contrast=3
+contrast=4
 
 [KFileDialog Settings]
 Allow Expansion=false

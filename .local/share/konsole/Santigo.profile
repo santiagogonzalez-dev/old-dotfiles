@@ -1,16 +1,19 @@
 [Appearance]
-BoldIntense=false
+BoldIntense=true
 ColorScheme=JetJBS
-Font=JetBrainsMono Nerd Font,14,-1,5,50,0,0,0,0,0
-LineSpacing=1
-UseFontLineChararacters=true
+DimmValue=72
+Font=Iosevka Term,16,-1,5,57,0,0,0,0,0,Medium
+LineSpacing=0
+UseFontLineChararacters=false
 
 [Cursor Options]
 CustomCursorColor=85,170,255
-UseCustomCursorColor=true
+UseCustomCursorColor=false
 
 [General]
 Command=/bin/zsh
+DimWhenInactive=true
+InvertSelectionColors=true
 Name=Santigo
 Parent=FALLBACK/
 ShowTerminalSizeHint=true
@@ -22,6 +25,8 @@ AutoCopySelectedText=true
 DropUrlsAsText=false
 MiddleClickPasteMode=1
 OpenLinksByDirectClickEnabled=true
+TrimLeadingSpacesInSelectedText=true
+TrimTrailingSpacesInSelectedText=true
 UnderlineFilesEnabled=true
 
 [Scrolling]

@@ -1,6 +1,7 @@
 [ActivityManager]
 _k_friendly_name=Activity Manager
 switch-to-activity-1caca382-3126-4c88-bc9a-0510dbe74baf=none,none,Switch to activity "Workflow"
+switch-to-activity-5aef9db8-16ed-4c10-a486-d3166687d59a=none,none,Switch to activity "Default"
 switch-to-activity-770c2625-6607-4c26-a418-690c1d19269c=none,none,Switch to activity "Default"
 
 [KDE Keyboard Layout Switcher]
@@ -253,6 +254,7 @@ activate task manager entry 8=none,Meta+8,Activate Task Manager Entry 8
 activate task manager entry 9=none,Meta+9,Activate Task Manager Entry 9
 activate widget 28=none,none,Activate Event Calendar Widget
 activate widget 3=Alt+F1,none,Activate Application Launcher Widget
+activate widget 36=none,none,Activate Task Manager Widget
 clear-history=none,none,Clear Clipboard History
 clipboard_action=Ctrl+Alt+X,Ctrl+Alt+X,Enable Clipboard Actions
 cycleNextAction=none,none,Next History Item
