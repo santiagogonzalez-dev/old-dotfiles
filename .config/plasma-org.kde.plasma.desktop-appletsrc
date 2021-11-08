@@ -84,13 +84,13 @@ DialogWidth=800
 launchers=preferred://browser
 showOnlyMinimized=1
 
+[Containments][2][Applets][39]
+immutability=1
+plugin=org.kde.plasma.colorpicker
+
 [Containments][2][Applets][4]
 immutability=1
 plugin=org.kde.plasma.pager
-
-[Containments][2][Applets][6]
-immutability=1
-plugin=org.kde.plasma.marginsseparator
 
 [Containments][2][Applets][7]
 immutability=1
@@ -105,12 +105,12 @@ DialogHeight=86
 DialogWidth=1920
 
 [Containments][2][General]
-AppletOrder=3;4;24;36;6;7;28
+AppletOrder=3;4;24;36;39;7;28
 
-[Containments][33]
+[Containments][38]
 ItemGeometries-1920x1080=
 ItemGeometriesHorizontal=
-activityId=5aef9db8-16ed-4c10-a486-d3166687d59a
+activityId=a0fea355-62fd-40fb-85cd-867872b73758
 formfactor=0
 immutability=1
 lastScreen=0
@@ -118,24 +118,17 @@ location=0
 plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.image
 
-[Containments][33][ConfigDialog]
-DialogHeight=1050
-DialogWidth=1920
-
-[Containments][33][General]
+[Containments][38][General]
 ToolBoxButtonState=topcenter
-ToolBoxButtonX=522
+ToolBoxButtonX=521
 
-[Containments][33][Wallpaper][org.kde.image][General]
-Image=file:///usr/share/wallpapers/033.jpg
-SlidePaths=/usr/share/wallpapers
+[Containments][38][Wallpaper][org.kde.image][General]
+Image=file:///usr/share/wallpapers/Next/contents/images/1920x1080.png
 
-[Containments][34]
+[Containments][40]
 ItemGeometries-1080x1920=
-ItemGeometries-1920x1080=
-ItemGeometriesHorizontal=
 ItemGeometriesVertical=
-activityId=5aef9db8-16ed-4c10-a486-d3166687d59a
+activityId=a0fea355-62fd-40fb-85cd-867872b73758
 formfactor=0
 immutability=1
 lastScreen=1
@@ -143,13 +136,8 @@ location=0
 plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.image
 
-[Containments][34][ConfigDialog]
-DialogHeight=839
-DialogWidth=1080
-
-[Containments][34][Wallpaper][org.kde.image][General]
-Image=file:///usr/share/wallpapers/tokyo-night-1440p.png
-SlidePaths=/usr/share/wallpapers
+[Containments][40][Wallpaper][org.kde.image][General]
+Image=file:///usr/share/wallpapers/Next/contents/images/1080x1920.png
 
 [Containments][8]
 activityId=
@@ -199,7 +187,7 @@ immutability=1
 plugin=org.kde.plasma.volume
 
 [Containments][8][Applets][17][Configuration]
-PreloadWeight=85
+PreloadWeight=95
 
 [Containments][8][Applets][17][Configuration][ConfigDialog]
 DialogHeight=620
@@ -223,7 +211,7 @@ immutability=1
 plugin=org.kde.plasma.networkmanagement
 
 [Containments][8][Applets][21][Configuration]
-PreloadWeight=52
+PreloadWeight=57
 
 [Containments][8][Applets][22]
 immutability=1

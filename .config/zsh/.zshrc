@@ -97,6 +97,9 @@ function check_last_exit_code() {
 zle -N check_last_exit_code
 autoload -Uz check_last_exit_code
 
+# Enabling shift-tab for completion
+bindkey -M menuselect '^[[Z' reverse-menu-complete
+
 # Plugins
 
 # zsh-defer

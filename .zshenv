@@ -12,7 +12,7 @@ export GTK_USE_PORTAL=1
 export KDEHOME=${XDG_CONFIG_HOME}/kde
 
 # Manpagers
-# export MANPAGER="sh -c 'col -b | bat -l man -p'"
+export MANPAGER="bash -c 'col -b | bat -l man -p'"
 # export MANPAGER="nvim -c 'set ft=man' -"
 export MANWIDTH=999
 

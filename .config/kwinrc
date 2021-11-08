@@ -44,6 +44,7 @@ CommandAll2=Minimize
 CommandAllWheel=Change Opacity
 CommandInactiveTitlebar2=Minimize
 CommandTitlebarWheel=Shade/Unshade
+CommandWindowWheel=Activate, raise and scroll
 
 [Plugins]
 desktopchangeosdEnabled=true
@@ -65,7 +66,7 @@ BorderActivate=9
 [Windows]
 /* BorderlessMaximizedWindows=true */
 BorderSnapZone=9
-CenterSnapZone=18
+CenterSnapZone=33
 ElectricBorderCooldown=1000
 ElectricBorderCornerRatio=0.08
 ElectricBorderDelay=300

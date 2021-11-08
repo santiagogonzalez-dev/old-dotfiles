@@ -17,6 +17,11 @@ triggerLidActionWhenExternalMonitorPresent=false
 [AC][PowerProfile]
 profile=balanced
 
+[AC][SuspendSession]
+idleTime=3600000
+suspendThenHibernate=false
+suspendType=8
+
 [Battery]
 icon=battery-060
 
