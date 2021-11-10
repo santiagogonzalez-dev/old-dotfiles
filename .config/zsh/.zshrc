@@ -115,17 +115,17 @@ gitstatus () {
 	# enable only git
 	zstyle ':vcs_info:*' enable git svn
 
-	 # setup a hook that runs before every ptompt.
-	 precmd_vcs_info(){vcs_info}
-	 precmd_functions+=(precmd_vcs_info)
+	# setup a hook that runs before every ptompt.
+	precmd_vcs_info(){vcs_info}
+	precmd_functions+=(precmd_vcs_info)
 
-	 zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
+	zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 
-	 +vi-git-untracked(){
-	 if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
-		 git status --porcelain | grep '??' &> /dev/null ; then
-			  hook_com[staged]+='!' # signify new files with a bang
-	 fi
+	+vi-git-untracked(){
+	if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
+		git status --porcelain | grep '??' &> /dev/null ; then
+			hook_com[staged]+='!' # signify new files with a bang
+	fi
  }
 
 zstyle ':vcs_info:*' check-for-changes true

@@ -25,12 +25,12 @@ IntensityEffect=0
 
 [Colors:Button]
 BackgroundAlternate=43,57,72
-BackgroundNormal=32,33,47
-DecorationFocus=233,61,88
-DecorationHover=233,61,88
-ForegroundActive=233,61,88
-ForegroundInactive=174,181,196
-ForegroundLink=233,61,88
+BackgroundNormal=35,33,54
+DecorationFocus=57,125,156
+DecorationHover=57,125,156
+ForegroundActive=166,185,203
+ForegroundInactive=166,185,203
+ForegroundLink=46,184,230
 ForegroundNegative=204,17,58
 ForegroundNeutral=225,34,65
 ForegroundNormal=203,203,203
@@ -39,64 +39,62 @@ ForegroundVisited=148,207,149
 
 [Colors:Complementary]
 BackgroundNormal=27,29,40
-DecorationFocus=233,61,88
-DecorationHover=233,61,88
-ForegroundActive=233,61,88
-ForegroundLink=233,61,88
+DecorationFocus=76,99,125
+DecorationHover=76,99,125
 
 [Colors:Selection]
-BackgroundAlternate=112,44,63
-BackgroundNormal=112,44,63
-DecorationFocus=233,61,88
-DecorationHover=233,61,88
-ForegroundActive=233,61,88
-ForegroundInactive=199,206,214
-ForegroundLink=233,61,88
+BackgroundAlternate=76,99,125
+BackgroundNormal=57,125,156
+DecorationFocus=57,125,156
+DecorationHover=57,125,156
+ForegroundActive=166,185,203
+ForegroundInactive=166,185,203
+ForegroundLink=46,184,230
 ForegroundNegative=204,17,58
 ForegroundNeutral=225,34,65
-ForegroundNormal=242,242,242
+ForegroundNormal=166,185,203
 ForegroundPositive=148,207,149
 ForegroundVisited=148,207,149
 
 [Colors:Tooltip]
 BackgroundAlternate=47,52,63
-BackgroundNormal=26,27,38
-DecorationFocus=233,61,88
-DecorationHover=233,61,88
-ForegroundActive=233,61,88
-ForegroundInactive=174,181,196
-ForegroundLink=233,61,88
+BackgroundNormal=35,33,54
+DecorationFocus=57,125,156
+DecorationHover=57,125,156
+ForegroundActive=166,185,203
+ForegroundInactive=166,185,203
+ForegroundLink=46,184,230
 ForegroundNegative=204,17,58
 ForegroundNeutral=225,34,65
-ForegroundNormal=211,218,227
+ForegroundNormal=166,185,203
 ForegroundPositive=148,207,149
 ForegroundVisited=148,207,149
 
 [Colors:View]
 BackgroundAlternate=33,43,54
-BackgroundNormal=32,33,47
-DecorationFocus=233,61,88
-DecorationHover=233,61,88
-ForegroundActive=233,61,88
-ForegroundInactive=174,181,196
-ForegroundLink=233,61,88
+BackgroundNormal=35,33,54
+DecorationFocus=57,125,156
+DecorationHover=57,125,156
+ForegroundActive=166,185,203
+ForegroundInactive=166,185,203
+ForegroundLink=46,184,230
 ForegroundNegative=204,17,58
 ForegroundNeutral=225,34,65
-ForegroundNormal=194,202,217
+ForegroundNormal=166,185,203
 ForegroundPositive=148,207,149
 ForegroundVisited=148,207,149
 
 [Colors:Window]
 BackgroundAlternate=47,52,63
-BackgroundNormal=26,27,38
-DecorationFocus=233,61,88
-DecorationHover=233,61,88
-ForegroundActive=233,61,88
-ForegroundInactive=174,181,196
-ForegroundLink=233,61,88
+BackgroundNormal=25,23,36
+DecorationFocus=57,125,156
+DecorationHover=57,125,156
+ForegroundActive=166,185,203
+ForegroundInactive=166,185,203
+ForegroundLink=46,184,230
 ForegroundNegative=204,17,58
 ForegroundNeutral=225,34,65
-ForegroundNormal=229,229,255
+ForegroundNormal=166,185,203
 ForegroundPositive=148,207,149
 ForegroundVisited=148,207,149
 
@@ -105,9 +103,8 @@ DirSelectDialog Size=864,600
 History Items[$e]=file:$HOME/.local/Pictures
 
 [General]
-AccentColor=233,61,88
 BrowserApplication=brave-browser.desktop
-ColorScheme=JetJBB
+ColorScheme=JetJBP
 Name=Breeze Dark
 TerminalApplication=kitty
 TerminalService=kitty.desktop
@@ -159,10 +156,10 @@ Dialog Size=600,480
 MaximumRemoteSize=0
 
 [WM]
-activeBackground=26,27,38
-activeBlend=26,27,38
+activeBackground=25,23,36
+activeBlend=35,33,54
 activeFont=Overpass,10,-1,5,50,0,0,0,0,0
-activeForeground=211,218,227
-inactiveBackground=26,27,38
-inactiveBlend=12,12,23
+activeForeground=166,185,203
+inactiveBackground=35,33,54
+inactiveBlend=35,33,54
 inactiveForeground=102,106,115,216

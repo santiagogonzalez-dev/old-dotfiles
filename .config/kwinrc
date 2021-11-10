@@ -46,9 +46,16 @@ CommandInactiveTitlebar2=Minimize
 CommandTitlebarWheel=Shade/Unshade
 CommandWindowWheel=Activate, raise and scroll
 
+[NightColor]
+Active=true
+EveningBeginFixed=2300
+LatitudeAuto=-34.6029
+LongitudeAuto=-68.3356
+Mode=Times
+MorningBeginFixed=0600
+NightTemperature=2800
+
 [Plugins]
-desktopchangeosdEnabled=true
-diminactiveEnabled=true
 kwin4_effect_fadeEnabled=false
 kwin4_effect_fullscreenEnabled=false
 kwin4_effect_maximizeEnabled=false
@@ -74,5 +81,6 @@ ElectricBorders=1
 WindowSnapZone=9
 
 [org.kde.kdecoration2]
+BorderSizeAuto=false
 ButtonsOnLeft=SF
 ButtonsOnRight=IX
