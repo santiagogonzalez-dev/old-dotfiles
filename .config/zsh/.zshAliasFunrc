@@ -48,7 +48,7 @@ function okular-disown() {
     okular "$@" &; disown
 }
 
-function run() {
+function runbg() {
     "$@" < /dev/null &> /dev/null &; disown
 }
 

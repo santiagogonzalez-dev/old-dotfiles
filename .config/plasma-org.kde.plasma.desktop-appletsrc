@@ -1,7 +1,28 @@
 [ActionPlugins][0]
-MiddleButton;NoModifier=org.kde.paste
+MiddleButton;NoModifier=org.kde.applauncher
 RightButton;NoModifier=org.kde.contextmenu
 wheel:Vertical;NoModifier=org.kde.switchdesktop
+
+[ActionPlugins][0][MiddleButton;NoModifier]
+showAppsByName=false
+
+[ActionPlugins][0][RightButton;NoModifier]
+_add panel=true
+_context=true
+_lock_screen=true
+_logout=true
+_run_command=false
+_sep1=false
+_sep2=false
+_sep3=false
+_wallpaper=false
+add widgets=true
+configure=true
+configure shortcuts=false
+edit mode=false
+manage activities=true
+remove=true
+run associated application=false
 
 [ActionPlugins][1]
 RightButton;NoModifier=org.kde.contextmenu
@@ -88,6 +109,12 @@ showOnlyMinimized=1
 immutability=1
 plugin=org.kde.plasma.colorpicker
 
+[Containments][2][Applets][39][Configuration]
+PreloadWeight=95
+
+[Containments][2][Applets][39][Configuration][General]
+history=#c1bfd5,#ea9d34,#1fffcc,#88b3be,#cb6283,#ea6f91
+
 [Containments][2][Applets][4]
 immutability=1
 plugin=org.kde.plasma.pager
@@ -107,10 +134,11 @@ DialogWidth=1920
 [Containments][2][General]
 AppletOrder=3;4;24;36;39;7;28
 
-[Containments][38]
+[Containments][42]
+ItemGeometries-1536x864=
 ItemGeometries-1920x1080=
 ItemGeometriesHorizontal=
-activityId=a0fea355-62fd-40fb-85cd-867872b73758
+activityId=d784c7ab-2133-4358-9090-7f0546caac72
 formfactor=0
 immutability=1
 lastScreen=0
@@ -118,17 +146,22 @@ location=0
 plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.image
 
-[Containments][38][General]
+[Containments][42][ConfigDialog]
+DialogHeight=1021
+DialogWidth=1920
+
+[Containments][42][General]
 ToolBoxButtonState=topcenter
 ToolBoxButtonX=521
 
-[Containments][38][Wallpaper][org.kde.image][General]
-Image=file:///usr/share/wallpapers/Next/contents/images/1920x1080.png
+[Containments][42][Wallpaper][org.kde.image][General]
+Image=file:///usr/share/wallpapers/033.jpg
+SlidePaths=/usr/share/wallpapers
 
-[Containments][40]
-ItemGeometries-1080x1920=
-ItemGeometriesVertical=
-activityId=a0fea355-62fd-40fb-85cd-867872b73758
+[Containments][43]
+ItemGeometries-1920x1080=
+ItemGeometriesHorizontal=
+activityId=d784c7ab-2133-4358-9090-7f0546caac72
 formfactor=0
 immutability=1
 lastScreen=1
@@ -136,8 +169,13 @@ location=0
 plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.image
 
-[Containments][40][Wallpaper][org.kde.image][General]
-Image=file:///usr/share/wallpapers/Next/contents/images/1080x1920.png
+[Containments][43][ConfigDialog]
+DialogHeight=1874
+DialogWidth=1080
+
+[Containments][43][Wallpaper][org.kde.image][General]
+Image=file:///usr/share/wallpapers/033.jpg
+SlidePaths=/usr/share/wallpapers
 
 [Containments][8]
 activityId=
@@ -186,6 +224,9 @@ plugin=org.kde.plasma.keyboardlayout
 immutability=1
 plugin=org.kde.plasma.volume
 
+[Containments][8][Applets][17][Configuration]
+PreloadWeight=70
+
 [Containments][8][Applets][17][Configuration][ConfigDialog]
 DialogHeight=620
 DialogWidth=800
@@ -208,7 +249,7 @@ immutability=1
 plugin=org.kde.plasma.networkmanagement
 
 [Containments][8][Applets][21][Configuration]
-PreloadWeight=57
+PreloadWeight=72
 
 [Containments][8][Applets][22]
 immutability=1

@@ -3,6 +3,7 @@ update_info=kwin.upd:replace-scalein-with-scale,kwin.upd:port-minimizeanimation-
 
 [Compositing]
 GLCore=true
+MaxFPS=70
 OpenGLIsUnsafe=false
 
 [Desktops]
@@ -28,6 +29,8 @@ ZoomDuration=333
 
 [Effect-DimInactive]
 DimDesktop=true
+DimKeepAbove=true
+Strength=20
 
 [Effect-PresentWindows]
 BorderActivateAll=9
@@ -53,16 +56,19 @@ LatitudeAuto=-34.6029
 LongitudeAuto=-68.3356
 Mode=Times
 MorningBeginFixed=0600
-NightTemperature=2800
+NightTemperature=4000
 
 [Plugins]
+diminactiveEnabled=true
 kwin4_effect_fadeEnabled=false
 kwin4_effect_fullscreenEnabled=false
 kwin4_effect_maximizeEnabled=false
 kwin4_effect_squashEnabled=false
 kwin4_effect_translucencyEnabled=true
+minimizeallEnabled=false
 screenedgeEnabled=false
-slideEnabled=false
+synchronizeskipswitcherEnabled=false
+videowallEnabled=false
 
 [Script-desktopchangeosd]
 PopupHideDelay=100
@@ -71,8 +77,8 @@ PopupHideDelay=100
 BorderActivate=9
 
 [Windows]
-/* BorderlessMaximizedWindows=true */
 BorderSnapZone=9
+BorderlessMaximizedWindows=true
 CenterSnapZone=33
 ElectricBorderCooldown=1000
 ElectricBorderCornerRatio=0.08
@@ -81,6 +87,5 @@ ElectricBorders=1
 WindowSnapZone=9
 
 [org.kde.kdecoration2]
-BorderSizeAuto=false
 ButtonsOnLeft=SF
 ButtonsOnRight=IX

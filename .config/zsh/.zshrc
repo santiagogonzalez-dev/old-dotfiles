@@ -1,8 +1,8 @@
 #zmodload zsh/zprof # Uncomment to enable stats for Zsh with zprof command
 
-fpath_completion=/usr/share/zsh/site-functions/_*
-fpath+="$(dirname "${fpath_completion}")"
-unset fpath_completion
+# zsh-defer
+# git clone --depth=1 https://github.com/romkatv/zsh-defer
+source "${ZDOTDIR}/zsh-defer/zsh-defer.plugin.zsh"
 
 autoload -Uz colors && colors
 HISTFILE=~/.config/zsh/.zshHistory
@@ -26,7 +26,6 @@ zstyle ':completion:*' verbose yes
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-# zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec))' # Ignore patterns
 zstyle ':autocomplete:*' min-delay 0.0  # float
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|?=** r:|?=**'
 
@@ -63,22 +62,22 @@ typeset -U path PATH cdpath CDPATH fpath FPATH manpath MANPATH
 
 watch=(notme root) # watch for everyone but me and root
 
-	autoload -Uz compinit # Basic auto/tab complete:
-	for dump in $ZDOTDIR/.zcompdump(N.mh+24); do # Twice a day it's updated
-		compinit
-	done
-	compinit -C
+autoload -Uz compinit # Basic auto/tab complete:
+for dump in $ZDOTDIR/.zcompdump(N.mh+24); do # Twice a day it's updated
+	compinit
+done
+compinit -C
 
-	_comp_options+=(globdots) # Include hidden files.
-	zmodload zsh/complist
-	zmodload zsh/parameter
-	zmodload zsh/deltochar
-	zmodload zsh/mathfunc
-	autoload zcalc
-	autoload zmv
+_comp_options+=(globdots) # Include hidden files.
+zmodload zsh/complist
+zsh-defer zmodload zsh/parameter
+zsh-defer zmodload zsh/deltochar
+zsh-defer zmodload zsh/mathfunc
+zsh-defer autoload zcalc
+zsh-defer autoload zmv
 
 # Load aliases and functions
-source "${ZDOTDIR}/.zshAliasFunrc"
+zsh-defer source "${ZDOTDIR}/.zshAliasFunrc"
 
 # Vi-mode
 source "${ZDOTDIR}/.zshvi"
@@ -102,10 +101,6 @@ bindkey -M menuselect '^[[Z' reverse-menu-complete
 
 # Plugins
 
-# zsh-defer
-# git clone --depth=1 https://github.com/romkatv/zsh-defer
-source "${ZDOTDIR}/zsh-defer/zsh-defer.plugin.zsh"
-
 # Load nvm
 zsh-defer source /usr/share/nvm/init-nvm.sh
 
@@ -126,10 +121,10 @@ gitstatus () {
 		git status --porcelain | grep '??' &> /dev/null ; then
 			hook_com[staged]+='!' # signify new files with a bang
 	fi
- }
+	}
 
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}❰%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[blue]%}❱"
+	zstyle ':vcs_info:*' check-for-changes true
+	zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}❰%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[blue]%}❱"
 }
 zsh-defer gitstatus
 
