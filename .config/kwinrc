@@ -67,9 +67,6 @@ kwin4_effect_squashEnabled=false
 kwin4_effect_translucencyEnabled=true
 minimizeallEnabled=false
 screenedgeEnabled=false
-synchronizeskipswitcherEnabled=false
-videowallEnabled=false
-virtual-desktops-only-on-primaryEnabled=true
 
 [Script-desktopchangeosd]
 PopupHideDelay=100
