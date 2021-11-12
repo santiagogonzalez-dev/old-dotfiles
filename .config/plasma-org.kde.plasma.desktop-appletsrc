@@ -159,8 +159,10 @@ Image=file:///usr/share/wallpapers/033.jpg
 SlidePaths=/usr/share/wallpapers
 
 [Containments][43]
+ItemGeometries-1080x1920=
 ItemGeometries-1920x1080=
 ItemGeometriesHorizontal=
+ItemGeometriesVertical=
 activityId=d784c7ab-2133-4358-9090-7f0546caac72
 formfactor=0
 immutability=1
