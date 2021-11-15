@@ -37,6 +37,9 @@ export PATH=$PATH:/home/$USER/.local/bin
 # Rust
 export RUSTUP_HOME=${XDG_DATA_HOME}/rustup
 
+# z
+export _Z_DATA=${ZDOTDIR}/.z
+
 # fzf
 export FZF_DEFAULT_COMMAND='rg --files --hidden' # Faster than find command
 
