@@ -101,6 +101,8 @@ bindkey -M menuselect '^[[Z' reverse-menu-complete
 
 # Plugins
 
+zsh-defer source /usr/share/z/z.sh
+
 # Load nvm
 zsh-defer source /usr/share/nvm/init-nvm.sh
 
