@@ -21,6 +21,7 @@ alias free='free -m'
 alias sn='sudo -E nvim'
 alias n='nvim'
 alias :e='nvim'
+
 function no {
     nvim $(fzf --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (exa -1T -L 8 {} | less)) || echo {} 2> /dev/null | head -200')
 }
@@ -48,7 +49,7 @@ function okular-disown() {
     okular "$@" &; disown
 }
 
-function runbg() {
+function run() {
     "$@" < /dev/null &> /dev/null &; disown
 }
 

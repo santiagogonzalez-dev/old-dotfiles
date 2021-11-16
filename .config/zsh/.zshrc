@@ -99,6 +99,13 @@ autoload -Uz check_last_exit_code
 # Enabling shift-tab for completion
 bindkey -M menuselect '^[[Z' reverse-menu-complete
 
+# Change title of the window to the working directory
+case $TERM in
+  xterm*)
+    precmd () {print -Pn - '\e]0;%~\a'}
+    ;;
+esac
+
 # Plugins
 
 zsh-defer source /usr/share/z/z.sh
