@@ -29,6 +29,7 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:
 zstyle ':autocomplete:*' min-delay 0.0  # float
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|?=** r:|?=**'
 
+setopt multios
 setopt prompt_subst # Let the prompt substite variables, without this the prompt will not work
 setopt brace_ccl # Allow brace character class list expansion
 setopt complete_in_word # Complete from both ends of a word.
