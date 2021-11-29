@@ -13,9 +13,10 @@ alias bat='bat --italic-text=always'
 alias plasma-restart='kquitapp5 plasmashell && sleep 1 && kstart5 plasmashell && sleep 1 && kwin_wayland --replace &'
 alias ip='ip --color=auto'
 alias grep='grep --color'
-alias df="df -h -P --total --exclude-type=devtmpfs 2>/dev/null"
+alias df='df -h -P --total --exclude-type=devtmpfs 2>/dev/null'
 alias du='du -h'
 alias free='free -m'
+alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 
 # Neovim
 alias sn='sudo -E nvim'

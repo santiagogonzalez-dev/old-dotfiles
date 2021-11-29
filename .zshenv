@@ -24,6 +24,7 @@ export TERM="xterm-256color"
 export LESSHISTFILE="-"
 export CARGO_HOME=${XDG_DATA_HOME:-$HOME/.local/share}/cargo
 export KEYTIMEOUT=1
+export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 
 # Zsh config
 export ZDOTDIR=$HOME/.config/zsh
@@ -48,3 +49,7 @@ export NVM_DIR=${XDG_DATA_HOME}/nvm
 
 # NPM
 export NPM_CONFIG_USERCONFIG=${XDG_CONFIG_HOME}/npm/npmrc
+
+# Firefox
+# export MOZ_ENABLE_WAYLAND=1
+export MOZ_USE_XINPUT2=1

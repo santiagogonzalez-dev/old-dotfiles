@@ -101,18 +101,24 @@ autoload -Uz check_last_exit_code
 bindkey -M menuselect '^[[Z' reverse-menu-complete
 
 # Change title of the window to the working directory
-case $TERM in
-  xterm*)
-    precmd () {print -Pn - '\e]0;%~\a'}
-    ;;
-esac
+function change_title() {
+	case $TERM in
+		xterm*)
+			precmd () {print -Pn - '\e]0;%~\a'}
+			;;
+	esac
+}
+zle -N change_title
+# autoload -Uz change_title
+change_title
 
 # Plugins
 
+# z
 zsh-defer source /usr/share/z/z.sh
 
 # Load nvm
-zsh-defer source /usr/share/nvm/init-nvm.sh
+# zsh-defer source /usr/share/nvm/init-nvm.sh
 
 # Git Status
 gitstatus () {
@@ -144,7 +150,8 @@ zsh-defer source /usr/share/fzf/key-bindings.zsh
 
 # zsh-autosuggestions
 zsh-autosuggestions-enable() {
-	source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+	source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh # Arch Linux
+	source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh # Toolbox
 	bindkey -M vicmd '^[a' autosuggest-accept
 	bindkey -M viins '^[a' autosuggest-execute
 }
@@ -158,9 +165,15 @@ zsh-defer source "${ZDOTDIR}/zsh-autopair/autopair.zsh"
 # git clone --depth=1 https://github.com/zdharma-continuum/fast-syntax-highlighting
 zsh-defer source "${ZDOTDIR}/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
 
-PS1="%n%F{white}@%f%{$reset_color%}%m%F{white} %3~%f%{$reset_color%} \$ %{$reset_color%}"
-
+# PS1="%n%F{white}@%f%{$reset_color%}%m%F{white} %3~%f%{$reset_color%} \$ %{$reset_color%}"
+PS1="%n%F{white}@%f%{$reset_color%}%m%F{white} %3~%f%{$reset_color%}   %{$reset_color%}"
 RPS1='$(check_last_exit_code) ${vi_mode}'
 RPS1+='$vcs_info_msg_0_'
 
+# if [[ ! -z $TOOLBOX_PATH ]]; then
+# 	PS1="⬢ $PS1"
+# fi
+if [[ ! -z $TOOLBOX_PATH ]]; then
+	PS1=" 節 $PS1"
+fi
 #zprof # To time up the zsh load time
