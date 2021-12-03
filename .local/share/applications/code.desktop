@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Visual Studio Code
+Comment=Visual Studio Code
+Exec=toolbox run -c dev code
+Categories=Development;IDE
+Icon=vscode
+Terminal=false

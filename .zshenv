@@ -12,8 +12,11 @@ export GTK_USE_PORTAL=1
 export KDEHOME=${XDG_CONFIG_HOME}/kde
 
 # Manpagers
-export MANPAGER="bash -c 'col -b | bat -l man -p'"
-# export MANPAGER="nvim -c 'set ft=man' -"
+if which bat >/dev/null; then
+	export MANPAGER="bash -c 'col -b | bat -l man -p'"
+else
+	export MANPAGER="nvim -c 'set ft=man' -"
+fi
 export MANWIDTH=999
 
 export VISUAL="nvim"
@@ -24,7 +27,6 @@ export TERM="xterm-256color"
 export LESSHISTFILE="-"
 export CARGO_HOME=${XDG_DATA_HOME:-$HOME/.local/share}/cargo
 export KEYTIMEOUT=1
-export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 
 # Zsh config
 export ZDOTDIR=$HOME/.config/zsh
@@ -42,7 +44,7 @@ export RUSTUP_HOME=${XDG_DATA_HOME}/rustup
 export _Z_DATA=${ZDOTDIR}/.z
 
 # fzf
-export FZF_DEFAULT_COMMAND='rg --files --hidden' # Faster than find command
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden' # Faster than find command
 
 # NVM
 export NVM_DIR=${XDG_DATA_HOME}/nvm

@@ -9,6 +9,13 @@ HISTFILE=~/.config/zsh/.zshHistory
 HISTSIZE=600000
 SAVEHIST=600000
 
+# Completion
+typeset -A __DOTS
+
+__DOTS[ITALIC_ON]=$'\e[3m'
+__DOTS[ITALIC_OFF]=$'\e[23m'
+
+zstyle ':completion:*' format %F{yellow}-- %B%U%{$__DOTS[ITALIC_ON]%}%d%{$__DOTS[ITALIC_OFF]%}%b%u --%f
 zstyle ':compinstall:filename' '/home/st/.config/zsh/.zshrc'
 zstyle ':completion:*:*:*:*:*' menu select=3 # If there's less than 3 items it will use normal tabs
 zstyle ':completion:*:history-words' menu yes # Activate menu
@@ -20,7 +27,6 @@ zstyle ':completion:*:descriptions' format ' %F{yellow}-- %d --%f'
 zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
 zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
 zstyle ':completion:*:default' list-prompt '%S%M matches%s'
-zstyle ':completion:*' format ' %F{yellow}-- %d --%f'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
@@ -28,6 +34,8 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':autocomplete:*' min-delay 0.0  # float
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|?=** r:|?=**'
+zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(..) ]] && reply=(..)'
+zstyle ':completion:*' matcher-list '' '+m:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}' '+m:{_-}={-_}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 setopt multios
 setopt prompt_subst # Let the prompt substite variables, without this the prompt will not work
@@ -38,10 +46,18 @@ setopt correct # Turn on corrections
 setopt extendedglob nomatch menucomplete
 setopt interactive_comments # Enable comments in interactive shell
 setopt hash_list_all # Whenever a command completion is attempted, make sure the entire command path is hashed first.
+setopt rm_star_wait
 
 # History
 setopt inc_append_history # Ensure that commands are added to the history immediately
 setopt hist_save_no_dups # Do not write a duplicate event to the history file.
+setopt hist_expire_dups_first
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+setopt hist_reduce_blanks
+setopt hist_verify
+setopt autoparamslash
+setopt share_history
 
 # Directories
 setopt auto_cd # Automatically cd into typed directory.
@@ -71,11 +87,11 @@ compinit -C
 
 _comp_options+=(globdots) # Include hidden files.
 zmodload zsh/complist
-zsh-defer zmodload zsh/parameter
-zsh-defer zmodload zsh/deltochar
-zsh-defer zmodload zsh/mathfunc
-zsh-defer autoload zcalc
-zsh-defer autoload zmv
+zmodload zsh/parameter
+zmodload zsh/deltochar
+zmodload zsh/mathfunc
+autoload zcalc
+autoload zmv
 
 # Load aliases and functions
 zsh-defer source "${ZDOTDIR}/.zshAliasFunrc"
@@ -96,6 +112,16 @@ function check_last_exit_code() {
 }
 zle -N check_last_exit_code
 autoload -Uz check_last_exit_code
+
+function comple_kitty() {
+	if [[ "$TERM" == "xterm-kitty" ]]; then
+	COMM="kitty + complete setup zsh"
+	eval $COMM >/dev/null
+	fi
+}
+zsh-defer comple_kitty
+# zle -N comple_kitty
+# autoload -Uz comple_kitty
 
 # Enabling shift-tab for completion
 bindkey -M menuselect '^[[Z' reverse-menu-complete
@@ -144,6 +170,10 @@ gitstatus () {
 }
 zsh-defer gitstatus
 
+# fzf-tab
+# git clone --depth=1 https://github.com/Aloxaf/fzf-tab
+zsh-defer source "${ZDOTDIR}/fzf-tab/fzf-tab.plugin.zsh"
+
 # zsh-fzf
 zsh-defer source /usr/share/fzf/completion.zsh
 zsh-defer source /usr/share/fzf/key-bindings.zsh
@@ -162,8 +192,8 @@ zsh-defer zsh-autosuggestions-enable
 zsh-defer source "${ZDOTDIR}/zsh-autopair/autopair.zsh"
 
 # fast-syntax-highlighting
-# git clone --depth=1 https://github.com/zdharma-continuum/fast-syntax-highlighting
-zsh-defer source "${ZDOTDIR}/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
+# git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting
+zsh-defer source "${ZDOTDIR}/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
 
 # PS1="%n%F{white}@%f%{$reset_color%}%m%F{white} %3~%f%{$reset_color%} \$ %{$reset_color%}"
 PS1="%n%F{white}@%f%{$reset_color%}%m%F{white} %3~%f%{$reset_color%}   %{$reset_color%}"
@@ -176,4 +206,5 @@ RPS1+='$vcs_info_msg_0_'
 if [[ ! -z $TOOLBOX_PATH ]]; then
 	PS1=" 節 $PS1"
 fi
+
 #zprof # To time up the zsh load time
