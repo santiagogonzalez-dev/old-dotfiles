@@ -105,6 +105,6 @@ contrast=3
 activeBackground=25,23,36
 activeBlend=35,33,54
 activeForeground=166,185,203
-inactiveBackground=35,33,54
+inactiveBackground=20,19,27
 inactiveBlend=35,33,54
 inactiveForeground=102,106,115,216

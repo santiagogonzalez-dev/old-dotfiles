@@ -11,32 +11,32 @@ SAVEHIST=600000
 
 # Completion
 # I'm using fzf-tab, so for now there's no need to have this options enabled
-# typeset -A __DOTS
+typeset -A __DOTS
 
-# __DOTS[ITALIC_ON]=$'\e[3m'
-# __DOTS[ITALIC_OFF]=$'\e[23m'
+__DOTS[ITALIC_ON]=$'\e[3m'
+__DOTS[ITALIC_OFF]=$'\e[23m'
 
-# zstyle ':completion:*' format %F{yellow}-- %B%U%{$__DOTS[ITALIC_ON]%}%d%{$__DOTS[ITALIC_OFF]%}%b%u --%f
-# zstyle ':compinstall:filename' '/home/st/.config/zsh/.zshrc'
-# zstyle ':completion:*:*:*:*:*' menu select=3 # If there's less than 3 items it will use normal tabs
-# zstyle ':completion:*:history-words' menu yes # Activate menu
-# zstyle ':completion:*:matches' group 'yes'
-# zstyle ':completion:*:options' description 'yes'
-# zstyle ':completion:*:options' auto-description '%d'
-# zstyle ':completion:*:corrections' format ' %F{green}-- %d (errors: %e) --%f'
-# zstyle ':completion:*:descriptions' format ' %F{yellow}-- %d --%f'
-# zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
-# zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
-# zstyle ':completion:*:default' list-prompt '%S%M matches%s'
-# zstyle ':completion:*' group-name ''
-# zstyle ':completion:*' verbose yes
+zstyle ':completion:*' format %F{yellow}-- %B%U%{$__DOTS[ITALIC_ON]%}%d%{$__DOTS[ITALIC_OFF]%}%b%u --%f
+zstyle ':compinstall:filename' '/home/st/.config/zsh/.zshrc'
+zstyle ':completion:*:*:*:*:*' menu select=3 # If there's less than 3 items it will use normal tabs
+zstyle ':completion:*:history-words' menu yes # Activate menu
+zstyle ':completion:*:matches' group 'yes'
+zstyle ':completion:*:options' description 'yes'
+zstyle ':completion:*:options' auto-description '%d'
+zstyle ':completion:*:corrections' format ' %F{green}-- %d (errors: %e) --%f'
+zstyle ':completion:*:descriptions' format ' %F{yellow}-- %d --%f'
+zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
+zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
+zstyle ':completion:*:default' list-prompt '%S%M matches%s'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':autocomplete:*' min-delay 0.0  # float
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|?=** r:|?=**'
+zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(..) ]] && reply=(..)'
+zstyle ':completion:*' matcher-list '' '+m:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}' '+m:{_-}={-_}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
-# zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-# zstyle ':autocomplete:*' min-delay 0.0  # float
-# zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|?=** r:|?=**'
-# zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(..) ]] && reply=(..)'
-# zstyle ':completion:*' matcher-list '' '+m:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}' '+m:{_-}={-_}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 setopt multios
 setopt prompt_subst # Let the prompt substite variables, without this the prompt will not work
@@ -80,10 +80,11 @@ typeset -U path PATH cdpath CDPATH fpath FPATH manpath MANPATH
 
 watch=(notme root) # watch for everyone but me and root
 
-autoload -Uz compinit && compinit -C # Basic auto/tab complete:
+autoload -Uz compinit
 for dump in $ZDOTDIR/.zcompdump(N.mh+12); do # Twice a day it's updated
     compinit
 done
+compinit -C # Basic auto/tab complete:
 
 _comp_options+=(globdots) # Include hidden files.
 zmodload zsh/complist
@@ -221,8 +222,6 @@ zsh-defer source "${ZDOTDIR}/fast-syntax-highlighting/fast-syntax-highlighting.p
 
 # PS1="%n%F{white}@%f%{$reset_color%}%m%F{white} %3~%f%{$reset_color%} \$ %{$reset_color%}"
 PS1="%n%F{white}@%f%{$reset_color%}%m%F{white} %3~%f%{$reset_color%}   %{$reset_color%}"
-# RPS1='$(check_last_exit_code) ${vi_mode}'
-# RPS1+='$vcs_info_msg_0_'
 RPS1='$(check_last_exit_code) ${vi_mode} $vcs_info_msg_0_'
 
 if [[ ! -z $TOOLBOX_PATH ]]; then
