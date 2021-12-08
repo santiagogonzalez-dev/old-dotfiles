@@ -8,7 +8,7 @@ export XDG_DATA_DIRS=/usr/local/share:/usr/share
 export XDG_CONFIG_DIRS=/etc/xdg
 
 # KDE
-export GTK_USE_PORTAL=1
+# export GTK_USE_PORTAL=1
 export KDEHOME=${XDG_CONFIG_HOME}/kde
 
 # Manpagers
@@ -53,5 +53,5 @@ export NVM_DIR=${XDG_DATA_HOME}/nvm
 export NPM_CONFIG_USERCONFIG=${XDG_CONFIG_HOME}/npm/npmrc
 
 # Firefox
-# export MOZ_ENABLE_WAYLAND=1
+export MOZ_ENABLE_WAYLAND=1
 export MOZ_USE_XINPUT2=1
