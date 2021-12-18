@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 # Vi Mode Settings
 
 bindkey -v # Vi mode

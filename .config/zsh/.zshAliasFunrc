@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 # What should be the normal behaviour
 
 alias cd..='cd ..'

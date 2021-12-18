@@ -15,6 +15,9 @@ cp -r $HOME/.local/share/color-schemes .local/share
 # Kitty
 cp -r $XDG_CONFIG_HOME/kitty .config
 
+# Wezterm
+cp -r $XDG_CONFIG_HOME/wezterm .config
+
 # Desktop Entries
 cp -r ~/.local/share/applications .local/share
 

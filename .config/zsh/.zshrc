@@ -11,32 +11,32 @@ SAVEHIST=600000
 
 # Completion
 # I'm using fzf-tab, so for now there's no need to have this options enabled
-typeset -A __DOTS
+# typeset -A __DOTS
 
-__DOTS[ITALIC_ON]=$'\e[3m'
-__DOTS[ITALIC_OFF]=$'\e[23m'
+# __DOTS[ITALIC_ON]=$'\e[3m'
+# __DOTS[ITALIC_OFF]=$'\e[23m'
 
 # zstyle ':completion:*' format %F{yellow}-- %B%U%{$__DOTS[ITALIC_ON]%}%d%{$__DOTS[ITALIC_OFF]%}%b%u --%f
-zstyle ':compinstall:filename' '/home/st/.config/zsh/.zshrc'
+# zstyle ':compinstall:filename' '/home/st/.config/zsh/.zshrc'
 # zstyle ':completion:*:*:*:*:*' menu select=3 # If there's less than 3 items it will use normal tabs
-zstyle ':completion:*:history-words' menu yes # Activate menu
+# zstyle ':completion:*:history-words' menu yes # Activate menu
 # zstyle ':completion:*:matches' group 'yes'
 # zstyle ':completion:*:options' description 'yes'
 # zstyle ':completion:*:options' auto-description '%d'
-zstyle ':completion:*:corrections' format ' %F{green}-- %d (errors: %e) --%f'
+# zstyle ':completion:*:corrections' format ' %F{green}-- %d (errors: %e) --%f'
 # zstyle ':completion:*:descriptions' format ' %F{yellow}-- %d --%f'
 # zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
 # zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
 # zstyle ':completion:*:default' list-prompt '%S%M matches%s'
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*' verbose yes
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+# zstyle ':completion:*' group-name ''
+# zstyle ':completion:*' verbose yes
+# zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
 # zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 # zstyle ':autocomplete:*' min-delay 0.0  # float
 # zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|?=** r:|?=**'
-zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(..) ]] && reply=(..)'
-zstyle ':completion:*' matcher-list '' '+m:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}' '+m:{_-}={-_}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(..) ]] && reply=(..)'
+# zstyle ':completion:*' matcher-list '' '+m:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}' '+m:{_-}={-_}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+# zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 setopt multios
 setopt prompt_subst # Let the prompt substite variables, without this the prompt will not work
@@ -145,7 +145,7 @@ zstyle ':completion:*:git-checkout:*' sort false # disable sort when completing 
 zstyle ':completion:*:descriptions' format '[%d]' # set descriptions format to enable group support
 zstyle ':fzf-tab:complete:nvim:*' fzf-preview 'bat --color=always --italic-text=always $realpath' # preview directory's content with exa when completing cd
 zstyle ':fzf-tab:complete:cp:*' fzf-preview 'bat --color=always --italic-text=always $realpath' # preview directory's content with exa when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1a --colour-scale --icons --group-directories-first --git --color=always $realpath' # preview directory's content with exa when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1a --colour-scale --icons --group-directories-first --color=always $realpath' # preview directory's content with exa when completing cd
 check_terminal_size () {
     if [[ "$LINES $COLUMNS" != "$previous_lines $previous_columns" ]]; then
         set_default_opts
@@ -156,17 +156,18 @@ check_terminal_size () {
 
 function set_default_opts(){
     HEIGHTVAR=$(($LINES/2))
-    zstyle ':fzf-tab:*' fzf-pad $HEIGHTVAR
     WIDTHVAR=$(($COLUMNS/2))
+    zstyle ':fzf-tab:*' fzf-pad $HEIGHTVAR
     export FZF_DEFAULT_OPTS="
     --color=fg:#707a8c,bg:-1,hl:#3e9831,fg+:#cbccc6,bg+:#434c5e,hl+:#af87ff \
     --color=dark \
     --color=info:#ea9d34,prompt:#af87ff,pointer:#cb6283,marker:#cb6283,spinner:#ff87d7 \
     --sort \
-    --preview-window=right:$WIDTHVAR
+    --preview-window=right:$WIDTHVAR \
     --bind '?:toggle-preview' \
     --border rounded \
     "
+    # --preview-window=right:$WIDTHVAR
 }
 set_default_opts
 trap 'check_terminal_size' WINCH
