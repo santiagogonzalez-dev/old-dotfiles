@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-# This script takes a url, and it will open the browser in app mode, I don't thin it works
-# in firefox
-
-parsed_url="$1"
-
-$BROWSER --app=https://$parsed_url.com

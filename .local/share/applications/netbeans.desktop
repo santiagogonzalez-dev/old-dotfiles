@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Encoding=UTF-8
-Name=Apache NetBeans
-Comment=Apache NetBeans, The Smarter Way to Code
-Exec=netbeans %F -J-Dsun.java2d.opengl=true -J-Dawt.useSystemAAFontSettings=on -J-Dswing.aatext=true
-Categories=Development;IDE
-Icon=netbeans
-Terminal=false

@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-# Git private repo or another repo
-history_backup=/data/backup/zshHistory.bak
-cp "$ZDOTDIR"/.zshHistory $history_backup

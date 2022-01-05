@@ -25,11 +25,11 @@ alias sn='sudo -E nvim'
 alias n='nvim'
 alias :e='nvim'
 
-function no {
-    nvim $(fzf --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (exa -1T -L 8 {} | less)) || echo {} 2> /dev/null | head -200')
-}
-zle -N no
-autoload -Uz no
+# function no {
+#     nvim $(fzf --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (exa -1T -L 8 {} | less)) || echo {} 2> /dev/null | head -200')
+# }
+# zle -N no
+# autoload -Uz no
 
 # Clear the screen and re-run the last command on your history
 function last-command {
@@ -41,6 +41,18 @@ zle -N last-command
 
 bindkey -M viins '^[r' last-command
 bindkey -M vicmd '^[r' last-command
+
+autoload -Uz last-command
+
+# Exit
+function exit-proc {
+    exit
+    zle accept-line
+}
+zle -N exit-proc
+
+bindkey -M viins '^[c' exit-proc
+bindkey -M vicmd '^[c' exit-proc
 
 autoload -Uz last-command
 

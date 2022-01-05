@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-parsed_url="$@"
-$BROWSER --app=https:$parsed_url
