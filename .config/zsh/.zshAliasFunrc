@@ -22,7 +22,7 @@ alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 
 # Neovim
 alias sn='sudo -E nvim'
-alias n='nvim'
+alias n='nice -20 nvim'
 alias :e='nvim'
 
 # function no {

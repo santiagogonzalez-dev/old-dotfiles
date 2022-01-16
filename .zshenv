@@ -30,14 +30,18 @@ export LANG=en_US.UTF-8
 export LC_COLLATE=C
 export VISUAL="nvim"
 export EDITOR="nvim"
-export BROWSER="brave"
-export TERMINAL="kitty"
+export BROWSER="firefox-developer-edition"
+export TERMINAL="wezterm"
 export TERM="xterm-256color"
 export LESSHISTFILE="-"
 export KEYTIMEOUT=1
+export ZETTELPY_DIR=${XDG_DATA_HOME}/zettelpy
 
 # Zsh config
 export ZDOTDIR=$HOME/.config/zsh
+if test ${PS1+set}; then
+    export CDPATH=$HOME/workspace
+fi
 
 # Personal Scripts
 # export PATH=$PATH:/home/$USER/.local/bin
