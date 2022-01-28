@@ -54,8 +54,6 @@ zle -N exit-proc
 bindkey -M viins '^[c' exit-proc
 bindkey -M vicmd '^[c' exit-proc
 
-autoload -Uz last-command
-
 function gacp() {
     command git add . && git commit -m "$@" && git push origin master
 }
@@ -67,6 +65,19 @@ function okular-disown() {
 function run() {
     "$@" < /dev/null &> /dev/null &; disown
 }
+
+function switch_between_fg_bg() {
+    if [[ $#BUFFER -eq 0 ]]; then
+        BUFFER="fg"
+        zle accept-line -w
+    else
+        zle push-input -w
+        zle clear-screen -w
+    fi
+}
+
+zle -N switch_between_fg_bg
+bindkey '^Z' switch_between_fg_bg
 
 # Extracting files
 ex() {

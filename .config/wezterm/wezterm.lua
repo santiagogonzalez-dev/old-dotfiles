@@ -2,31 +2,18 @@ local wezterm = require('wezterm')
 
 return {
 
-    -- -- Fonts
-    -- font = wezterm.font('mononoki'),
-    -- font_size = 13.3,
-    -- -- font_size = 19,
-
-    -- font = wezterm.font('JetBrains Mono', {weight="Regular"}),
-    -- font_size = 14,
-    -- -- font_size = 19,
-    -- line_height = 1.1,
-
-    -- font = wezterm.font('Fira Code', {
-    --     weight='Medium',
-    -- }),
+    -- Fonts
     font = wezterm.font('Iosevka Term'),
-    -- font_size = 13,
-    font_size = 14.9,
-    -- line_height = 1.2,
-    line_height = 1.05,
+    -- font_size = 14,
+    font_size = 15.0,
+    line_height = 1.08,
 
     custom_block_glyphs = false,
-    foreground_text_hsb = {
-        hue = 1.0,
-        saturation = 1.00,
-        brightness = 1.01,
-    },
+    -- foreground_text_hsb = {
+    --     hue = 1.0,
+    --     saturation = 1.00,
+    --     brightness = 1.01,
+    -- },
     hide_tab_bar_if_only_one_tab = true,
     window_padding = {
         top = 0,
@@ -34,8 +21,8 @@ return {
         right = 0,
         bottom = 0,
     },
-    window_background_opacity = 0.96,
-    text_background_opacity = 0.9,
+    -- window_background_opacity = 0.96,
+    -- text_background_opacity = 0.9,
     use_dead_keys = false, -- For áéíóú
     enable_wayland = true,
     colors = {
@@ -53,7 +40,6 @@ return {
 
         ansi = { '#26233A', '#b4637a', '#286983', '#D4A76C', '#9CCFD8', '#C4A7E7', '#D7827E', '#E0DEF4' },
         brights = { '#3B425B', '#EB6F92', '#31748F', '#F6C177', '#9CCFD8', '#C4A7E7', '#D7827E', '#E0DEF4' },
-
         indexed = { [136] = '#af8700' }, -- Arbitrary colors of the palette in the range from 16 to 255
         -- indexed = {[136] = '#716D8B'}, -- Arbitrary colors of the palette in the range from 16 to 255
     },
