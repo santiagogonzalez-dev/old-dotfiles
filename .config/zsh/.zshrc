@@ -1,42 +1,22 @@
-# zmodload zsh/zprof # Uncomment to enable stats for Zsh with zprof command
+# Compinit
+_comp_options+=(globdots) # Include hidden files.
+autoload -Uz compinit
+for dump in $ZDOTDIR/refer/.zcompdump(N.mh+12); do # Twice a day it's updated
+    compinit
+done
+compinit -d "${ZDOTDIR}/refer/.zcompdump" # Basic auto/tab complete:
 
-# zsh-defer
-source "${ZDOTDIR}/zsh-defer/zsh-defer.plugin.zsh"
+# Zsh-defer
+source "${ZDOTDIR}/refer/zsh-defer/zsh-defer.plugin.zsh"
+
+# Settings
+
+fpath=("${ZDOTDIR}/refer/zsh-completions/src" $fpath) # zsh-completions
 
 autoload -Uz colors && colors
-HISTFILE=~/.config/zsh/.zshHistory
-HISTSIZE=600000
-SAVEHIST=600000
 
 # Automatically remove duplicates from these arrays
 typeset -U path PATH cdpath CDPATH fpath FPATH manpath MANPATH
-
-# Completion and Paths
-typeset -A __DOTS
-__DOTS[ITALIC_ON]=$'\e[3m'
-__DOTS[ITALIC_OFF]=$'\e[23m'
-
-zstyle ':completion:*' format %F{yellow}-- %B%U%{$__DOTS[ITALIC_ON]%}%d%{$__DOTS[ITALIC_OFF]%}%b%u --%f
-zstyle ':compinstall:filename' '/home/st/.config/zsh/.zshrc'
-zstyle ':completion:*:*:*:*:*' menu select=3 # If there's less than 3 items it will use normal tabs
-zstyle ':completion:*:history-words' menu yes # Activate menu
-zstyle ':completion:*:matches' group 'yes'
-zstyle ':completion:*:options' description 'yes'
-zstyle ':completion:*:options' auto-description '%d'
-zstyle ':completion:*:corrections' format ' %F{green}-- %d (errors: %e) --%f'
-zstyle ':completion:*:descriptions' format ' %F{yellow}-- %d --%f'
-zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
-zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
-zstyle ':completion:*:default' list-prompt '%S%M matches%s'
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*' verbose yes
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-zstyle ':autocomplete:*' min-delay 0.0  # float
-zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|?=** r:|?=**'
-zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(..) ]] && reply=(..)'
-zstyle ':completion:*' matcher-list '' '+m:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}' '+m:{_-}={-_}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 setopt multios
 setopt prompt_subst # Let the prompt substite variables, without this the prompt will not work
@@ -48,6 +28,7 @@ setopt extendedglob nomatch menucomplete
 setopt interactive_comments # Enable comments in interactive shell
 setopt hash_list_all # Whenever a command completion is attempted, make sure the entire command path is hashed first.
 setopt rm_star_wait
+unsetopt beep # Disable bell, no sound on error
 
 # History
 setopt inc_append_history # Ensure that commands are added to the history immediately
@@ -60,14 +41,15 @@ setopt hist_verify
 setopt autoparamslash
 setopt share_history
 
+HISTFILE=~/.config/zsh/refer/.hist
+HISTSIZE=1000000
+SAVEHIST=1000000
+
 # Directories
 setopt auto_cd # Automatically cd into typed directory.
 setopt auto_pushd # Push the current directory visited on the stack.
 setopt pushd_ignore_dups # Do not store duplicates in the stack.
 setopt pushd_silent # Do not print the directory stack after pushd or popd.
-
-# Unset the annoying bell
-unsetopt beep # No sound on error
 
 # Jobs
 setopt auto_resume # Attempt to resume existing job before creating a new process.
@@ -75,27 +57,46 @@ setopt notify # Report status of background jobs immediately.
 setopt no_hup # Don't kill jobs on shell exit.
 unsetopt bg_nice # Don't run all background jobs at a lower priority.
 
-watch=(notme root) # Watch for everyone but me and root
-
-autoload -Uz compinit
-for dump in $ZDOTDIR/.zcompdump(N.mh+12); do # Twice a day it's updated
-    compinit
-done
-compinit -C # Basic auto/tab complete:
-
-_comp_options+=(globdots) # Include hidden files.
+# Modules
 zmodload zsh/complist
-zmodload zsh/parameter
 zmodload zsh/deltochar
 zmodload zsh/mathfunc
+zmodload zsh/parameter
+
 autoload zcalc
 autoload zmv
 
-# Enabling shift-tab for completion
-bindkey -M menuselect '^[[Z' reverse-menu-complete
+# Vi mode
+# Change cursor shape and prompt for different vi modes.
+function cursor_shape () {
+    function zle-keymap-select () {
+        case $KEYMAP in
+            vicmd) echo -ne '\e[1 q';; # Block, because vicmd implies it's in command mode
+            viins|main) echo -ne '\e[5 q';; # Beam, because viins implies it's in insert mode
+        esac
+        vi_mode="${${KEYMAP/vicmd/${vi_cmd_mode}}/(main|viins)/${vi_ins_mode}}"
+        zle reset-prompt
+    }
+    zle -N zle-keymap-select
 
-# Vi-mode
-source "${ZDOTDIR}/.zshvi"
+    function zle-line-init() {
+        echo -ne "\e[5 q"
+    }
+    zle -N zle-line-init # Initial state of the shell when you open it. It's in insert mode, with the Beam cursor
+    preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+
+    function TRAPINT() {
+        vi_mode=$vi_ins_mode
+        return $(( 128 + $1 ))
+    }
+
+    vi_ins_mode=" "
+    vi_cmd_mode="%{$fg[green]%} %{$reset_color%}"
+    vi_mode=$vi_ins_mode
+}
+zle -N cursor_shape
+autoload -Uz cursor_shape
+cursor_shape
 
 # Exit error code of the last command
 function check_last_exit_code() {
@@ -108,25 +109,6 @@ function check_last_exit_code() {
         echo "$EXIT_CODE_PROMPT"
     fi
 }
-zle -N check_last_exit_code
-autoload -Uz check_last_exit_code
-
-# Load aliases and functions
-zsh-defer source "${ZDOTDIR}/.zshAliasFunrc"
-
-# Change title of the window to the working directory
-function change_title() {
-    case $TERM in
-        xterm*)
-            precmd() {print -Pn - '\e]0;%~\a'}
-            ;;
-    esac
-} && change_title
-
-# Plugins
-
-# z
-zsh-defer source "${ZDOTDIR}/zsh-z/zsh-z.plugin.zsh"
 
 # Git Status
 function gitstatus() {
@@ -147,67 +129,10 @@ function gitstatus() {
     }
     zstyle ':vcs_info:*' check-for-changes true
     zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}❰%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[blue]%}❱"
-} && zsh-defer gitstatus
-
-# zsh-autosuggestions
-zsh-defer source "${ZDOTDIR}/zsh-autosuggestions/zsh-autosuggestions.zsh"
-zsh-defer bindkey -M vicmd '^[a' autosuggest-accept && bindkey -M viins '^[a' autosuggest-execute
-
-# zsh-autopairs
-zsh-defer source "${ZDOTDIR}/zsh-autopair/autopair.zsh"
-
-# fast-syntax-highlighting
-zsh-defer source "${ZDOTDIR}/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
-
-# zsh-history-substring-search
-zsh-defer source "${ZDOTDIR}/zsh-history-substring-search/zsh-history-substring-search.zsh"
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
-
-# fzf-tab
-zstyle ':completion:*:git-checkout:*' sort false # disable sort when completing `git checkout`
-zstyle ':completion:*:descriptions' format '[%d]' # set descriptions format to enable group support
-zstyle ':fzf-tab:complete:nvim:*' fzf-preview 'bat --color=always --italic-text=always $realpath' # preview directory's content with exa when completing cd
-zstyle ':fzf-tab:complete:cp:*' fzf-preview 'bat --color=always --italic-text=always $realpath' # preview directory's content with exa when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1a --colour-scale --icons --group-directories-first --color=always $realpath' # preview directory's content with exa when completing cd
-function check_terminal_size() {
-if [[ "$LINES $COLUMNS" != "$previous_lines $previous_columns" ]]; then
-    set_default_opts
-fi
-previous_lines=$LINES
-previous_columns=$COLUMNS
 }
-
-function set_default_opts() {
-HEIGHTVAR=$(($LINES/2))
-WIDTHVAR=$(($COLUMNS/2))
-zstyle ':fzf-tab:*' fzf-pad $HEIGHTVAR
-export FZF_DEFAULT_OPTS="
---color=fg:#707a8c,bg:-1,hl:#3e9831,fg+:#cbccc6,bg+:#434c5e,hl+:#af87ff \
-    --color=dark \
-    --color=info:#ea9d34,prompt:#af87ff,pointer:#cb6283,marker:#cb6283,spinner:#ff87d7 \
-    --sort \
-    --preview-window=right:$WIDTHVAR \
-    --bind '?:toggle-preview' \
-    --border rounded \
-    "
-    # --preview-window=right:$WIDTHVAR
-}
-set_default_opts && trap 'check_terminal_size' WINCH
-zsh-defer source "${ZDOTDIR}/fzf-tab/fzf-tab.plugin.zsh"
-
-# Toolbox
-# if [[ ! -z $TOOLBOX_PATH ]]; then
-#     PS1=" 節 $PS1"
-# fi
-
-# zsh-completions. Update fpath with completions
-fpath=("${ZDOTDIR}/zsh-completions/src" $fpath)
+zsh-defer gitstatus
 
 PS1="%n%F{white}@%f%{$reset_color%}%m%F{white} %3~%f%{$reset_color%}  %{$reset_color%}"
 RPS1='$(check_last_exit_code) ${vi_mode} $vcs_info_msg_0_'
 
-# zprof # To time up the zsh load time
-
-# SDKMAN
-zsh-defer source "${HOME}/.local/lib/sdkman/bin/sdkman-init.sh"
+zsh-defer source "${ZDOTDIR}/later.zsh"

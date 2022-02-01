@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-rm -f "$ZDOTDIR"/{.zcompdump,.zcompdump.zwc}
-sleep 3
+rm -f "$ZDOTDIR"/refer/{.zcompdump,.zcompdump.zwc}
+sleep 1
 zsh -l
-zcompile "$ZDOTDIR"/.zcompdump
+zcompile "~/.config/zsh/refer/.zcompdump"

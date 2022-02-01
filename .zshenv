@@ -1,3 +1,6 @@
+# Zsh config
+export ZDOTDIR=$HOME/.config/zsh
+
 # XDG Paths
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
@@ -37,8 +40,8 @@ export LESSHISTFILE="-"
 export KEYTIMEOUT=1
 export ZETTELPY_DIR="${XDG_DATA_HOME}/zettelpy"
 
-# Zsh config
-export ZDOTDIR=$HOME/.config/zsh
+# Directories
+export CDPATH="${HOME}/workspace"
 
 # Personal Scripts
 # export PATH=$PATH:/home/$USER/.local/bin

@@ -6,7 +6,9 @@
 
 # Zsh
 mkdir -p .config/zsh/
-cp $ZDOTDIR/{.zshrc,.zlogin,.zshvi,.zshAliasFunrc} .config/zsh/
+cp $ZDOTDIR/{.zshrc,.zlogin,later.zsh} .config/zsh/
+mkdir -p .config/zsh/refer
+cp $ZDOTDIR/refer/clone_plugins.sh .config/zsh/refer/clone_plugins.sh
 cp $HOME/.zshenv .
 
 mkdir -p .local/share/
