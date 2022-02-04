@@ -6,6 +6,6 @@
     fi
 } &!
 
-hash -d nvim="${XDG_CONFIG_HOME}/.config/nvim/init.lua"
+hash -d nvim="${XDG_CONFIG_HOME}/nvim/init.lua"
 hash -d zsh="${ZDOTDIR}/.zshrc"
-hash -d wezterm="${XDG_CONFIG_HOME}/.config/wezterm/wezterm.lua"
+hash -d wezterm="${XDG_CONFIG_HOME}/wezterm/wezterm.lua"

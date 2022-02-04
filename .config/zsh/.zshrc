@@ -4,13 +4,12 @@ autoload -Uz compinit
 for dump in $ZDOTDIR/refer/.zcompdump(N.mh+12); do # Twice a day it's updated
     compinit
 done
-compinit -d "${ZDOTDIR}/refer/.zcompdump" # Basic auto/tab complete:
+compinit -C "${ZDOTDIR}/refer/.zcompdump" # Basic auto/tab complete:
 
 # Zsh-defer
 source "${ZDOTDIR}/refer/zsh-defer/zsh-defer.plugin.zsh"
 
 # Settings
-
 fpath=("${ZDOTDIR}/refer/zsh-completions/src" $fpath) # zsh-completions
 
 autoload -Uz colors && colors
@@ -130,6 +129,7 @@ function gitstatus() {
     zstyle ':vcs_info:*' check-for-changes true
     zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}❰%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[blue]%}❱"
 }
+
 zsh-defer gitstatus
 
 PS1="%n%F{white}@%f%{$reset_color%}%m%F{white} %3~%f%{$reset_color%}  %{$reset_color%}"
