@@ -4,10 +4,10 @@
 # with the kernel module loaded, like in my laptop, a ThinkBook 15-iml.
 
 case "${1}" in
-    enable)
+    limit)
         pkexec bash -c 'echo 1 > /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode'
     ;;
-    disable)
+    full)
         pkexec bash -c 'echo 0 > /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode'
     ;;
     *)
